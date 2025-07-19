@@ -134,9 +134,9 @@ export default function Home() {
                   </li>
                 </ul>
                 <div className="text-center md:text-left">
-                  <button className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors">
+                  <Link href="/appointments" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block">
                     🚀 Automate My Business
-                  </button>
+                  </Link>
                 </div>
               </div>
 
@@ -162,9 +162,9 @@ export default function Home() {
                   </li>
                 </ul>
                 <div className="text-center md:text-left">
-                  <button className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors">
+                  <Link href="/appointments" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block">
                     🚀 Automate My Home
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
