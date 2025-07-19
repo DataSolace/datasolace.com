@@ -5,7 +5,7 @@ import Footer from '../../components/Footer';
 
 export default function Services() {
   return (
-    <div className="min-h-screen bg-gradient-to-r from-teal-900 via-slate-900 to-teal-900">
+    <div className="min-h-screen bg-[var(--brand-blue)]">
       <Header currentPage="services" />
 
       {/* Main Content */}
@@ -15,7 +15,7 @@ export default function Services() {
           <div className="bg-white rounded-2xl p-12 shadow-2xl">
             {/* Title */}
             <div className="text-center mb-16">
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+              <h1 className="text-5xl md:text-6xl font-bold text-[var(--brand-blue)] mb-6">
                 Our services
               </h1>
             </div>
@@ -25,19 +25,19 @@ export default function Services() {
               {/* Networking and Infrastructure */}
               <div className="flex flex-col h-full">
                 <div className="text-center mb-6">
-                  <div className="w-full h-48 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                  <div className="w-full h-48 bg-[var(--brand-teal)] rounded-lg flex items-center justify-center">
                     <div className="text-white text-6xl">🔌</div>
                   </div>
                 </div>
                 <div className="flex flex-col flex-grow">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+                  <h3 className="text-2xl font-bold text-[var(--brand-blue)] mb-4 text-center">
                     Networking and Infrastructure
                   </h3>
                   <p className="text-gray-700 mb-6 leading-relaxed text-center flex-grow">
                     From secure Wi-Fi to reliable internet connections, we design and maintain robust networks that keep your business or home connected and operational.
                   </p>
                   <div className="text-center mt-auto">
-                    <button className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg transition-colors font-semibold">
+                    <button className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-6 py-3 rounded-lg transition-colors font-semibold">
                       Learn More
                     </button>
                   </div>
@@ -47,19 +47,19 @@ export default function Services() {
               {/* Home Automation */}
               <div className="flex flex-col h-full">
                 <div className="text-center mb-6">
-                  <div className="w-full h-48 bg-gradient-to-br from-orange-400 to-red-500 rounded-lg flex items-center justify-center">
+                  <div className="w-full h-48 bg-[var(--brand-teal)] rounded-lg flex items-center justify-center">
                     <div className="text-white text-6xl">🏠</div>
                   </div>
                 </div>
                 <div className="flex flex-col flex-grow">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+                  <h3 className="text-2xl font-bold text-[var(--brand-blue)] mb-4 text-center">
                     Home Automation
                   </h3>
                   <p className="text-gray-700 mb-6 leading-relaxed text-center flex-grow">
                     Experience the convenience of a connected home. We design and install smart systems for lighting, thermostats, and more, creating a personalized living environment.
                   </p>
                   <div className="text-center mt-auto">
-                    <button className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg transition-colors font-semibold">
+                    <button className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-6 py-3 rounded-lg transition-colors font-semibold">
                       Learn More
                     </button>
                   </div>
@@ -69,19 +69,19 @@ export default function Services() {
               {/* Self Hosted Concierge */}
               <div className="flex flex-col h-full">
                 <div className="text-center mb-6">
-                  <div className="w-full h-48 bg-gradient-to-br from-green-400 to-blue-500 rounded-lg flex items-center justify-center">
+                  <div className="w-full h-48 bg-[var(--brand-teal)] rounded-lg flex items-center justify-center">
                     <div className="text-white text-6xl">💻</div>
                   </div>
                 </div>
                 <div className="flex flex-col flex-grow">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+                  <h3 className="text-2xl font-bold text-[var(--brand-blue)] mb-4 text-center">
                     Self Hosted Concierge
                   </h3>
                   <p className="text-gray-700 mb-6 leading-relaxed text-center flex-grow">
                     Advanced self-hosted solutions for busy tech enthusiasts. We handle the setup and maintenance, so you can enjoy cutting-edge apps and services without the time investment or loss of privacy.
                   </p>
                   <div className="text-center mt-auto">
-                    <button className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg transition-colors font-semibold">
+                    <button className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-6 py-3 rounded-lg transition-colors font-semibold">
                       Learn More
                     </button>
                   </div>
@@ -99,11 +99,11 @@ export default function Services() {
           <div className="bg-white rounded-2xl p-12 shadow-2xl">
             {/* Smart Home Index Header */}
             <div className="mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-[var(--brand-blue)] mb-6">
                 Smart Home Index
               </h2>
               <div className="mb-8">
-                <button className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg transition-colors font-semibold">
+                <button className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-6 py-3 rounded-lg transition-colors font-semibold">
                   Go to the Smart Home Index
                 </button>
               </div>
@@ -115,15 +115,15 @@ export default function Services() {
             <div className="grid md:grid-cols-2 gap-12">
               {/* Left Side - Main App Screenshot Placeholder */}
               <div className="space-y-6">
-                <div className="w-full h-64 bg-gradient-to-br from-green-400 to-teal-500 rounded-lg flex items-center justify-center">
+                <div className="w-full h-64 bg-[var(--brand-teal)] rounded-lg flex items-center justify-center">
                   <div className="text-white text-center">
                     <div className="text-4xl mb-2">📱</div>
                     <div className="text-sm">Smart Home Index Dashboard</div>
                   </div>
                 </div>
                 {/* Newsletter Signup */}
-                <div className="bg-green-50 border-2 border-green-200 rounded-lg p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
+                <div className="bg-[var(--brand-teal)]/10 border-2 border-[var(--brand-teal)]/20 rounded-lg p-6">
+                  <h3 className="text-xl font-bold text-[var(--brand-blue)] mb-4 text-center">
                     Stay up to date with Smart Home Index updates
                   </h3>
                   <p className="text-gray-700 mb-4 text-center">
@@ -133,9 +133,9 @@ export default function Services() {
                     <input
                       type="email"
                       placeholder="Email Address"
-                      className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
+                      className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[var(--brand-teal)]"
                     />
-                    <button className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg transition-colors font-semibold">
+                    <button className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-6 py-2 rounded-lg transition-colors font-semibold">
                       Sign Up
                     </button>
                   </div>
@@ -148,13 +148,13 @@ export default function Services() {
               {/* Right Side - Secondary Screenshots and Content */}
               <div className="space-y-6">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="h-32 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-lg flex items-center justify-center">
+                  <div className="h-32 bg-[var(--brand-teal)] rounded-lg flex items-center justify-center">
                     <div className="text-white text-center">
                       <div className="text-2xl mb-1">🔍</div>
                       <div className="text-xs">Search Interface</div>
                     </div>
                   </div>
-                  <div className="h-32 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg flex items-center justify-center">
+                  <div className="h-32 bg-[var(--brand-teal)] rounded-lg flex items-center justify-center">
                     <div className="text-white text-center">
                       <div className="text-2xl mb-1">📊</div>
                       <div className="text-xs">Comparison View</div>
@@ -162,7 +162,7 @@ export default function Services() {
                   </div>
                 </div>
 
-                <div className="h-48 bg-gradient-to-br from-gray-400 to-gray-600 rounded-lg flex items-center justify-center">
+                <div className="h-48 bg-[var(--brand-teal)] rounded-lg flex items-center justify-center">
                   <div className="text-white text-center">
                     <div className="text-3xl mb-2">💻</div>
                     <div className="text-sm">Detailed Device Analysis</div>
@@ -171,7 +171,7 @@ export default function Services() {
 
                 {/* Why We Made It Section */}
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  <h3 className="text-2xl font-bold text-[var(--brand-blue)] mb-4">
                     Why did we make the Smart Home Index?
                   </h3>
                   <p className="text-gray-700 leading-relaxed">
@@ -183,7 +183,7 @@ export default function Services() {
                 </div>
 
                 <div className="text-center">
-                  <h3 className="text-3xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-3xl font-bold text-[var(--brand-blue)] mb-2">
                     Filter, Find, Learn, Compare
                   </h3>
                 </div>
@@ -196,13 +196,13 @@ export default function Services() {
       {/* Bottom Statement Section */}
       <section className="py-5 px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-gradient-to-r from-teal-200 to-green-200 rounded-2xl p-12 shadow-2xl">
+          <div className="bg-white rounded-2xl p-12 shadow-2xl">
             <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-gray-900 leading-relaxed">
+              <div className="text-2xl md:text-3xl font-bold text-[var(--brand-blue)] leading-relaxed">
                 We understand the unique needs of small businesses, startups, and high net worth individuals. Let us take care of your IT infrastructure, so you can{' '}
                 <span className="relative">
                   focus on what you do best.
-                  <div className="absolute bottom-0 left-0 w-full h-1 bg-green-500"></div>
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-[var(--brand-teal)]"></div>
                 </span>
               </div>
             </div>
