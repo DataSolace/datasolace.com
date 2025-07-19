@@ -8,7 +8,7 @@ export default function Services() {
       <Header currentPage="services" />
 
       {/* Main Content */}
-      <main className="relative z-10 px-6 py-20">
+      <main className="relative z-10 px-6 py-5">
         <div className="max-w-6xl mx-auto">
           {/* Services Card Container */}
           <div className="bg-white rounded-2xl p-12 shadow-2xl">
@@ -92,8 +92,108 @@ export default function Services() {
         </div>
       </main>
 
+      {/* Smart Home Index Section */}
+      <section className="py-5 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="bg-white rounded-2xl p-12 shadow-2xl">
+            {/* Smart Home Index Header */}
+            <div className="mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Smart Home Index
+              </h2>
+              <div className="mb-8">
+                <button className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg transition-colors font-semibold">
+                  Go to the Smart Home Index
+                </button>
+              </div>
+              <p className="text-lg text-gray-700 leading-relaxed max-w-4xl">
+                In today&apos;s rapidly evolving world of smart home technology, choosing the right devices for your home can feel overwhelming. With so many options available, how do you know which smart home gadgets are best suited for your needs? This is where the Smart Home Index comes in - a free, user-friendly platform that simplifies the process of finding and comparing smart home devices.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-12">
+              {/* Left Side - Main App Screenshot Placeholder */}
+              <div className="space-y-6">
+                <div className="w-full h-64 bg-gradient-to-br from-green-400 to-teal-500 rounded-lg flex items-center justify-center">
+                  <div className="text-white text-center">
+                    <div className="text-4xl mb-2">📱</div>
+                    <div className="text-sm">Smart Home Index Dashboard</div>
+                  </div>
+                </div>
+                {/* Newsletter Signup */}
+                <div className="bg-green-50 border-2 border-green-200 rounded-lg p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
+                    Stay up to date with Smart Home Index updates
+                  </h3>
+                  <p className="text-gray-700 mb-4 text-center">
+                    Sign up with your email address to receive news and updates, including new devices that are added to the Smart Home Index.
+                  </p>
+                  <div className="flex gap-3">
+                    <input
+                      type="email"
+                      placeholder="Email Address"
+                      className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
+                    />
+                    <button className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg transition-colors font-semibold">
+                      Sign Up
+                    </button>
+                  </div>
+                  <p className="text-xs text-gray-500 mt-2 text-center">
+                    We respect your privacy.
+                  </p>
+                </div>
+              </div>
+
+              {/* Right Side - Secondary Screenshots and Content */}
+              <div className="space-y-6">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="h-32 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-lg flex items-center justify-center">
+                    <div className="text-white text-center">
+                      <div className="text-2xl mb-1">🔍</div>
+                      <div className="text-xs">Search Interface</div>
+                    </div>
+                  </div>
+                  <div className="h-32 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg flex items-center justify-center">
+                    <div className="text-white text-center">
+                      <div className="text-2xl mb-1">📊</div>
+                      <div className="text-xs">Comparison View</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="h-48 bg-gradient-to-br from-gray-400 to-gray-600 rounded-lg flex items-center justify-center">
+                  <div className="text-white text-center">
+                    <div className="text-3xl mb-2">💻</div>
+                    <div className="text-sm">Detailed Device Analysis</div>
+                  </div>
+                </div>
+
+                {/* Why We Made It Section */}
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                    Why did we make the Smart Home Index?
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed">
+                    Search engines like Google and Amazon have become increasingly ineffective for finding smart home devices. The results are often skewed by sponsored products, making it difficult to find unbiased recommendations when wading through irrelevant listings. Additionally, vendors use inconsistent terminology, which makes comparing products across different brands a frustrating experience. With the wide variety of conflicting standards and smart home ecosystems, finding devices that truly fit your setup can be a daunting task. The Smart Home Index addresses these challenges by providing a clear, unbiased platform to search, compare, and choose the best devices for your smart home.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed mt-4">
+                    At DataSolace we are looking to further the accessibility of Smart Homes, so building a clear and accurate feature index was an essential step in this mission.
+                  </p>
+                </div>
+
+                <div className="text-center">
+                  <h3 className="text-3xl font-bold text-gray-900 mb-2">
+                    Filter, Find, Learn, Compare
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Bottom Statement Section */}
-      <section className="py-20 px-6">
+      <section className="py-5 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="bg-gradient-to-r from-teal-200 to-green-200 rounded-2xl p-12 shadow-2xl">
             <div className="text-center">
