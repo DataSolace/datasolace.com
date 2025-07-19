@@ -8,8 +8,15 @@ export default function Header({ currentPage }: HeaderProps) {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-[var(--brand-blue)]/85 backdrop-blur-sm border-b border-white/10">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link href="/" className="text-white text-2xl font-bold hover:text-[var(--brand-teal)] transition-colors">
-          DataSolace
+        <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+          <img
+            src="/logo.webp"
+            alt="DataSolace"
+            className="h-24 w-auto mr-3"
+          />
+          <span className="text-white text-2xl font-bold hover:text-[var(--brand-teal)] transition-colors">
+            DataSolace
+          </span>
         </Link>
         <nav className="hidden md:flex items-center space-x-8">
           <Link
