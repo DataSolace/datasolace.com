@@ -121,61 +121,64 @@ export default function Home() {
             We are a trusted partner for Business and Home automation, bringing over a decade of systems design and engineering to those who want to focus on what matters most.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-16 mb-16">
-            {/* Business Features */}
-            <div className="text-left">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Business Solutions</h3>
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <span className="text-2xl mr-3">💼</span>
-                  <span className="text-lg text-gray-700">Infrastructure to Enable Business Growth</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-2xl mr-3">💼</span>
-                  <span className="text-lg text-gray-700">Eliminate Time Consuming Activities</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-2xl mr-3">💼</span>
-                  <span className="text-lg text-gray-700">Protect Business Intellectual Property</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-2xl mr-3">💼</span>
-                  <span className="text-lg text-gray-700">Consolidate Systems and Optimise Workflows</span>
-                </li>
-              </ul>
-            </div>
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-16">
+              {/* Business Features */}
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center md:text-left">Business Solutions</h3>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex justify-center md:justify-start">
+                    <span className="text-2xl mr-3 leading-none">💼</span>
+                    <span className="text-lg text-gray-700 leading-relaxed">Infrastructure to Enable Business Growth</span>
+                  </li>
+                  <li className="flex justify-center md:justify-start">
+                    <span className="text-2xl mr-3 leading-none">💼</span>
+                    <span className="text-lg text-gray-700 leading-relaxed">Eliminate Time Consuming Activities</span>
+                  </li>
+                  <li className="flex justify-center md:justify-start">
+                    <span className="text-2xl mr-3 leading-none">💼</span>
+                    <span className="text-lg text-gray-700 leading-relaxed">Protect Business Intellectual Property</span>
+                  </li>
+                  <li className="flex justify-center md:justify-start">
+                    <span className="text-2xl mr-3 leading-none">💼</span>
+                    <span className="text-lg text-gray-700 leading-relaxed">Consolidate Systems and Optimise Workflows</span>
+                  </li>
+                </ul>
+                <div className="text-center md:text-left">
+                  <button className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors">
+                    🚀 Automate My Business
+                  </button>
+                </div>
+              </div>
 
-            {/* Home Features */}
-            <div className="text-left">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Home Solutions</h3>
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <span className="text-2xl mr-3">🏠</span>
-                  <span className="text-lg text-gray-700">Enhanced Home Comfort and Efficiency</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-2xl mr-3">🏠</span>
-                  <span className="text-lg text-gray-700">Premises Security and Access Management</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-2xl mr-3">🏠</span>
-                  <span className="text-lg text-gray-700">Environmental Monitoring and Protection</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-2xl mr-3">🏠</span>
-                  <span className="text-lg text-gray-700">Unified control and automated daily routines</span>
-                </li>
-              </ul>
+              {/* Home Features */}
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center md:text-left">Home Solutions</h3>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex justify-center md:justify-start">
+                    <span className="text-2xl mr-3 leading-none">🏠</span>
+                    <span className="text-lg text-gray-700 leading-relaxed">Enhanced Home Comfort and Efficiency</span>
+                  </li>
+                  <li className="flex justify-center md:justify-start">
+                    <span className="text-2xl mr-3 leading-none">🏠</span>
+                    <span className="text-lg text-gray-700 leading-relaxed">Premises Security and Access Management</span>
+                  </li>
+                  <li className="flex justify-center md:justify-start">
+                    <span className="text-2xl mr-3 leading-none">🏠</span>
+                    <span className="text-lg text-gray-700 leading-relaxed">Environmental Monitoring and Protection</span>
+                  </li>
+                  <li className="flex justify-center md:justify-start">
+                    <span className="text-2xl mr-3 leading-none">🏠</span>
+                    <span className="text-lg text-gray-700 leading-relaxed">Unified control and automated daily routines</span>
+                  </li>
+                </ul>
+                <div className="text-center md:text-left">
+                  <button className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors">
+                    🚀 Automate My Home
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <div className="flex flex-col md:flex-row gap-6 justify-center">
-            <button className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors">
-              🚀 Automate My Business
-            </button>
-            <button className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors">
-              🚀 Automate My Home
-            </button>
           </div>
         </div>
       </section>
