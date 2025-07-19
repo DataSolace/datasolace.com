@@ -111,11 +111,11 @@ export default function Home() {
           </p>
 
           <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-16">
+            <div className="grid md:grid-cols-2 gap-16 items-center">
               {/* Business Features */}
-              <div>
+              <div className="flex flex-col h-full">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center md:text-left">Business Solutions</h3>
-                <ul className="space-y-4 mb-8 max-w-sm mx-auto md:mx-0">
+                <ul className="space-y-4 mb-8 max-w-sm mx-auto md:mx-0 flex-grow">
                   <li className="flex items-center">
                     <span className="text-2xl mr-3 leading-none flex-shrink-0">💼</span>
                     <span className="text-lg text-gray-700 leading-relaxed text-left">Infrastructure to Enable Business Growth</span>
@@ -141,9 +141,9 @@ export default function Home() {
               </div>
 
               {/* Home Features */}
-              <div>
+              <div className="flex flex-col h-full">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center md:text-left">Home Solutions</h3>
-                <ul className="space-y-4 mb-8 max-w-sm mx-auto md:mx-0">
+                <ul className="space-y-4 mb-8 max-w-sm mx-auto md:mx-0 flex-grow">
                   <li className="flex items-center">
                     <span className="text-2xl mr-3 leading-none flex-shrink-0">🏠</span>
                     <span className="text-lg text-gray-700 leading-relaxed text-left">Enhanced Home Comfort and Efficiency</span>
