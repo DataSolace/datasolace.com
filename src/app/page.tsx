@@ -126,22 +126,22 @@ export default function Home() {
               {/* Business Features */}
               <div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center md:text-left">Business Solutions</h3>
-                <ul className="space-y-4 mb-8">
-                  <li className="flex justify-center md:justify-start">
-                    <span className="text-2xl mr-3 leading-none">💼</span>
-                    <span className="text-lg text-gray-700 leading-relaxed">Infrastructure to Enable Business Growth</span>
+                <ul className="space-y-4 mb-8 max-w-sm mx-auto md:mx-0">
+                  <li className="flex items-center">
+                    <span className="text-2xl mr-3 leading-none flex-shrink-0">💼</span>
+                    <span className="text-lg text-gray-700 leading-relaxed text-left">Infrastructure to Enable Business Growth</span>
                   </li>
-                  <li className="flex justify-center md:justify-start">
-                    <span className="text-2xl mr-3 leading-none">💼</span>
-                    <span className="text-lg text-gray-700 leading-relaxed">Eliminate Time Consuming Activities</span>
+                  <li className="flex items-center">
+                    <span className="text-2xl mr-3 leading-none flex-shrink-0">💼</span>
+                    <span className="text-lg text-gray-700 leading-relaxed text-left">Eliminate Time Consuming Activities</span>
                   </li>
-                  <li className="flex justify-center md:justify-start">
-                    <span className="text-2xl mr-3 leading-none">💼</span>
-                    <span className="text-lg text-gray-700 leading-relaxed">Protect Business Intellectual Property</span>
+                  <li className="flex items-center">
+                    <span className="text-2xl mr-3 leading-none flex-shrink-0">💼</span>
+                    <span className="text-lg text-gray-700 leading-relaxed text-left">Protect Business Intellectual Property</span>
                   </li>
-                  <li className="flex justify-center md:justify-start">
-                    <span className="text-2xl mr-3 leading-none">💼</span>
-                    <span className="text-lg text-gray-700 leading-relaxed">Consolidate Systems and Optimise Workflows</span>
+                  <li className="flex items-center">
+                    <span className="text-2xl mr-3 leading-none flex-shrink-0">💼</span>
+                    <span className="text-lg text-gray-700 leading-relaxed text-left">Consolidate Systems and Optimise Workflows</span>
                   </li>
                 </ul>
                 <div className="text-center md:text-left">
@@ -154,22 +154,22 @@ export default function Home() {
               {/* Home Features */}
               <div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center md:text-left">Home Solutions</h3>
-                <ul className="space-y-4 mb-8">
-                  <li className="flex justify-center md:justify-start">
-                    <span className="text-2xl mr-3 leading-none">🏠</span>
-                    <span className="text-lg text-gray-700 leading-relaxed">Enhanced Home Comfort and Efficiency</span>
+                <ul className="space-y-4 mb-8 max-w-sm mx-auto md:mx-0">
+                  <li className="flex items-center">
+                    <span className="text-2xl mr-3 leading-none flex-shrink-0">🏠</span>
+                    <span className="text-lg text-gray-700 leading-relaxed text-left">Enhanced Home Comfort and Efficiency</span>
                   </li>
-                  <li className="flex justify-center md:justify-start">
-                    <span className="text-2xl mr-3 leading-none">🏠</span>
-                    <span className="text-lg text-gray-700 leading-relaxed">Premises Security and Access Management</span>
+                  <li className="flex items-center">
+                    <span className="text-2xl mr-3 leading-none flex-shrink-0">🏠</span>
+                    <span className="text-lg text-gray-700 leading-relaxed text-left">Premises Security and Access Management</span>
                   </li>
-                  <li className="flex justify-center md:justify-start">
-                    <span className="text-2xl mr-3 leading-none">🏠</span>
-                    <span className="text-lg text-gray-700 leading-relaxed">Environmental Monitoring and Protection</span>
+                  <li className="flex items-center">
+                    <span className="text-2xl mr-3 leading-none flex-shrink-0">🏠</span>
+                    <span className="text-lg text-gray-700 leading-relaxed text-left">Environmental Monitoring and Protection</span>
                   </li>
-                  <li className="flex justify-center md:justify-start">
-                    <span className="text-2xl mr-3 leading-none">🏠</span>
-                    <span className="text-lg text-gray-700 leading-relaxed">Unified control and automated daily routines</span>
+                  <li className="flex items-center">
+                    <span className="text-2xl mr-3 leading-none flex-shrink-0">🏠</span>
+                    <span className="text-lg text-gray-700 leading-relaxed text-left">Unified control and automated daily routines</span>
                   </li>
                 </ul>
                 <div className="text-center md:text-left">
