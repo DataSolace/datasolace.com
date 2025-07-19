@@ -67,7 +67,7 @@ export default function Home() {
           <nav className="hidden md:flex items-center space-x-8">
             <Link href="/services" className="text-white hover:text-green-400 transition-colors">Services</Link>
             <Link href="/portfolio" className="text-white hover:text-green-400 transition-colors">Portfolio</Link>
-            <a href="#blog" className="text-white hover:text-green-400 transition-colors">Blog</a>
+            <Link href="/blog" className="text-white hover:text-green-400 transition-colors">Blog</Link>
             <a href="#appointments" className="text-white hover:text-green-400 transition-colors">Appointments</a>
           </nav>
           <a href="#contact" className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg transition-colors">
