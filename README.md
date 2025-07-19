@@ -1,27 +1,50 @@
-# Next.js Framework Starter
+# DataSolace
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/next-starter-template)
 
-<!-- dash-content-start -->
+This is the public-facing repository for DataSolace's statically generated website, showcasing our expertise in business and home automation solutions.
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). It's deployed on Cloudflare Workers as a [static website](https://developers.cloudflare.com/workers/static-assets/).
+## About DataSolace
 
-This template uses [OpenNext](https://opennext.js.org/) via the [OpenNext Cloudflare adapter](https://opennext.js.org/cloudflare), which works by taking the Next.js build output and transforming it, so that it can run in Cloudflare Workers.
+DataSolace is a trusted partner for Business and Home automation, bringing over a decade of systems design and engineering to those who want to focus on what matters most.
 
-<!-- dash-content-end -->
+### Our Services
 
-Outside of this repo, you can start a new project with this template using [C3](https://developers.cloudflare.com/pages/get-started/c3/) (the `create-cloudflare` CLI):
+#### Business Automation
+- **Infrastructure to Enable Business Growth** - Scalable solutions that grow with your business
+- **Eliminate Time Consuming Activities** - Streamline operations and boost productivity
+- **Protect Business Intellectual Property** - Secure systems and data protection
+- **Consolidate Systems and Optimise Workflows** - Unified platforms for better efficiency
 
-```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/next-starter-template
-```
+#### Home Automation
+- **Enhanced Home Comfort and Efficiency** - Luxury automation for modern living
+- **Premises Security and Access Management** - Advanced security solutions
+- **Environmental Monitoring and Protection** - Smart environmental controls
+- **Unified control and automated daily routines** - Seamless home management
 
-A live public deployment of this template is available at [https://next-starter-template.templates.workers.dev](https://next-starter-template.templates.workers.dev)
+## Technology Stack
+
+This website is built with:
+- [Next.js](https://nextjs.org/) - React framework for production
+- [OpenNext](https://opennext.js.org/) - Cloudflare adapter for Next.js
+- [Cloudflare Workers](https://developers.cloudflare.com/workers/) - Edge computing platform
+- [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript
 
 ## Getting Started
 
-First, run:
+### Prerequisites
+- Node.js (version 18 or higher)
+- npm, yarn, pnpm, or bun
 
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/your-org/datasolace-com.git
+cd datasolace-com
+```
+
+2. Install dependencies:
 ```bash
 npm install
 # or
@@ -32,31 +55,38 @@ pnpm install
 bun install
 ```
 
-Then run the development server (using the package manager of your choice):
-
+3. Run the development server:
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Development
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The website auto-updates as you edit files. You can start editing the main page by modifying `src/app/page.tsx`.
 
-## Deploying To Production
+### Available Scripts
 
 | Command                           | Action                                       |
 | :-------------------------------- | :------------------------------------------- |
+| `npm run dev`                     | Start development server                     |
 | `npm run build`                   | Build your production site                   |
-| `npm run preview`                 | Preview your build locally, before deploying |
+| `npm run preview`                 | Preview your build locally                   |
 | `npm run build && npm run deploy` | Deploy your production site to Cloudflare    |
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+This website is deployed on Cloudflare Workers as a static website using the OpenNext Cloudflare adapter. The deployment process transforms the Next.js build output to run efficiently in Cloudflare's edge computing environment.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contact
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Ready to automate your business or home? Get in touch with us:
+
+- **Website**: [datasolace.com](https://datasolace.com)
+- **Services**: Business and Home Automation
+- **Expertise**: Systems Design and Engineering
+
+## License
+
+This project is proprietary software owned by DataSolace. All rights reserved.
