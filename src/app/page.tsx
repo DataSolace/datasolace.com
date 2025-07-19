@@ -64,10 +64,9 @@ export default function Home() {
     <div className="min-h-screen">
       <Header currentPage="home" />
 
-      <div className="bg-gradient-to-r from-teal-900 via-slate-900 to-teal-900">
+      <div className="bg-[var(--brand-blue)]">
         {/* Hero Section */}
         <section className="relative min-h-screen flex items-center justify-center px-6">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800"></div>
           <div className="relative z-10 text-center max-w-6xl mx-auto">
             <h1 className="text-6xl md:text-8xl font-bold text-white mb-12">
               Automate Your...
@@ -95,7 +94,7 @@ export default function Home() {
               </div>
             </div>
 
-            <Link href="/services" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block">
+            <Link href="/services" className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block">
               💡 Learn More
             </Link>
           </div>
@@ -135,7 +134,7 @@ export default function Home() {
                     </li>
                   </ul>
                   <div className="text-center md:text-left">
-                    <Link href="/appointments" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block">
+                    <Link href="/appointments" className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block">
                       🚀 Automate My Business
                     </Link>
                   </div>
@@ -163,7 +162,7 @@ export default function Home() {
                     </li>
                   </ul>
                   <div className="text-center md:text-left">
-                    <Link href="/appointments" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block">
+                    <Link href="/appointments" className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block">
                       🚀 Automate My Home
                     </Link>
                   </div>
@@ -174,12 +173,12 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="bg-slate-800 py-20 px-6">
+        <section id="contact" className="bg-[var(--brand-blue)] py-20 px-6">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               {/* Left Side - Text Content */}
               <div>
-                <h2 className="text-5xl md:text-6xl font-bold text-green-500 mb-6">
+                <h2 className="text-5xl md:text-6xl font-bold text-[var(--brand-teal)] mb-6">
                   Let&apos;s Work Together!
                 </h2>
                 <div className="text-white text-xl space-y-2">
@@ -193,8 +192,8 @@ export default function Home() {
               {/* Right Side - Contact Form */}
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8">
                 {submitStatus === 'success' && (
-                  <div className="mb-6 p-4 bg-green-500/20 border border-green-400 rounded-lg">
-                    <p className="text-green-400 font-semibold">Thank you! Your message has been sent successfully.</p>
+                  <div className="mb-6 p-4 bg-[var(--brand-teal)]/20 border border-[var(--brand-teal)] rounded-lg">
+                    <p className="text-[var(--brand-teal)] font-semibold">Thank you! Your message has been sent successfully.</p>
                   </div>
                 )}
 
@@ -213,7 +212,7 @@ export default function Home() {
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-green-400"
+                        className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-[var(--brand-teal)]"
                         placeholder="First Name"
                       />
                     </div>
@@ -224,7 +223,7 @@ export default function Home() {
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-green-400"
+                        className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-[var(--brand-teal)]"
                         placeholder="Last Name"
                       />
                     </div>
@@ -238,7 +237,7 @@ export default function Home() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-green-400"
+                      className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-[var(--brand-teal)]"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -250,7 +249,7 @@ export default function Home() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-green-400"
+                      className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-[var(--brand-teal)]"
                       placeholder="+44 20 7946 0958"
                     />
                   </div>
@@ -262,7 +261,7 @@ export default function Home() {
                       name="newsletter"
                       checked={formData.newsletter}
                       onChange={handleInputChange}
-                      className="w-4 h-4 text-green-500 bg-white/20 border-white/30 rounded focus:ring-green-400"
+                      className="w-4 h-4 text-[var(--brand-teal)] bg-white/20 border-white/30 rounded focus:ring-[var(--brand-teal)]"
                     />
                     <label htmlFor="newsletter" className="ml-2 text-white text-sm">
                       Sign up for news and updates
@@ -277,7 +276,7 @@ export default function Home() {
                       onChange={handleInputChange}
                       required
                       rows={4}
-                      className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-green-400 resize-none"
+                      className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-[var(--brand-teal)] resize-none"
                       placeholder="Tell us about your automation needs..."
                     ></textarea>
                   </div>
@@ -289,7 +288,7 @@ export default function Home() {
                       className={`px-8 py-3 rounded-lg font-semibold transition-colors ${
                         isSubmitting
                           ? 'bg-gray-500 cursor-not-allowed'
-                          : 'bg-green-500 hover:bg-green-600'
+                          : 'bg-[var(--brand-teal)] hover:bg-[var(--brand-green)]'
                       } text-white`}
                     >
                       {isSubmitting ? 'Sending...' : 'Send'}
