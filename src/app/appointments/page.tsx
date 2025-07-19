@@ -6,7 +6,7 @@ import Footer from '../../components/Footer';
 
 export default function Appointments() {
   return (
-    <div className="min-h-screen bg-gradient-to-r from-teal-900 via-slate-900 to-teal-900">
+    <div className="min-h-screen bg-[var(--brand-blue)]">
       <Header currentPage="appointments" />
 
       {/* Main Content */}
@@ -28,44 +28,44 @@ export default function Appointments() {
             <h2 className="text-2xl font-bold text-white mb-6 text-center">What to Expect</h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-semibold text-green-400 mb-4">📞 Initial Consultation</h3>
+                <h3 className="text-xl font-semibold text-[var(--brand-teal)] mb-4">📞 Initial Consultation</h3>
                 <ul className="space-y-2 text-white/90">
                   <li className="flex items-start">
-                    <span className="text-green-400 mr-2">•</span>
+                    <span className="text-[var(--brand-teal)] mr-2">•</span>
                     <span>30-minute discovery call</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-green-400 mr-2">•</span>
+                    <span className="text-[var(--brand-teal)] mr-2">•</span>
                     <span>Understand your automation goals</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-green-400 mr-2">•</span>
+                    <span className="text-[var(--brand-teal)] mr-2">•</span>
                     <span>Discuss current challenges</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-green-400 mr-2">•</span>
+                    <span className="text-[var(--brand-teal)] mr-2">•</span>
                     <span>Explore potential solutions</span>
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-green-400 mb-4">🎯 Custom Solution Design</h3>
+                <h3 className="text-xl font-semibold text-[var(--brand-teal)] mb-4">🎯 Custom Solution Design</h3>
                 <ul className="space-y-2 text-white/90">
                   <li className="flex items-start">
-                    <span className="text-green-400 mr-2">•</span>
+                    <span className="text-[var(--brand-teal)] mr-2">•</span>
                     <span>Tailored automation strategy</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-green-400 mr-2">•</span>
+                    <span className="text-[var(--brand-teal)] mr-2">•</span>
                     <span>Technology recommendations</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-green-400 mr-2">•</span>
+                    <span className="text-[var(--brand-teal)] mr-2">•</span>
                     <span>Implementation timeline</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-green-400 mr-2">•</span>
+                    <span className="text-[var(--brand-teal)] mr-2">•</span>
                     <span>Investment overview</span>
                   </li>
                 </ul>
@@ -75,7 +75,7 @@ export default function Appointments() {
 
           {/* Calendly Placeholder */}
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div className="bg-gradient-to-r from-green-500 to-green-600 p-4">
+            <div className="bg-[var(--brand-teal)] p-4">
               <h3 className="text-xl font-bold text-white text-center">Schedule Your Consultation</h3>
             </div>
             
@@ -87,8 +87,8 @@ export default function Appointments() {
                 <p className="text-gray-500 mb-6 max-w-md mx-auto">
                   The Calendly booking widget will be embedded here to allow visitors to schedule appointments directly.
                 </p>
-                <div className="bg-green-100 border border-green-300 rounded-lg p-4 max-w-md mx-auto">
-                  <p className="text-green-700 text-sm">
+                <div className="bg-[var(--brand-teal)]/10 border border-[var(--brand-teal)]/30 rounded-lg p-4 max-w-md mx-auto">
+                  <p className="text-[var(--brand-teal)] text-sm">
                     <strong>Next Step:</strong> Add your Calendly embed code to replace this placeholder
                   </p>
                 </div>
@@ -104,7 +104,7 @@ export default function Appointments() {
             </p>
             <Link 
               href="/#contact" 
-              className="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors border border-white/30 inline-block"
+              className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors inline-block"
             >
               📧 Send Us a Message
             </Link>
