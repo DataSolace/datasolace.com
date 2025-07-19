@@ -3,6 +3,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* DataSolace Brand Colors */
+  --brand-blue: #1D2D46;
+  --brand-white: #F2F5F5;
+  --brand-teal: #029979;
+  --brand-green: #04866E;
 }
 
 @media (prefers-color-scheme: dark) {
