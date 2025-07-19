@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Header from '../components/Header';
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -60,21 +61,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-teal-900 via-slate-900 to-teal-900">
-      {/* Header */}
-      <header className="relative z-10 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="text-white text-2xl font-bold">DataSolace</div>
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/services" className="text-white hover:text-green-400 transition-colors">Services</Link>
-            <Link href="/portfolio" className="text-white hover:text-green-400 transition-colors">Portfolio</Link>
-            <Link href="/blog" className="text-white hover:text-green-400 transition-colors">Blog</Link>
-            <Link href="/appointments" className="text-white hover:text-green-400 transition-colors">Appointments</Link>
-          </nav>
-          <a href="#contact" className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg transition-colors">
-            Contact Us
-          </a>
-        </div>
-      </header>
+      <Header currentPage="home" />
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-6">
