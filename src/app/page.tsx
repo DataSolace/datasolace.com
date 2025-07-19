@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-r from-teal-900 via-slate-900 to-teal-900">
@@ -59,7 +57,7 @@ export default function Home() {
       <section className="bg-white py-20 px-6">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Let's Build 🔧 Brilliant Things
+            Let&apos;s Build 🔧 Brilliant Things
           </h2>
           <p className="text-xl text-gray-700 mb-16 max-w-4xl mx-auto">
             We are a trusted partner for Business and Home automation, bringing over a decade of systems design and engineering to those who want to focus on what matters most.
@@ -131,12 +129,12 @@ export default function Home() {
             {/* Left Side - Text Content */}
             <div>
               <h2 className="text-5xl md:text-6xl font-bold text-green-500 mb-6">
-                Let's Work Together!
+                Let&apos;s Work Together!
               </h2>
               <div className="text-white text-xl space-y-2">
                 <p>Want to impress guests with a</p>
                 <p>home that seems to run itself?</p>
-                <p>We'll show you how!</p>
+                <p>We&apos;ll show you how!</p>
                 <p className="font-semibold mt-4">Get in touch today.</p>
               </div>
             </div>

@@ -66,6 +66,21 @@ npm run dev
 
 The website auto-updates as you edit files. You can start editing the main page by modifying `src/app/page.tsx`.
 
+### Pre-commit Hooks
+
+This project uses [Husky](https://typicode.github.io/husky/) to run pre-commit checks that ensure code quality:
+
+- **Linting**: Runs ESLint to catch code style issues and potential errors
+- **Build Check**: Verifies that the project builds successfully and TypeScript types are valid
+
+The pre-commit hook will automatically run when you make a commit. If any checks fail, the commit will be blocked until the issues are resolved.
+
+To manually run the checks:
+```bash
+npm run lint    # Run linting only
+npm run check   # Run build and TypeScript checks
+```
+
 ### Available Scripts
 
 | Command                           | Action                                       |
@@ -74,6 +89,8 @@ The website auto-updates as you edit files. You can start editing the main page 
 | `npm run build`                   | Build your production site                   |
 | `npm run preview`                 | Preview your build locally                   |
 | `npm run build && npm run deploy` | Deploy your production site to Cloudflare    |
+| `npm run lint`                    | Run ESLint for code quality checks          |
+| `npm run check`                   | Run build and TypeScript validation         |
 
 ## Deployment
 

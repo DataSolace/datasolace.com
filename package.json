@@ -27,6 +27,7 @@
     "@types/react-dom": "19.0.4",
     "eslint": "9.27.0",
     "eslint-config-next": "15.3.3",
+    "husky": "^9.1.7",
     "tailwindcss": "4.1.1",
     "typescript": "5.8.3",
     "wrangler": "^4.25.0"
@@ -40,6 +41,7 @@
     "dev": "next dev",
     "lint": "next lint",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "start": "next start"
+    "start": "next start",
+    "prepare": "husky"
   }
 }

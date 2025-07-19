@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+echo "🔨 Running pre-commit checks..."
+
+# Run linting first (faster than build)
+echo "📝 Running linting..."
+npm run lint
+
+# Run TypeScript check and build
+echo "🏗️  Running build check..."
+npm run check
+
+echo "✅ Pre-commit checks passed!"
