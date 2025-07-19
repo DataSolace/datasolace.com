@@ -13,7 +13,7 @@ export default function Services() {
             <Link href="/services" className="text-green-400 font-semibold transition-colors">Services</Link>
             <Link href="/portfolio" className="text-white hover:text-green-400 transition-colors">Portfolio</Link>
             <Link href="/blog" className="text-white hover:text-green-400 transition-colors">Blog</Link>
-            <a href="#appointments" className="text-white hover:text-green-400 transition-colors">Appointments</a>
+            <Link href="/appointments" className="text-white hover:text-green-400 transition-colors">Appointments</Link>
           </nav>
           <Link href="/#contact" className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg transition-colors">
             Contact Us
