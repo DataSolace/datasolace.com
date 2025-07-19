@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function Portfolio() {
   const caseStudies = [
@@ -29,9 +28,9 @@ export default function Portfolio() {
             <a href="#blog" className="text-white hover:text-green-400 transition-colors">Blog</a>
             <a href="#appointments" className="text-white hover:text-green-400 transition-colors">Appointments</a>
           </nav>
-          <a href="/#contact" className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg transition-colors">
+          <Link href="/#contact" className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg transition-colors">
             Contact Us
-          </a>
+          </Link>
         </div>
       </header>
 
