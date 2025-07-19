@@ -80,7 +80,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800"></div>
         <div className="relative z-10 text-center max-w-6xl mx-auto">
           <h1 className="text-6xl md:text-8xl font-bold text-white mb-12">
-            Automate your...
+            Automate Your...
           </h1>
 
           <div className="grid md:grid-cols-2 gap-12 mb-12">
