@@ -173,8 +173,8 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="bg-[var(--brand-blue)] py-20 px-6">
-          <div className="max-w-6xl mx-auto">
+        <section id="contact" className="bg-[var(--brand-blue)] py-20 px-8 md:px-12 lg:px-16">
+          <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               {/* Left Side - Text Content */}
               <div>
