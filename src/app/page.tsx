@@ -176,7 +176,7 @@ export default function Home() {
                   <input
                     type="tel"
                     className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-green-400"
-                    placeholder="+1 (555) 123-4567"
+                    placeholder="+44 20 7946 0958"
                   />
                 </div>
 
