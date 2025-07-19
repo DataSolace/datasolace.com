@@ -66,13 +66,13 @@ export default function Home() {
 
       <div className="bg-[var(--brand-blue)]">
         {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center px-6 pt-20">
+        <section className="relative min-h-[75vh] flex items-center justify-center px-6 pt-20">
           <div className="relative z-10 text-center max-w-6xl mx-auto">
-            <h1 className="text-6xl md:text-8xl font-bold text-white mb-12">
+            <h1 className="text-6xl md:text-8xl font-bold text-white mb-8">
               Automate Your...
             </h1>
 
-            <div className="grid md:grid-cols-2 gap-12 mb-12">
+            <div className="grid md:grid-cols-2 gap-12 mb-8">
               {/* Business Side */}
               <div className="text-center">
                 <h2 className="text-4xl md:text-6xl font-bold text-white mb-4">
