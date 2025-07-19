@@ -61,19 +61,19 @@ export default function Blog() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-teal-900 via-slate-900 to-teal-900">
+    <div className="min-h-screen bg-[var(--brand-blue)]">
       <Header currentPage="blog" />
 
       {/* Blog Section */}
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           {/* Header Content */}
-          <div className="bg-gradient-to-br from-slate-200 via-slate-100 to-teal-100 rounded-2xl p-12 mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-8">
+          <div className="bg-white rounded-2xl p-12 mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold text-[var(--brand-blue)] mb-8">
               Latest Insights & Updates
             </h1>
             
-            <div className="space-y-6 text-slate-700 text-lg leading-relaxed max-w-4xl">
+            <div className="space-y-6 text-gray-700 text-lg leading-relaxed max-w-4xl">
               <p>
                 Stay up to date with the latest developments in automation technology,
                 smart home solutions, and business optimization strategies from our team
@@ -111,7 +111,7 @@ export default function Blog() {
                 <div className="p-6">
                   {/* Category and Date */}
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-sm font-medium text-green-600 bg-green-100 px-2 py-1 rounded">
+                    <span className="text-sm font-medium text-[var(--brand-teal)] bg-[var(--brand-teal)]/10 px-2 py-1 rounded">
                       {post.category}
                     </span>
                     <span className="text-sm text-gray-500">
@@ -120,7 +120,7 @@ export default function Blog() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-slate-800 group-hover:text-green-600 transition-colors leading-tight mb-3">
+                  <h3 className="text-lg font-bold text-[var(--brand-blue)] group-hover:text-[var(--brand-teal)] transition-colors leading-tight mb-3">
                     {post.title}
                   </h3>
 
@@ -131,7 +131,7 @@ export default function Blog() {
 
                   {/* Read More Link */}
                   <div className="mt-4">
-                    <span className="text-green-600 font-medium text-sm group-hover:text-green-700 transition-colors">
+                    <span className="text-[var(--brand-teal)] font-medium text-sm group-hover:text-[var(--brand-green)] transition-colors">
                       Read More →
                     </span>
                   </div>
@@ -144,7 +144,7 @@ export default function Blog() {
           <div className="text-center mt-16">
             <Link
               href="/blog"
-              className="text-white hover:text-green-400 transition-colors inline-flex items-center text-xl"
+              className="text-white hover:text-[var(--brand-teal)] transition-colors inline-flex items-center text-xl"
             >
               Older Posts
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -160,7 +160,7 @@ export default function Blog() {
             </p>
             <Link
               href="/#contact"
-              className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block"
+              className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block"
             >
               Get Started Today
             </Link>
