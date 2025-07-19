@@ -1,4 +1,62 @@
+'use client';
+
+import { useState } from 'react';
+
 export default function Home() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    newsletter: false,
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value, type } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          newsletter: false,
+          message: ''
+        });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-r from-teal-900 via-slate-900 to-teal-900">
       {/* Header */}
@@ -141,12 +199,27 @@ export default function Home() {
 
             {/* Right Side - Contact Form */}
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8">
-              <form className="space-y-6">
+              {submitStatus === 'success' && (
+                <div className="mb-6 p-4 bg-green-500/20 border border-green-400 rounded-lg">
+                  <p className="text-green-400 font-semibold">Thank you! Your message has been sent successfully.</p>
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="mb-6 p-4 bg-red-500/20 border border-red-400 rounded-lg">
+                  <p className="text-red-400 font-semibold">Sorry, there was an error sending your message. Please try again.</p>
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-white text-sm font-medium mb-2">First Name</label>
                     <input
                       type="text"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
                       className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-green-400"
                       placeholder="First Name"
                     />
@@ -155,6 +228,9 @@ export default function Home() {
                     <label className="block text-white text-sm font-medium mb-2">Last Name</label>
                     <input
                       type="text"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
                       className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-green-400"
                       placeholder="Last Name"
                     />
@@ -165,6 +241,9 @@ export default function Home() {
                   <label className="block text-white text-sm font-medium mb-2">Email (required)</label>
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     required
                     className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-green-400"
                     placeholder="your@email.com"
@@ -175,6 +254,9 @@ export default function Home() {
                   <label className="block text-white text-sm font-medium mb-2">Phone Number</label>
                   <input
                     type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-green-400"
                     placeholder="+44 20 7946 0958"
                   />
@@ -184,6 +266,9 @@ export default function Home() {
                   <input
                     type="checkbox"
                     id="newsletter"
+                    name="newsletter"
+                    checked={formData.newsletter}
+                    onChange={handleInputChange}
                     className="w-4 h-4 text-green-500 bg-white/20 border-white/30 rounded focus:ring-green-400"
                   />
                   <label htmlFor="newsletter" className="ml-2 text-white text-sm">
@@ -194,6 +279,9 @@ export default function Home() {
                 <div>
                   <label className="block text-white text-sm font-medium mb-2">Message (required)</label>
                   <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
                     required
                     rows={4}
                     className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-green-400 resize-none"
@@ -204,9 +292,14 @@ export default function Home() {
                 <div className="flex justify-end">
                   <button
                     type="submit"
-                    className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+                    disabled={isSubmitting}
+                    className={`px-8 py-3 rounded-lg font-semibold transition-colors ${
+                      isSubmitting
+                        ? 'bg-gray-500 cursor-not-allowed'
+                        : 'bg-green-500 hover:bg-green-600'
+                    } text-white`}
                   >
-                    Send
+                    {isSubmitting ? 'Sending...' : 'Send'}
                   </button>
                 </div>
               </form>
