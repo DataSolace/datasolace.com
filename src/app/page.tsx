@@ -66,7 +66,7 @@ export default function Home() {
           <div className="text-white text-2xl font-bold">DataSolace</div>
           <nav className="hidden md:flex items-center space-x-8">
             <Link href="/services" className="text-white hover:text-green-400 transition-colors">Services</Link>
-            <a href="#portfolio" className="text-white hover:text-green-400 transition-colors">Portfolio</a>
+            <Link href="/portfolio" className="text-white hover:text-green-400 transition-colors">Portfolio</Link>
             <a href="#blog" className="text-white hover:text-green-400 transition-colors">Blog</a>
             <a href="#appointments" className="text-white hover:text-green-400 transition-colors">Appointments</a>
           </nav>

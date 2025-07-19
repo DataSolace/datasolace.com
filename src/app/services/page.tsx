@@ -10,8 +10,8 @@ export default function Services() {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link href="/" className="text-white text-2xl font-bold">DataSolace</Link>
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="/services" className="text-white hover:text-green-400 transition-colors">Services</a>
-            <a href="#portfolio" className="text-white hover:text-green-400 transition-colors">Portfolio</a>
+            <Link href="/services" className="text-green-400 font-semibold transition-colors">Services</Link>
+            <Link href="/portfolio" className="text-white hover:text-green-400 transition-colors">Portfolio</Link>
             <a href="#blog" className="text-white hover:text-green-400 transition-colors">Blog</a>
             <a href="#appointments" className="text-white hover:text-green-400 transition-colors">Appointments</a>
           </nav>
