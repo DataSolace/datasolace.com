@@ -27,16 +27,16 @@ export default function Appointments() {
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 mb-8">
             <h2 className="text-2xl font-bold text-white mb-6 text-center">What to Expect</h2>
             <div className="grid md:grid-cols-2 gap-8">
-              <div>
+              <div className="text-center">
                 <h3 className="text-xl font-semibold text-[var(--brand-teal)] mb-4">📞 Initial Consultation</h3>
-                <ul className="space-y-2 text-white/90">
+                <ul className="space-y-2 text-white/90 text-left inline-block">
                   <li className="flex items-start">
                     <span className="text-[var(--brand-teal)] mr-2">•</span>
                     <span>30-minute discovery call</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-[var(--brand-teal)] mr-2">•</span>
-                    <span>Understand your automation goals</span>
+                    <span>Understand your goals</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-[var(--brand-teal)] mr-2">•</span>
@@ -49,9 +49,9 @@ export default function Appointments() {
                 </ul>
               </div>
 
-              <div>
+              <div className="text-center">
                 <h3 className="text-xl font-semibold text-[var(--brand-teal)] mb-4">🎯 Custom Solution Design</h3>
-                <ul className="space-y-2 text-white/90">
+                <ul className="space-y-2 text-white/90 text-left inline-block">
                   <li className="flex items-start">
                     <span className="text-[var(--brand-teal)] mr-2">•</span>
                     <span>Tailored automation strategy</span>
@@ -89,7 +89,7 @@ export default function Appointments() {
                 </p>
                 <div className="bg-[var(--brand-teal)]/10 border border-[var(--brand-teal)]/30 rounded-lg p-4 max-w-md mx-auto">
                   <p className="text-[var(--brand-teal)] text-sm">
-                    <strong>Next Step:</strong> Add your Calendly embed code to replace this placeholder
+                    <strong>Next Step:</strong> Add Calendly embed code to replace this placeholder
                   </p>
                 </div>
               </div>
