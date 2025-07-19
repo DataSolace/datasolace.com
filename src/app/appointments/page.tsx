@@ -10,7 +10,7 @@ export default function Appointments() {
       <Header currentPage="appointments" />
 
       {/* Main Content */}
-      <div className="relative z-10 px-6 py-12">
+      <div className="relative z-10 px-6 py-12 pt-24">
         <div className="max-w-4xl mx-auto">
           {/* Page Header */}
           <div className="text-center mb-12">

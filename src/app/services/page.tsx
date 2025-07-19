@@ -9,7 +9,7 @@ export default function Services() {
       <Header currentPage="services" />
 
       {/* Main Content */}
-      <main className="relative z-10 px-6 py-5">
+      <main className="relative z-10 px-6 py-5 pt-20">
         <div className="max-w-6xl mx-auto">
           {/* Services Card Container */}
           <div className="bg-white rounded-2xl p-12 shadow-2xl">

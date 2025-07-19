@@ -65,7 +65,7 @@ export default function Blog() {
       <Header currentPage="blog" />
 
       {/* Blog Section */}
-      <section className="py-20 px-6">
+      <section className="py-20 px-6 pt-32">
         <div className="max-w-6xl mx-auto">
           {/* Header Content */}
           <div className="bg-white rounded-2xl p-12 mb-16">
