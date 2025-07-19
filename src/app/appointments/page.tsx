@@ -1,10 +1,78 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
+// Declare Calendly global type
+declare global {
+  interface Window {
+    Calendly?: {
+      initBadgeWidget: (options: {
+        url: string;
+        text: string;
+        color: string;
+        textColor: string;
+        branding: boolean;
+      }) => void;
+      initPopupWidget: (options: {
+        url: string;
+        prefill?: Record<string, string | number | boolean>;
+        utm?: Record<string, string>;
+        layout?: string;
+      }) => void;
+    };
+  }
+}
+
 export default function Appointments() {
+  const [isCalendlyLoaded, setIsCalendlyLoaded] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const openCalendly = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  useEffect(() => {
+    // Load Calendly CSS
+    const link = document.createElement('link');
+    link.href = 'https://assets.calendly.com/assets/external/widget.css';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+
+    // Load Calendly script
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    script.onload = () => {
+      setIsCalendlyLoaded(true);
+      // Initialize badge widget
+      if (window.Calendly) {
+        window.Calendly.initBadgeWidget({
+          url: 'https://calendly.com/datasolace/initial-consultation',
+          text: 'Schedule time with me',
+          color: '#0069ff',
+          textColor: '#ffffff',
+          branding: true
+        });
+      }
+    };
+    document.head.appendChild(script);
+
+    return () => {
+      // Cleanup
+      const existingLink = document.querySelector('link[href="https://assets.calendly.com/assets/external/widget.css"]');
+      const existingScript = document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]');
+      if (existingLink) document.head.removeChild(existingLink);
+      if (existingScript) document.head.removeChild(existingScript);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-[var(--brand-blue)]">
       <Header currentPage="appointments" />
@@ -73,26 +141,38 @@ export default function Appointments() {
             </div>
           </div>
 
-          {/* Calendly Placeholder */}
+          {/* Calendly Widget */}
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
             <div className="bg-[var(--brand-teal)] p-4">
               <h3 className="text-xl font-bold text-white text-center">Schedule Your Consultation</h3>
             </div>
             
             <div className="p-12 text-center">
-              {/* Placeholder for Calendly widget */}
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-16 bg-gray-50">
-                <div className="text-gray-400 text-6xl mb-4">📅</div>
-                <h4 className="text-2xl font-semibold text-gray-600 mb-4">Calendly Integration Placeholder</h4>
-                <p className="text-gray-500 mb-6 max-w-md mx-auto">
-                  The Calendly booking widget will be embedded here to allow visitors to schedule appointments directly.
-                </p>
-                <div className="bg-[var(--brand-teal)]/10 border border-[var(--brand-teal)]/30 rounded-lg p-4 max-w-md mx-auto">
-                  <p className="text-[var(--brand-teal)] text-sm">
-                    <strong>Next Step:</strong> Add Calendly embed code to replace this placeholder
-                  </p>
+              {!isCalendlyLoaded ? (
+                <div className="text-center">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--brand-teal)] mx-auto mb-4"></div>
+                  <p className="text-gray-600 mb-6">Loading booking calendar...</p>
                 </div>
-              </div>
+              ) : (
+                <div className="text-center">
+                  <div className="text-6xl mb-6">📅</div>
+                  <h4 className="text-2xl font-semibold text-gray-800 mb-4">Ready to Schedule?</h4>
+                  <p className="text-gray-600 mb-8 max-w-md mx-auto">
+                    Click the button below to open our booking calendar and select a time that works for you.
+                  </p>
+                  <button
+                    onClick={openCalendly}
+                    className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block mb-6"
+                  >
+                    📅 Schedule Consultation
+                  </button>
+                  <div className="bg-[var(--brand-teal)]/10 border border-[var(--brand-teal)]/30 rounded-lg p-4 max-w-md mx-auto">
+                    <p className="text-[var(--brand-teal)] text-sm">
+                      <strong>Note:</strong> The Calendly popup will appear when you click the scheduling button
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -112,6 +192,35 @@ export default function Appointments() {
         </div>
       </div>
       <Footer />
+
+      {/* Custom Calendly Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={closeModal}
+          ></div>
+
+          {/* Close button - floating */}
+          <button
+            onClick={closeModal}
+            className="absolute top-6 right-6 z-10 text-white hover:text-gray-300 text-3xl font-bold w-12 h-12 flex items-center justify-center rounded-full bg-black/20 hover:bg-black/40 transition-colors backdrop-blur-sm"
+          >
+            ×
+          </button>
+
+          {/* Calendly iframe - direct, no wrapper */}
+          <div className="relative w-full max-w-4xl h-[90vh] rounded-lg shadow-2xl overflow-hidden">
+            <iframe
+              src="https://calendly.com/datasolace/initial-consultation?embed_domain=localhost%3A3000"
+              className="w-full h-full"
+              frameBorder="0"
+              title="Schedule a consultation"
+            ></iframe>
+          </div>
+        </div>
+      )}
     </div>
   );
-} 
+}
