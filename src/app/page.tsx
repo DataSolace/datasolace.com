@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -64,14 +65,14 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="text-white text-2xl font-bold">DataSolace</div>
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#services" className="text-white hover:text-green-400 transition-colors">Services</a>
+            <Link href="/services" className="text-white hover:text-green-400 transition-colors">Services</Link>
             <a href="#portfolio" className="text-white hover:text-green-400 transition-colors">Portfolio</a>
             <a href="#blog" className="text-white hover:text-green-400 transition-colors">Blog</a>
             <a href="#appointments" className="text-white hover:text-green-400 transition-colors">Appointments</a>
           </nav>
-          <button className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg transition-colors">
+          <a href="#contact" className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg transition-colors">
             Contact Us
-          </button>
+          </a>
         </div>
       </header>
 
@@ -105,9 +106,9 @@ export default function Home() {
             </div>
           </div>
 
-          <button className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors">
+          <Link href="/services" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block">
             💡 Learn More
-          </button>
+          </Link>
         </div>
       </section>
 
@@ -184,7 +185,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="bg-slate-800 py-20 px-6">
+      <section id="contact" className="bg-slate-800 py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             {/* Left Side - Text Content */}
