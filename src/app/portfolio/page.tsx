@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 export default function Portfolio() {
   const caseStudies = [
@@ -83,6 +84,7 @@ export default function Portfolio() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 } 

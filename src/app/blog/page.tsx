@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 export default function Blog() {
   const blogPosts = [
@@ -166,6 +167,7 @@ export default function Blog() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 } 

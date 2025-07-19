@@ -1,6 +1,7 @@
 'use client';
 
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 export default function Services() {
   return (
@@ -208,6 +209,7 @@ export default function Services() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 } 

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -298,6 +299,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }
