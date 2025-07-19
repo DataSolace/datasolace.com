@@ -19,19 +19,19 @@ export default function Portfolio() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-teal-900 via-slate-900 to-teal-900">
+    <div className="min-h-screen bg-[var(--brand-blue)]">
       <Header currentPage="portfolio" />
 
       {/* Portfolio Section */}
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           {/* Header Content */}
-          <div className="bg-gradient-to-br from-slate-200 via-slate-100 to-teal-100 rounded-2xl p-12 mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-8">
+          <div className="bg-white rounded-2xl p-12 mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold text-[var(--brand-blue)] mb-8">
               Take a closer look...
             </h1>
             
-            <div className="space-y-6 text-slate-700 text-lg leading-relaxed max-w-4xl">
+            <div className="space-y-6 text-gray-700 text-lg leading-relaxed max-w-4xl">
               <p>
                 Here are some of our favourite DataSolace projects. Every client presents a
                 distinct set of challenges and specifications, so we work closely with them
@@ -62,7 +62,7 @@ export default function Portfolio() {
                 </div>
                 
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-slate-800 group-hover:text-green-600 transition-colors leading-tight">
+                  <h3 className="text-xl font-bold text-[var(--brand-blue)] group-hover:text-[var(--brand-teal)] transition-colors leading-tight">
                     {study.title}
                   </h3>
                 </div>
@@ -77,7 +77,7 @@ export default function Portfolio() {
             </p>
             <Link
               href="/#contact"
-              className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block"
+              className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block"
             >
               Start Your Project
             </Link>
