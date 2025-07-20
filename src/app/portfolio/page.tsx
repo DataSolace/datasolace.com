@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
@@ -7,13 +8,13 @@ export default function Portfolio() {
     {
       id: 1,
       title: "Case Study: Safeguarding Tenants And Protecting Rental Properties From Damp",
-      image: "/api/placeholder/600/400?text=Hand+on+Rainy+Window",
+      image: "/hands_on_a_window.webp",
       slug: "safeguarding-tenants-damp-protection"
     },
     {
       id: 2,
       title: "Case Study: Illuminating Independence - A Smart Home Solution for enhanced Mobility",
-      image: "/api/placeholder/600/400?text=Hanging+Light+Bulbs",
+      image: "/lightbulbs.webp",
       slug: "illuminating-independence-smart-home"
     }
   ];
@@ -53,12 +54,14 @@ export default function Portfolio() {
                 href={`/portfolio/${study.slug}`}
                 className="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
               >
-                <div className="aspect-w-16 aspect-h-12 bg-gray-200">
-                  <div className="w-full h-64 bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
-                    <span className="text-gray-600 text-sm font-medium px-4 py-2 bg-white/80 rounded">
-                      {study.id === 1 ? "🌧️ Hand on Rainy Window" : "💡 Hanging Light Bulbs"}
-                    </span>
-                  </div>
+                <div className="relative w-full h-64 overflow-hidden">
+                  <Image
+                    src={study.image}
+                    alt={study.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
                 
                 <div className="p-6">
