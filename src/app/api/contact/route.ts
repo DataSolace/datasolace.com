@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getCloudflareContext } from '@opennextjs/cloudflare';
+import { defaultRateLimit } from '../../../lib/rateLimit';
 
 interface ContactFormData {
   firstName: string;
@@ -14,27 +15,49 @@ interface ContactFormData {
 
 export async function POST(request: NextRequest) {
   try {
-    const body: ContactFormData = await request.json();
-    
-    // Validate required fields
-    if (!body.email || !body.message) {
-      return NextResponse.json(
-        { error: 'Email and message are required' },
-        { status: 400 }
-      );
-    }
-
-    // Get the D1 database binding from the environment
-    // Get the D1 database binding from the environment
-    // Try using OpenNext's getCloudflareContext function
+    // Get Cloudflare context for database and KV access
     const cfContext = getCloudflareContext();
     const db = cfContext?.env?.DB;
+    const kv = cfContext?.env?.RATE_LIMIT_KV;
     
     if (!db) {
       console.error('D1 database binding not found');
       return NextResponse.json(
         { error: 'Database not available' },
         { status: 500 }
+      );
+    }
+
+    // Rate limiting check
+    if (kv) {
+      const identifier = defaultRateLimit.getIdentifierFromRequest(request);
+      const rateLimitResult = await defaultRateLimit.checkLimit(identifier, kv);
+      if (!rateLimitResult.success) {
+        const retryAfter = Math.ceil((rateLimitResult.resetTime - Date.now()) / 1000);
+        return NextResponse.json(
+          {
+            error: 'Too many requests. Please try again later.',
+            retryAfter,
+            resetTime: rateLimitResult.resetTime
+          },
+          {
+            status: 429,
+            headers: {
+              'Retry-After': retryAfter.toString(),
+              'X-RateLimit-Remaining': rateLimitResult.remaining.toString(),
+              'X-RateLimit-Reset': rateLimitResult.resetTime.toString()
+            }
+          }
+        );
+      }
+    }
+
+    const body: ContactFormData = await request.json();
+    // Validate required fields
+    if (!body.email || !body.message) {
+      return NextResponse.json(
+        { error: 'Email and message are required' },
+        { status: 400 }
       );
     }
 

@@ -39,6 +39,14 @@
 		}
 	],
 
+	"kv_namespaces": [
+		{
+			"binding": "RATE_LIMIT_KV",
+			"id": "3851945bafba40b9b3e25879f3ca53dd",
+			"preview_id": "3eda35d9628848a69d428c761fe40d27"
+		}
+	],
+
 	/**
 	 * Environment Variables
 	 * https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables

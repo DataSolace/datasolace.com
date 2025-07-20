@@ -15,7 +15,8 @@ export default function Home() {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'rate-limited'>('idle');
+  const [rateLimitInfo, setRateLimitInfo] = useState<{ retryAfter?: number; resetTime?: number }>({});
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
@@ -48,6 +49,13 @@ export default function Home() {
           phone: '',
           newsletter: false,
           message: ''
+        });
+      } else if (response.status === 429) {
+        const errorData = await response.json() as { retryAfter?: number; resetTime?: number };
+        setSubmitStatus('rate-limited');
+        setRateLimitInfo({
+          retryAfter: errorData.retryAfter,
+          resetTime: errorData.resetTime
         });
       } else {
         setSubmitStatus('error');
@@ -200,6 +208,19 @@ export default function Home() {
                 {submitStatus === 'error' && (
                   <div className="mb-6 p-4 bg-red-500/20 border border-red-400 rounded-lg">
                     <p className="text-red-400 font-semibold">Sorry, there was an error sending your message. Please try again.</p>
+                  </div>
+                )}
+
+                {submitStatus === 'rate-limited' && (
+                  <div className="mb-6 p-4 bg-yellow-500/20 border border-yellow-400 rounded-lg">
+                    <p className="text-yellow-400 font-semibold">
+                      Too many requests. Please wait a moment before trying again.
+                      {rateLimitInfo.retryAfter && (
+                        <span className="block text-sm mt-1">
+                          You can try again in {Math.ceil(rateLimitInfo.retryAfter / 60)} minutes.
+                        </span>
+                      )}
+                    </p>
                   </div>
                 )}
 
