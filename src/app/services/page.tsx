@@ -43,11 +43,6 @@ export default function Services() {
                   <p className="text-gray-700 mb-6 leading-relaxed text-center flex-grow">
                     From secure Wi-Fi to reliable internet connections, we design and maintain robust networks that keep your business or home connected and operational.
                   </p>
-                  <div className="text-center mt-auto">
-                    <button className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-6 py-3 rounded-lg transition-colors font-semibold">
-                      Learn More
-                    </button>
-                  </div>
                 </div>
               </div>
 
@@ -71,11 +66,6 @@ export default function Services() {
                   <p className="text-gray-700 mb-6 leading-relaxed text-center flex-grow">
                     Experience the convenience of a connected home. We design and install smart systems for lighting, thermostats, and more, creating a personalized living environment.
                   </p>
-                  <div className="text-center mt-auto">
-                    <button className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-6 py-3 rounded-lg transition-colors font-semibold">
-                      Learn More
-                    </button>
-                  </div>
                 </div>
               </div>
 
@@ -88,7 +78,7 @@ export default function Services() {
                       alt="Self Hosted Concierge"
                       width={400}
                       height={192}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover scale-125"
                     />
                   </div>
                 </div>
@@ -99,11 +89,6 @@ export default function Services() {
                   <p className="text-gray-700 mb-6 leading-relaxed text-center flex-grow">
                     Advanced self-hosted solutions for busy tech enthusiasts. We handle the setup and maintenance, so you can enjoy cutting-edge apps and services without the time investment or loss of privacy.
                   </p>
-                  <div className="text-center mt-auto">
-                    <button className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-6 py-3 rounded-lg transition-colors font-semibold">
-                      Learn More
-                    </button>
-                  </div>
                 </div>
               </div>
             </div>
@@ -122,9 +107,14 @@ export default function Services() {
                 Smart Home Index
               </h2>
               <div className="mb-8">
-                <button className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-6 py-3 rounded-lg transition-colors font-semibold">
+                <a
+                  href="https://smarthomeindex.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-6 py-3 rounded-lg transition-colors font-semibold"
+                >
                   Go to the Smart Home Index
-                </button>
+                </a>
               </div>
               <p className="text-lg text-gray-700 leading-relaxed max-w-4xl">
                 In today&apos;s rapidly evolving world of smart home technology, choosing the right devices for your home can feel overwhelming. With so many options available, how do you know which smart home gadgets are best suited for your needs? This is where the Smart Home Index comes in - a free, user-friendly platform that simplifies the process of finding and comparing smart home devices.
