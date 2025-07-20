@@ -2,6 +2,7 @@
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Image from 'next/image';
 
 export default function Services() {
   return (
@@ -116,9 +117,11 @@ export default function Services() {
               {/* Left Side - Content and Main Image */}
               <div className="space-y-8">
                 <div className="w-full">
-                  <img
+                  <Image
                     src="/SHI-hotpotAI_1920_1200.webp"
                     alt="Smart Home Index on MacBook"
+                    width={1920}
+                    height={1200}
                     className="w-full h-auto rounded-lg shadow-xl"
                   />
                 </div>
@@ -151,25 +154,31 @@ export default function Services() {
                 <div className="relative h-full flex flex-col justify-between space-y-8">
                   {/* Device Selection - Top Layer */}
                   <div className="relative z-30 max-w-sm">
-                    <img
+                    <Image
                       src="/SHI-device-select.webp"
                       alt="Device Selection"
+                      width={400}
+                      height={300}
                       className="w-full h-auto rounded-lg shadow-xl"
                     />
                   </div>
                   {/* Device Info Card - Middle Layer */}
                   <div className="relative z-20 max-w-sm ml-12">
-                    <img
+                    <Image
                       src="/SHI-device-info.webp"
                       alt="Device Information"
+                      width={400}
+                      height={300}
                       className="w-full h-auto rounded-lg shadow-xl"
                     />
                   </div>
                   {/* Device Comparison - Bottom Layer */}
                   <div className="relative z-10 max-w-sm ml-24">
-                    <img
+                    <Image
                       src="/SHI-device-compare.webp"
                       alt="Device Comparison"
+                      width={400}
+                      height={300}
                       className="w-full h-auto rounded-lg shadow-xl"
                     />
                   </div>

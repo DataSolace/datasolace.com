@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface HeaderProps {
   currentPage?: 'home' | 'services' | 'portfolio' | 'blog' | 'appointments';
@@ -9,9 +10,11 @@ export default function Header({ currentPage }: HeaderProps) {
     <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-[var(--brand-blue)]/85 backdrop-blur-sm border-b border-white/10">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
-          <img
+          <Image
             src="/logo.webp"
             alt="DataSolace"
+            width={96}
+            height={96}
             className="h-24 w-auto mr-3"
           />
           <span className="text-white text-2xl font-bold hover:text-[var(--brand-teal)] transition-colors">
