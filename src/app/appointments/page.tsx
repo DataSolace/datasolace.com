@@ -78,7 +78,7 @@ export default function Appointments() {
       <Header currentPage="appointments" />
 
       {/* Main Content */}
-      <div className="relative z-10 px-6 py-12 pt-24">
+      <div className="relative z-10 px-6 py-12 pt-40">
         <div className="max-w-4xl mx-auto">
           {/* Page Header */}
           <div className="text-center mb-12">
@@ -162,15 +162,10 @@ export default function Appointments() {
                   </p>
                   <button
                     onClick={openCalendly}
-                    className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block mb-6"
+                    className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block"
                   >
                     📅 Schedule Consultation
                   </button>
-                  <div className="bg-[var(--brand-teal)]/10 border border-[var(--brand-teal)]/30 rounded-lg p-4 max-w-md mx-auto">
-                    <p className="text-[var(--brand-teal)] text-sm">
-                      <strong>Note:</strong> The Calendly popup will appear when you click the scheduling button
-                    </p>
-                  </div>
                 </div>
               )}
             </div>

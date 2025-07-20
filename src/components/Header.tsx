@@ -7,7 +7,7 @@ interface HeaderProps {
 
 export default function Header({ currentPage }: HeaderProps) {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-[var(--brand-blue)]/85 backdrop-blur-sm border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 px-6 py-6 bg-[var(--brand-blue)]/85 backdrop-blur-sm border-b border-white/10">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
           <Image
