@@ -122,7 +122,6 @@ export default function Services() {
                     className="w-full h-auto rounded-lg shadow-xl"
                   />
                 </div>
-                
                 {/* Newsletter Signup */}
                 <div className="bg-green-50 border-2 border-[var(--brand-green)] rounded-lg p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-4">
@@ -158,7 +157,6 @@ export default function Services() {
                       className="w-full h-auto rounded-lg shadow-xl"
                     />
                   </div>
-                  
                   {/* Device Info Card - Middle Layer */}
                   <div className="relative z-20 max-w-sm ml-12">
                     <img
@@ -167,7 +165,6 @@ export default function Services() {
                       className="w-full h-auto rounded-lg shadow-xl"
                     />
                   </div>
-                  
                   {/* Device Comparison - Bottom Layer */}
                   <div className="relative z-10 max-w-sm ml-24">
                     <img
