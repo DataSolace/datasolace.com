@@ -26,8 +26,14 @@ export default function Services() {
               {/* Networking and Infrastructure */}
               <div className="flex flex-col h-full">
                 <div className="text-center mb-6">
-                  <div className="w-full h-48 bg-[var(--brand-teal)] rounded-lg flex items-center justify-center">
-                    <div className="text-white text-6xl">🔌</div>
+                  <div className="w-full h-48 bg-[var(--brand-teal)] rounded-lg overflow-hidden">
+                    <Image
+                      src="/networking-and-infrastructure.webp"
+                      alt="Networking and Infrastructure"
+                      width={400}
+                      height={192}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
                 <div className="flex flex-col flex-grow">
@@ -48,8 +54,14 @@ export default function Services() {
               {/* Home Automation */}
               <div className="flex flex-col h-full">
                 <div className="text-center mb-6">
-                  <div className="w-full h-48 bg-[var(--brand-teal)] rounded-lg flex items-center justify-center">
-                    <div className="text-white text-6xl">🏠</div>
+                  <div className="w-full h-48 bg-[var(--brand-teal)] rounded-lg overflow-hidden">
+                    <Image
+                      src="/home-automation.webp"
+                      alt="Home Automation"
+                      width={400}
+                      height={192}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
                 <div className="flex flex-col flex-grow">
@@ -70,8 +82,14 @@ export default function Services() {
               {/* Self Hosted Concierge */}
               <div className="flex flex-col h-full">
                 <div className="text-center mb-6">
-                  <div className="w-full h-48 bg-[var(--brand-teal)] rounded-lg flex items-center justify-center">
-                    <div className="text-white text-6xl">💻</div>
+                  <div className="w-full h-48 bg-[var(--brand-teal)] rounded-lg overflow-hidden">
+                    <Image
+                      src="/self-hosted-concierge.webp"
+                      alt="Self Hosted Concierge"
+                      width={400}
+                      height={192}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
                 <div className="flex flex-col flex-grow">
