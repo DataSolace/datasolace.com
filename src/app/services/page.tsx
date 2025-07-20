@@ -112,82 +112,91 @@ export default function Services() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-12">
-              {/* Left Side - Main App Screenshot Placeholder */}
-              <div className="space-y-6">
-                <div className="w-full h-64 bg-[var(--brand-teal)] rounded-lg flex items-center justify-center">
-                  <div className="text-white text-center">
-                    <div className="text-4xl mb-2">📱</div>
-                    <div className="text-sm">Smart Home Index Dashboard</div>
-                  </div>
+            <div className="grid lg:grid-cols-2 gap-16 items-start">
+              {/* Left Side - Content and Main Image */}
+              <div className="space-y-8">
+                <div className="w-full">
+                  <img
+                    src="/SHI-hotpotAI_1920_1200.webp"
+                    alt="Smart Home Index on MacBook"
+                    className="w-full h-auto rounded-lg shadow-xl"
+                  />
                 </div>
+                
                 {/* Newsletter Signup */}
-                <div className="bg-[var(--brand-teal)]/10 border-2 border-[var(--brand-teal)]/20 rounded-lg p-6">
-                  <h3 className="text-xl font-bold text-[var(--brand-blue)] mb-4 text-center">
+                <div className="bg-green-50 border-2 border-[var(--brand-green)] rounded-lg p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
                     Stay up to date with Smart Home Index updates
                   </h3>
-                  <p className="text-gray-700 mb-4 text-center">
+                  <p className="text-gray-700 mb-4">
                     Sign up with your email address to receive news and updates, including new devices that are added to the Smart Home Index.
                   </p>
                   <div className="flex gap-3">
                     <input
                       type="email"
                       placeholder="Email Address"
-                      className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[var(--brand-teal)]"
+                      className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[var(--brand-teal)]"
                     />
-                    <button className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-6 py-2 rounded-lg transition-colors font-semibold">
+                    <button className="bg-[var(--brand-green)] hover:bg-[var(--brand-teal)] text-white px-6 py-3 rounded-lg transition-colors font-semibold">
                       Sign Up
                     </button>
                   </div>
-                  <p className="text-xs text-gray-500 mt-2 text-center">
+                  <p className="text-sm text-gray-600 mt-3">
                     We respect your privacy.
                   </p>
                 </div>
               </div>
 
-              {/* Right Side - Secondary Screenshots and Content */}
-              <div className="space-y-6">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="h-32 bg-[var(--brand-teal)] rounded-lg flex items-center justify-center">
-                    <div className="text-white text-center">
-                      <div className="text-2xl mb-1">🔍</div>
-                      <div className="text-xs">Search Interface</div>
-                    </div>
+              {/* Right Side - Overlapping UI Elements */}
+              <div className="relative h-full">
+                <div className="relative h-full flex flex-col justify-between space-y-8">
+                  {/* Device Selection - Top Layer */}
+                  <div className="relative z-30 max-w-sm">
+                    <img
+                      src="/SHI-device-select.webp"
+                      alt="Device Selection"
+                      className="w-full h-auto rounded-lg shadow-xl"
+                    />
                   </div>
-                  <div className="h-32 bg-[var(--brand-teal)] rounded-lg flex items-center justify-center">
-                    <div className="text-white text-center">
-                      <div className="text-2xl mb-1">📊</div>
-                      <div className="text-xs">Comparison View</div>
-                    </div>
+                  
+                  {/* Device Info Card - Middle Layer */}
+                  <div className="relative z-20 max-w-sm ml-12">
+                    <img
+                      src="/SHI-device-info.webp"
+                      alt="Device Information"
+                      className="w-full h-auto rounded-lg shadow-xl"
+                    />
                   </div>
-                </div>
-
-                <div className="h-48 bg-[var(--brand-teal)] rounded-lg flex items-center justify-center">
-                  <div className="text-white text-center">
-                    <div className="text-3xl mb-2">💻</div>
-                    <div className="text-sm">Detailed Device Analysis</div>
+                  
+                  {/* Device Comparison - Bottom Layer */}
+                  <div className="relative z-10 max-w-sm ml-24">
+                    <img
+                      src="/SHI-device-compare.webp"
+                      alt="Device Comparison"
+                      className="w-full h-auto rounded-lg shadow-xl"
+                    />
                   </div>
-                </div>
-
-                {/* Why We Made It Section */}
-                <div>
-                  <h3 className="text-2xl font-bold text-[var(--brand-blue)] mb-4">
-                    Why did we make the Smart Home Index?
-                  </h3>
-                  <p className="text-gray-700 leading-relaxed">
-                    Search engines like Google and Amazon have become increasingly ineffective for finding smart home devices. The results are often skewed by sponsored products, making it difficult to find unbiased recommendations when wading through irrelevant listings. Additionally, vendors use inconsistent terminology, which makes comparing products across different brands a frustrating experience. With the wide variety of conflicting standards and smart home ecosystems, finding devices that truly fit your setup can be a daunting task. The Smart Home Index addresses these challenges by providing a clear, unbiased platform to search, compare, and choose the best devices for your smart home.
-                  </p>
-                  <p className="text-gray-700 leading-relaxed mt-4">
-                    At DataSolace we are looking to further the accessibility of Smart Homes, so building a clear and accurate feature index was an essential step in this mission.
-                  </p>
-                </div>
-
-                <div className="text-center">
-                  <h3 className="text-3xl font-bold text-[var(--brand-blue)] mb-2">
-                    Filter, Find, Learn, Compare
-                  </h3>
                 </div>
               </div>
+            </div>
+
+            {/* Why We Made It Section */}
+            <div className="mt-16">
+              <h3 className="text-2xl font-bold text-[var(--brand-blue)] mb-4">
+                Why did we make the Smart Home Index?
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                Search engines like Google and Amazon have become increasingly ineffective for finding smart home devices. The results are often skewed by sponsored products, making it difficult to find unbiased recommendations when wading through irrelevant listings. Additionally, vendors use inconsistent terminology, which makes comparing products across different brands a frustrating experience. With the wide variety of conflicting standards and smart home ecosystems, finding devices that truly fit your setup can be a daunting task. The Smart Home Index addresses these challenges by providing a clear, unbiased platform to search, compare, and choose the best devices for your smart home.
+              </p>
+              <p className="text-gray-700 leading-relaxed mt-4">
+                At DataSolace we are looking to further the accessibility of Smart Homes, so building a clear and accurate feature index was an essential step in this mission.
+              </p>
+            </div>
+
+            <div className="text-center mt-12">
+              <h3 className="text-3xl font-bold text-[var(--brand-blue)] mb-2">
+                Filter, Find, Learn, Compare
+              </h3>
             </div>
           </div>
         </div>
