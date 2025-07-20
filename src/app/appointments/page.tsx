@@ -51,16 +51,6 @@ export default function Appointments() {
     script.async = true;
     script.onload = () => {
       setIsCalendlyLoaded(true);
-      // Initialize badge widget
-      if (window.Calendly) {
-        window.Calendly.initBadgeWidget({
-          url: 'https://calendly.com/datasolace/initial-consultation',
-          text: 'Schedule time with me',
-          color: '#0069ff',
-          textColor: '#ffffff',
-          branding: true
-        });
-      }
     };
     document.head.appendChild(script);
 
