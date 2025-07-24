@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
@@ -97,15 +98,31 @@ export default function Blog() {
                 className="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
               >
                 <div className="aspect-w-16 aspect-h-12 bg-gray-200">
-                  <div className="w-full h-48 bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
-                    <span className="text-gray-600 text-sm font-medium px-4 py-2 bg-white/80 rounded">
-                      {post.id === 1 ? "📄 Business Documentation" : 
-                       post.id === 2 ? "📊 Customer Feedback" :
-                       post.id === 3 ? "📈 Data Analytics" :
-                       post.id === 4 ? "🏠 Smart Home Index" :
-                       post.id === 5 ? "🔒 Security Camera" : "💾 Network Storage"}
-                    </span>
-                  </div>
+                  {post.id === 1 ? (
+                    <Image
+                      src="/business_documentation.webp"
+                      alt="Business Documentation"
+                      width={600}
+                      height={400}
+                      className="w-full h-48 object-cover"
+                    />
+                  ) : post.id === 2 ? (
+                    <Image
+                      src="/customer_feedback.webp"
+                      alt="Customer Feedback"
+                      width={600}
+                      height={400}
+                      className="w-full h-48 object-cover object-top"
+                    />
+                  ) : (
+                    <div className="w-full h-48 bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
+                      <span className="text-gray-600 text-sm font-medium px-4 py-2 bg-white/80 rounded">
+                        {post.id === 3 ? "📈 Data Analytics" :
+                         post.id === 4 ? "🏠 Smart Home Index" :
+                         post.id === 5 ? "🔒 Security Camera" : "💾 Network Storage"}
+                      </span>
+                    </div>
+                  )}
                 </div>
                 
                 <div className="p-6">
