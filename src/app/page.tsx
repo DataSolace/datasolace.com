@@ -74,7 +74,7 @@ export default function Home() {
 
       <div className="bg-[var(--brand-blue)]">
         {/* Hero Section */}
-        <section className="relative min-h-[75vh] flex items-center justify-center px-6 pt-20">
+        <section className="relative min-h-[75vh] flex items-center justify-center px-6 pt-24 sm:pt-28 md:pt-32">
           <div className="relative z-10 text-center max-w-6xl mx-auto">
             <h1 className="text-6xl md:text-8xl font-bold text-white mb-8">
               Automate Your...

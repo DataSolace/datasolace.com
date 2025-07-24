@@ -20,7 +20,7 @@ export default function Header({ currentPage }: HeaderProps) {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-3 sm:py-6 bg-[var(--brand-blue)]/85 backdrop-blur-sm border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-2 sm:py-4 md:py-6 bg-[var(--brand-blue)]/85 backdrop-blur-sm border-b border-white/10">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
           <Image
@@ -28,9 +28,9 @@ export default function Header({ currentPage }: HeaderProps) {
             alt="DataSolace"
             width={96}
             height={96}
-            className="h-10 w-auto sm:h-12 md:h-16 lg:h-20 xl:h-24 mr-2 sm:mr-3"
+            className="h-8 w-auto sm:h-10 md:h-12 lg:h-16 xl:h-20 mr-2 sm:mr-3"
           />
-          <span className="text-white text-base sm:text-lg md:text-xl lg:text-2xl font-bold hover:text-[var(--brand-teal)] transition-colors">
+          <span className="text-white text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold hover:text-[var(--brand-teal)] transition-colors">
             DataSolace
           </span>
         </Link>
