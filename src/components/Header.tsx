@@ -101,7 +101,7 @@ export default function Header({ currentPage }: HeaderProps) {
 
       {/* Mobile Menu Dropdown */}
       <div className={`lg:hidden absolute top-full left-0 right-0 bg-[var(--brand-blue)]/95 backdrop-blur-sm border-b border-white/10 transition-all duration-300 ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-        <nav className="px-4 py-4 space-y-4">
+        <nav className="px-4 py-4 space-y-4 text-center">
           <Link
             href="/services"
             onClick={closeMenu}
