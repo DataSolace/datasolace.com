@@ -35,7 +35,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const parseMarkdown = (markdown: string) => {
     try {
       // Replace Sanity image references with proper URLs
-      let processedMarkdown = markdown.replace(
+      const processedMarkdown = markdown.replace(
         /!\[([^\]]*)\]\(sanity:\/\/([^)]+)\)/g,
         (match, altText, assetId) => {
           // Create a temporary image object for urlFor
