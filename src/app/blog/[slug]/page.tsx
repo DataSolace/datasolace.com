@@ -4,6 +4,8 @@ import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 import { notFound } from 'next/navigation';
 import { getBlogPostBySlug, getAllBlogPostSlugs, getRelatedBlogPosts } from '../../../lib/blog';
+import { marked } from 'marked';
+import { urlFor } from '../../../sanity/client';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -28,6 +30,37 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   // Get related posts
   const relatedPosts = await getRelatedBlogPosts(post._id, post.category, 2);
+
+  // Parse markdown content to HTML and handle Sanity image references
+  const parseMarkdown = (markdown: string) => {
+    try {
+      // Replace Sanity image references with proper URLs
+      let processedMarkdown = markdown.replace(
+        /!\[([^\]]*)\]\(sanity:\/\/([^)]+)\)/g,
+        (match, altText, assetId) => {
+          // Create a temporary image object for urlFor
+          const imageAsset = {
+            _type: 'image',
+            asset: {
+              _type: 'reference',
+              _ref: assetId
+            }
+          };
+
+          // Generate the image URL
+          const imageUrl = urlFor(imageAsset).url();
+
+          // Return standard markdown image syntax with the Sanity URL
+          return `![${altText}](${imageUrl})`;
+        }
+      );
+
+      return marked(processedMarkdown);
+    } catch (error) {
+      console.error('Error parsing markdown:', error);
+      return markdown; // Fallback to raw markdown if parsing fails
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[var(--brand-blue)]">
@@ -87,7 +120,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {/* Article Content */}
             <div className="prose prose-lg max-w-none text-gray-700">
               {post.contentType === 'markdown' && post.markdownContent ? (
-                <div dangerouslySetInnerHTML={{ __html: post.markdownContent }} />
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: parseMarkdown(post.markdownContent)
+                  }}
+                />
               ) : post.content ? (
                 <div dangerouslySetInnerHTML={{ __html: post.content }} />
               ) : (
