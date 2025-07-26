@@ -174,7 +174,14 @@ const blogPosts = [
       
       <p>Here's a sample form built in Formbricks, feel free to give it a test:</p>
       
-      <iframe src="https://formbricks.datasolace.com/s/cm7ryuz8z0002ob014c2f7e0i" frameborder="0" style="position: absolute; left:0; top:0; width:100%; height:100%; border:0;"></iframe>
+      <div style="position: relative; width: 100%; height: 600px; margin: 2rem 0; border-radius: 8px; overflow: hidden; border: 1px solid #e5e7eb;">
+        <iframe
+          src="https://formbricks.datasolace.com/s/cm7ryuz8z0002ob014c2f7e0i"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+          title="Formbricks Sample Survey"
+          loading="lazy"
+        ></iframe>
+      </div>
       
       <h3>What Makes Formbricks Different?</h3>
       <p>Unlike traditional survey tools that offer a one-size-fits-all approach, Formbricks provides:</p>
