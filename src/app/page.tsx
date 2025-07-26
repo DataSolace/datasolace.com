@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Script from 'next/script';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -68,8 +69,53 @@ export default function Home() {
     }
   };
 
-  return (
+        return (
     <div className="min-h-screen">
+      <Script
+        id="homepage-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "DataSolace - Business & Home Automation Solutions",
+            "description": "Transform your business and home with cutting-edge automation solutions. From enterprise infrastructure to luxury smart homes, we deliver bespoke automation that scales with your needs.",
+            "url": "https://datasolace.com",
+            "mainEntity": {
+              "@type": "Organization",
+              "name": "DataSolace Ltd",
+              "url": "https://datasolace.com",
+              "logo": "https://datasolace.com/logo.webp",
+              "description": "Transform your business and home with cutting-edge automation solutions.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "GB"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "availableLanguage": "English"
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/datasolace",
+                "https://twitter.com/datasolace",
+                "https://www.instagram.com/datasolace"
+              ]
+            },
+            "breadcrumb": {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://datasolace.com"
+                }
+              ]
+            }
+          })
+        }}
+      />
       <Header currentPage="home" />
 
       <div className="bg-[var(--brand-blue)]">
