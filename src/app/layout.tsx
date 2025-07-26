@@ -40,13 +40,6 @@ export const metadata: Metadata = {
     description: 'Enterprise automation solutions and luxury home automation that bring comfort, security and efficiency to your spaces.',
     images: [
       {
-        url: '/social-share.webp',
-        width: 1200,
-        height: 630,
-        alt: 'DataSolace - Business & Home Automation Solutions',
-        type: 'image/webp',
-      },
-      {
         url: '/logo.webp',
         width: 512,
         height: 512,
@@ -61,7 +54,7 @@ export const metadata: Metadata = {
     creator: '@datasolace',
     title: 'DataSolace - Business & Home Automation Solutions',
     description: 'Enterprise automation solutions and luxury home automation that bring comfort, security and efficiency to your spaces.',
-    images: ['/social-share.webp'],
+    images: ['/logo.webp'],
   },
   other: {
     'theme-color': '#1e40af',
