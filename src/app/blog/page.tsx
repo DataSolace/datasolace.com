@@ -7,56 +7,56 @@ export default function Blog() {
   const blogPosts = [
     {
       id: 1,
-      title: "Documenting Business Processes the Fast Way, Without Microsoft SharePoint",
-      description: "Every small business faced that moment: a key employee leaves, taking crucial operational knowledge with them. The isn't just inconvenient—it's costly and risky. Process documentation is the solution, but traditional platforms like SharePoint can be expensive...",
+      title: "Documenting Business Processes The Fast Way, Without Microsoft SharePoint",
+      description: "Every small business has been there. Your star employee hands in their notice. Suddenly, you realise they're the only one who knows how to run that critical monthly report, manage that key client relationship, or troubleshoot when your ordering system goes haywire...",
       category: "Customer Experience, Documentation",
       date: "12/03/2025",
-      image: "/api/placeholder/600/400?text=Business+Documentation",
+      image: "/blog/wiki.js-home_page.png",
       slug: "documenting-business-processes-fast-way"
     },
     {
       id: 2,
       title: "Streamlining Customer Feedback for UK Businesses with Formbricks",
-      description: "Discover how Formbricks transforms feedback collection for small UK businesses through adaptive surveys and intelligent question logic. Learn how coffee shops, boutiques, and other businesses can connect with customers more effectively...",
+      description: "In our previous post, we explored how small UK businesses can leverage Metabase to transform customer data into actionable insights. Today, we're tackling another critical piece of the data puzzle: how to effectively collect that customer feedback in the first place.",
       category: "Customer Experience",
       date: "07/03/2025",
-      image: "/api/placeholder/600/400?text=Customer+Feedback",
+      image: "/blog/formbricks-featured.png",
       slug: "streamlining-customer-feedback-formbricks"
     },
     {
       id: 3,
       title: "How UK Small Businesses Can Turn Customer Feedback into Growth with Metabase",
-      description: "Discover how small UK businesses can use Metabase's user-friendly analytics platform to transform customer feedback into actionable insights. Learn how to create repeat customers through data-informed decisions...",
+      description: "As a small business owner in the UK, you're likely wearing many hats – from sales and marketing to operations and finance. With so much on your plate, finding time to understand what's happening in your business can feel impossible. Yet the most successful small businesses are those that make data-informed decisions.",
       category: "Customer Experience",
       date: "28/02/2025",
-      image: "/api/placeholder/600/400?text=Data+Analytics",
+      image: "/blog/coffee-shop-metabase-feedback.png",
       slug: "customer-feedback-growth-metabase"
     },
     {
       id: 4,
       title: "Introducing the Smart Home Index: The Ultimate Tool for Finding the Perfect IoT Devices",
-      description: "DataSolace are excited to introduce the Smart Home Index, a free, comprehensive tool for researching and comparing smart home devices. Whether you're improving the perfect device for your smart home...",
+      description: "In today's rapidly evolving world of smart home technology, choosing the right devices for your home can feel overwhelming. With so many options available, how do you know which smart home gadgets are best suited for your needs?",
       category: "IoT Devices",
       date: "20/10/2024",
-      image: "/api/placeholder/600/400?text=Smart+Home+Index",
+      image: "/blog/smarthomeindex-1.png",
       slug: "smart-home-index-ultimate-tool"
     },
     {
       id: 5,
       title: "Frigate NVR Setup: AI-Powered Home Security Made Simple",
-      description: "Discover how to set up Frigate, a powerful local Network Video Recorder (NVR) with AI object detection, perfect for busy homeowners who value privacy. This guide walks you through the basics of Frigate...",
+      description: "Frigate bills itself as 'a complete and local NVR designed for Home Assistant with AI object detection.' A Network Video Recorder, or NVR, is something you might not be familiar with if you're currently using something like a Ring doorbell.",
       category: "Security",
       date: "25/09/2024",
-      image: "/api/placeholder/600/400?text=Security+Camera",
+      image: "/blog/HackerWoman.png",
       slug: "frigate-nvr-setup-ai-security"
     },
     {
       id: 6,
       title: "TrueNAS For Content Creators?",
-      description: "Discover how TrueNAS compares to Unraid in our latest NAS showdown. We explore TrueNAS's robust data integrity, impressive scalability, and open source complexity. Find out if TrueNAS's advanced features...",
+      description: "As part of our drive to give the right solution to our customers, Tom wrote a post on the use of UNRAID for Content Creators. Unraid isn't the only solution though. We run TrueNAS internally for many reasons, and a tonne of those apply to Content Creators too!",
       category: "Network Storage",
       date: "12/09/2024",
-      image: "/api/placeholder/600/400?text=Network+Storage",
+      image: "/blog/truenas-untitled.png",
       slug: "truenas-content-creators"
     }
   ];
@@ -98,31 +98,13 @@ export default function Blog() {
                 className="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
               >
                 <div className="aspect-w-16 aspect-h-12 bg-gray-200">
-                  {post.id === 1 ? (
-                    <Image
-                      src="/business_documentation.webp"
-                      alt="Business Documentation"
-                      width={600}
-                      height={400}
-                      className="w-full h-48 object-cover"
-                    />
-                  ) : post.id === 2 ? (
-                    <Image
-                      src="/customer_feedback.webp"
-                      alt="Customer Feedback"
-                      width={600}
-                      height={400}
-                      className="w-full h-48 object-cover object-top"
-                    />
-                  ) : (
-                    <div className="w-full h-48 bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
-                      <span className="text-gray-600 text-sm font-medium px-4 py-2 bg-white/80 rounded">
-                        {post.id === 3 ? "📈 Data Analytics" :
-                         post.id === 4 ? "🏠 Smart Home Index" :
-                         post.id === 5 ? "🔒 Security Camera" : "💾 Network Storage"}
-                      </span>
-                    </div>
-                  )}
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    width={600}
+                    height={400}
+                    className="w-full h-48 object-cover"
+                  />
                 </div>
                 
                 <div className="p-6">
