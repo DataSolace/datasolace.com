@@ -116,11 +116,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://datasolace.com',
   },
-  verification: {
-    google: 'your-google-verification-code',
-    yandex: 'your-yandex-verification-code',
-    yahoo: 'your-yahoo-verification-code',
-  },
   category: 'technology',
   classification: 'Business & Home Automation Solutions',
 };
