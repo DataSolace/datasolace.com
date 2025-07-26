@@ -51,7 +51,33 @@
 	 * Environment Variables
 	 * https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
 	 */
-	// "vars": { "MY_VARIABLE": "production_value" },
+	"vars": {
+		"NEXT_PUBLIC_SANITY_PROJECT_ID": "9rq2s1dn",
+		"NEXT_PUBLIC_SANITY_DATASET": "production"
+	},
+
+	/**
+	 * Custom Domains
+	 * https://developers.cloudflare.com/workers/configuration/routing/
+	 */
+	"routes": [
+		{
+			"pattern": "datasolace.com",
+			"custom_domain": true
+		},
+		{
+			"pattern": "datasolace.co.uk",
+			"custom_domain": true
+		},
+		{
+			"pattern": "datasolace.org",
+			"custom_domain": true
+		},
+		{
+			"pattern": "datasolace.net",
+			"custom_domain": true
+		}
+	],
 	/**
 	 * Note: Use secrets to store sensitive data.
 	 * https://developers.cloudflare.com/workers/configuration/secrets/
