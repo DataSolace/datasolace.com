@@ -25,7 +25,8 @@
     "styled-components": "^6.1.19"
   },
   "overrides": {
-    "prismjs": "^1.30.0"
+    "prismjs": "^1.30.0",
+    "esbuild": "0.25.10"
   },
   "devDependencies": {
     "@eslint/eslintrc": "3",
