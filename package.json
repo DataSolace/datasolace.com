@@ -14,11 +14,11 @@
     "publish": true
   },
   "dependencies": {
-    "@opennextjs/cloudflare": "^1.9.1",
-    "@sanity/image-url": "^1.1.0",
+    "@opennextjs/cloudflare": "^1.14.6",
+    "@sanity/image-url": "^1.2.0",
     "marked": "^12.0.0",
-    "next": "15.5.4",
-    "next-sanity": "^10.0.4",
+    "next": "^15.5.9",
+    "next-sanity": "^11.6.12",
     "prismjs": "^1.30.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
@@ -26,21 +26,22 @@
   },
   "overrides": {
     "prismjs": "^1.30.0",
-    "esbuild": "0.25.10"
+    "esbuild": "^0.27.2",
+    "node-domexception": "^2.0.2"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "3",
+    "@eslint/eslintrc": "^3.3.1",
     "@tailwindcss/postcss": "4.1.4",
     "@types/node": "^24.0.4",
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",
     "@types/styled-components": "^5.1.34",
     "eslint": "9.27.0",
-    "eslint-config-next": "15.5.4",
+    "eslint-config-next": "^15.5.9",
     "husky": "^9.1.7",
     "tailwindcss": "4.1.1",
     "typescript": "5.8.3",
-    "wrangler": "^4.40.3"
+    "wrangler": "^4.55.0"
   },
   "private": true,
   "scripts": {
