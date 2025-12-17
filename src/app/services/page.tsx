@@ -7,6 +7,42 @@ import Image from 'next/image';
 
 export default function Services() {
   const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setSubmitStatus('error');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setEmail(''); // Clear the form
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error subscribing to newsletter:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[var(--brand-blue)]">
@@ -144,21 +180,41 @@ export default function Services() {
                   <p className="text-gray-700 mb-4">
                     Sign up with your email address to receive news and updates, including new devices that are added to the Smart Home Index.
                   </p>
-                  <div className="flex gap-3">
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Email Address"
-                      className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[var(--brand-teal)] text-gray-900"
-                    />
-                    <button className="bg-[var(--brand-green)] hover:bg-[var(--brand-teal)] text-white px-6 py-3 rounded-lg transition-colors font-semibold">
-                      Sign Up
-                    </button>
-                  </div>
-                  <p className="text-sm text-gray-600 mt-3">
-                    We respect your privacy.
-                  </p>
+                  <form onSubmit={handleNewsletterSubmit}>
+                    <div className="flex gap-3">
+                      <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Email Address"
+                        required
+                        disabled={isSubmitting}
+                        className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[var(--brand-teal)] text-gray-900 disabled:opacity-50 disabled:cursor-not-allowed"
+                      />
+                      <button 
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="bg-[var(--brand-green)] hover:bg-[var(--brand-teal)] text-white px-6 py-3 rounded-lg transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        {isSubmitting ? 'Signing Up...' : 'Sign Up'}
+                      </button>
+                    </div>
+                    {submitStatus === 'success' && (
+                      <p className="text-sm text-green-600 mt-3">
+                        ✓ Successfully subscribed! Check your email to confirm.
+                      </p>
+                    )}
+                    {submitStatus === 'error' && (
+                      <p className="text-sm text-red-600 mt-3">
+                        Something went wrong. Please try again later.
+                      </p>
+                    )}
+                    {submitStatus === 'idle' && (
+                      <p className="text-sm text-gray-600 mt-3">
+                        We respect your privacy.
+                      </p>
+                    )}
+                  </form>
                 </div>
               </div>
 
