@@ -1,10 +1,13 @@
 'use client';
 
+import { useState } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Image from 'next/image';
 
 export default function Services() {
+  const [email, setEmail] = useState('');
+
   return (
     <div className="min-h-screen bg-[var(--brand-blue)]">
       <Header currentPage="services" />
@@ -144,8 +147,10 @@ export default function Services() {
                   <div className="flex gap-3">
                     <input
                       type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       placeholder="Email Address"
-                      className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[var(--brand-teal)]"
+                      className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[var(--brand-teal)] text-gray-900"
                     />
                     <button className="bg-[var(--brand-green)] hover:bg-[var(--brand-teal)] text-white px-6 py-3 rounded-lg transition-colors font-semibold">
                       Sign Up
