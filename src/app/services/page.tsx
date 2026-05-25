@@ -7,6 +7,7 @@ import Image from 'next/image';
 
 export default function Services() {
   const [email, setEmail] = useState('');
+  const [website, setWebsite] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
@@ -27,12 +28,13 @@ export default function Services() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, website }),
       });
 
       if (response.ok) {
         setSubmitStatus('success');
         setEmail(''); // Clear the form
+        setWebsite('');
       } else {
         setSubmitStatus('error');
       }
@@ -191,6 +193,18 @@ export default function Services() {
                         disabled={isSubmitting}
                         className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[var(--brand-teal)] text-gray-900 disabled:opacity-50 disabled:cursor-not-allowed"
                       />
+                      <div className="hidden" aria-hidden="true">
+                        <label htmlFor="newsletter-website">Website</label>
+                        <input
+                          id="newsletter-website"
+                          type="text"
+                          name="website"
+                          tabIndex={-1}
+                          autoComplete="off"
+                          value={website}
+                          onChange={(e) => setWebsite(e.target.value)}
+                        />
+                      </div>
                       <button 
                         type="submit"
                         disabled={isSubmitting}

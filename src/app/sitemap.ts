@@ -1,7 +1,11 @@
 import { MetadataRoute } from 'next'
+import { getAllBlogPosts } from '../lib/blog'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const dynamic = 'force-dynamic'
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://datasolace.com'
+  const blogPosts = await getAllBlogPosts()
   
   return [
     {
@@ -28,6 +32,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.6,
     },
+    ...blogPosts.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug.current}`,
+      lastModified: new Date(post.publishedAt),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    })),
     {
       url: `${baseUrl}/appointments`,
       lastModified: new Date(),
@@ -41,4 +51,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.3,
     },
   ]
-} 
+}

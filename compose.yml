@@ -1,0 +1,187 @@
+services:
+  postgres:
+    image: postgres:16.13-alpine
+    environment:
+      POSTGRES_DB: payload
+      POSTGRES_USER: payload
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U payload -d payload"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  payload:
+    build:
+      context: .
+      dockerfile: cms/Dockerfile
+      args:
+        NPM_MIN_PACKAGE_AGE_DAYS: ${NPM_MIN_PACKAGE_AGE_DAYS:-14}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URI: postgresql://payload:${POSTGRES_PASSWORD}@postgres:5432/payload
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
+      PAYLOAD_PUBLIC_URL: https://cms.datasolace.com
+      PAYLOAD_URL: http://payload:3000
+      HOSTNAME: 0.0.0.0
+      PAYLOAD_DB_PUSH: ${PAYLOAD_DB_PUSH:-true}
+      PAYLOAD_ADMIN_EMAIL: ${PAYLOAD_ADMIN_EMAIL:-}
+      PAYLOAD_ADMIN_PASSWORD: ${PAYLOAD_ADMIN_PASSWORD:-}
+      CONTACT_IP_HASH_SALT: ${CONTACT_IP_HASH_SALT:-}
+    volumes:
+      - media_uploads:/app/media
+    restart: always
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:3000/api/users/me"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+
+  public-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.public
+      args:
+        NPM_MIN_PACKAGE_AGE_DAYS: ${NPM_MIN_PACKAGE_AGE_DAYS:-14}
+    depends_on:
+      payload:
+        condition: service_started
+    environment:
+      NODE_ENV: production
+      HOSTNAME: 0.0.0.0
+      PAYLOAD_INTERNAL_URL: http://payload:3000
+      CONTACT_IP_HASH_SALT: ${CONTACT_IP_HASH_SALT:-}
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
+      KIT_API_KEY: ${KIT_API_KEY:-}
+      KIT_WEBHOOK_URL: ${KIT_WEBHOOK_URL:-}
+    restart: always
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:3000/"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+
+  nginx:
+    image: nginx:1.29.7-alpine
+    depends_on:
+      - public-app
+      - payload
+    ports:
+      - "${DATASOLACE_BIND_IP:-127.0.0.1}:${DATASOLACE_PROD_PORT:-18080}:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: always
+    networks:
+      default:
+      edge:
+        aliases:
+          - nginx
+
+  staging-postgres:
+    image: postgres:16.13-alpine
+    environment:
+      POSTGRES_DB: payload
+      POSTGRES_USER: payload
+      POSTGRES_PASSWORD: ${STAGING_POSTGRES_PASSWORD}
+    volumes:
+      - staging_pg_data:/var/lib/postgresql/data
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U payload -d payload"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  staging-payload:
+    build:
+      context: .
+      dockerfile: cms/Dockerfile
+      args:
+        NPM_MIN_PACKAGE_AGE_DAYS: ${NPM_MIN_PACKAGE_AGE_DAYS:-14}
+    depends_on:
+      staging-postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URI: postgresql://payload:${STAGING_POSTGRES_PASSWORD}@staging-postgres:5432/payload
+      PAYLOAD_SECRET: ${STAGING_PAYLOAD_SECRET}
+      PAYLOAD_PUBLIC_URL: https://staging-cms.datasolace.com
+      PAYLOAD_URL: http://staging-payload:3000
+      HOSTNAME: 0.0.0.0
+      PAYLOAD_DB_PUSH: ${STAGING_PAYLOAD_DB_PUSH:-true}
+      PAYLOAD_ADMIN_EMAIL: ${STAGING_PAYLOAD_ADMIN_EMAIL:-}
+      PAYLOAD_ADMIN_PASSWORD: ${STAGING_PAYLOAD_ADMIN_PASSWORD:-}
+      CONTACT_IP_HASH_SALT: ${STAGING_CONTACT_IP_HASH_SALT:-}
+    volumes:
+      - staging_media_uploads:/app/media
+    restart: always
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:3000/api/users/me"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+
+  staging-public-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.public
+      args:
+        NPM_MIN_PACKAGE_AGE_DAYS: ${NPM_MIN_PACKAGE_AGE_DAYS:-14}
+    depends_on:
+      staging-payload:
+        condition: service_started
+    environment:
+      NODE_ENV: production
+      HOSTNAME: 0.0.0.0
+      PAYLOAD_INTERNAL_URL: http://staging-payload:3000
+      CONTACT_IP_HASH_SALT: ${STAGING_CONTACT_IP_HASH_SALT:-}
+      PAYLOAD_SECRET: ${STAGING_PAYLOAD_SECRET}
+      KIT_API_KEY: ${STAGING_KIT_API_KEY:-}
+      KIT_WEBHOOK_URL: ${STAGING_KIT_WEBHOOK_URL:-}
+    restart: always
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:3000/"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+
+  staging-nginx:
+    image: nginx:1.29.7-alpine
+    depends_on:
+      - staging-public-app
+      - staging-payload
+    ports:
+      - "${DATASOLACE_BIND_IP:-127.0.0.1}:${DATASOLACE_STAGING_PORT:-18081}:80"
+    volumes:
+      - ./nginx.staging.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: always
+    networks:
+      default:
+      edge:
+        aliases:
+          - staging-nginx
+
+  cloudflared:
+    image: cloudflare/cloudflared:2026.3.0
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
+    depends_on:
+      - nginx
+      - staging-nginx
+    restart: always
+    networks:
+      - edge
+
+volumes:
+  pg_data:
+  media_uploads:
+  staging_pg_data:
+  staging_media_uploads:
+
+networks:
+  edge:
+    external: true
+    name: ${DATASOLACE_EDGE_NETWORK:-datasolace-edge}

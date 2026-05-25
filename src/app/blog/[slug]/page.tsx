@@ -3,21 +3,15 @@ import Image from 'next/image';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 import { notFound } from 'next/navigation';
-import { getBlogPostBySlug, getAllBlogPostSlugs, getRelatedBlogPosts } from '../../../lib/blog';
+import { getBlogPostBySlug, getRelatedBlogPosts } from '../../../lib/blog';
 import { marked } from 'marked';
-import { urlFor } from '../../../sanity/client';
+
+export const dynamic = 'force-dynamic';
 
 interface BlogPostPageProps {
   params: Promise<{
     slug: string;
   }>;
-}
-
-export async function generateStaticParams() {
-  const slugs = await getAllBlogPostSlugs();
-  return slugs.map((slug) => ({
-    slug,
-  }));
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -31,34 +25,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   // Get related posts
   const relatedPosts = await getRelatedBlogPosts(post._id, post.category, 2);
 
-  // Parse markdown content to HTML and handle Sanity image references
   const parseMarkdown = (markdown: string) => {
     try {
-      // Replace Sanity image references with proper URLs
-      const processedMarkdown = markdown.replace(
-        /!\[([^\]]*)\]\(sanity:\/\/([^)]+)\)/g,
-        (match, altText, assetId) => {
-          // Create a temporary image object for urlFor
-          const imageAsset = {
-            _type: 'image',
-            asset: {
-              _type: 'reference',
-              _ref: assetId
-            }
-          };
-
-          // Generate the image URL
-          const imageUrl = urlFor(imageAsset).url();
-
-          // Return standard markdown image syntax with the Sanity URL
-          return `![${altText}](${imageUrl})`;
-        }
-      );
-
-      return marked(processedMarkdown);
+      return marked(markdown);
     } catch (error) {
       console.error('Error parsing markdown:', error);
-      return markdown; // Fallback to raw markdown if parsing fails
+      return markdown;
     }
   };
 
@@ -112,6 +84,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   alt={post.featuredImage.alt}
                   width={800}
                   height={400}
+                  unoptimized
                   className="w-full h-64 object-cover rounded-lg"
                 />
               </div>

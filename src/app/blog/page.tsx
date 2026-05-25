@@ -4,6 +4,8 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { getAllBlogPosts } from '../../lib/blog';
 
+export const dynamic = 'force-dynamic';
+
 export default async function Blog() {
   const blogPosts = await getAllBlogPosts();
 
@@ -49,6 +51,7 @@ export default async function Blog() {
                     alt={post.featuredImage.alt}
                     width={600}
                     height={400}
+                    unoptimized
                     className="w-full h-48 object-cover"
                   />
                 </div>

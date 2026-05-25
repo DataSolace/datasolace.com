@@ -13,7 +13,8 @@ export default function Home() {
     email: '',
     phone: '',
     newsletter: false,
-    message: ''
+    message: '',
+    website: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'rate-limited'>('idle');
@@ -49,7 +50,8 @@ export default function Home() {
           email: '',
           phone: '',
           newsletter: false,
-          message: ''
+          message: '',
+          website: ''
         });
       } else if (response.status === 429) {
         const errorData = await response.json() as { retryAfter?: number; resetTime?: number };
@@ -347,6 +349,19 @@ export default function Home() {
                       className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-[var(--brand-teal)] resize-none"
                       placeholder="Tell us about your automation needs..."
                     ></textarea>
+                  </div>
+
+                  <div className="hidden" aria-hidden="true">
+                    <label htmlFor="website">Website</label>
+                    <input
+                      id="website"
+                      type="text"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={formData.website}
+                      onChange={handleInputChange}
+                    />
                   </div>
 
                   <div className="flex justify-end">
