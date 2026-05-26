@@ -1,6 +1,6 @@
 # DataSolace Payload Local Stack
 
-This stack is intentionally staged-first. Do not add or activate production Cloudflare Tunnel routes for `datasolace.com` until staging and CMS access have been validated and the user explicitly approves production cutover.
+This stack is the active production path for DataSolace. Production and staging traffic both enter through a remotely-managed Cloudflare Tunnel and terminate at local Docker nginx services. Legacy Cloudflare Worker/OpenNext, D1, KV, and Sanity runtime artifacts have been removed from active repo configuration; any remaining remote resource cleanup must be handled as an explicit decommissioning step.
 
 ## Local secrets
 
@@ -22,19 +22,15 @@ If using a different name, set `DATASOLACE_EDGE_NETWORK` in `.env`.
 
 The tunnel is remotely managed in Cloudflare. The local connector only runs with the token from `tunnel_token`.
 
-Already pre-created by the user:
+Current expected published application routes:
 
-- `staging.datasolace.com` -> Service type HTTP, URL `staging-nginx:8080`
-- `staging-cms.datasolace.com` -> Service type HTTP, URL `staging-nginx:8080`
-
-The staging nginx container listens on both 80 and 8080, but the current remotely-managed tunnel configuration uses 8080. Do not browse to `:8080`; that port is internal to the tunnel connector.
-- Cloudflare Access for `staging-cms.datasolace.com` allowing emails ending in `@datasolace.com`
-
-Production routes to add only after explicit approval, after staging and production CMS validation:
-
-- `datasolace.com` -> Service type HTTP, URL `nginx:80` or `nginx:8080` to match the dashboard route convention chosen at cutover
+- `datasolace.com` -> Service type HTTP, URL `nginx:80` or `nginx:8080` depending on the Cloudflare dashboard route convention in use
 - `cms.datasolace.com` -> Service type HTTP, URL `nginx:80` or `nginx:8080`, protected by Cloudflare Access for `@datasolace.com`
+- `staging.datasolace.com` -> Service type HTTP, URL `staging-nginx:80` or `staging-nginx:8080`
+- `staging-cms.datasolace.com` -> Service type HTTP, URL `staging-nginx:80` or `staging-nginx:8080`, protected by Cloudflare Access for `@datasolace.com`
 - alternate domains should redirect to `https://datasolace.com`
+
+Do not browse to `:8080`; that port is internal to the tunnel connector when used. Keep Worker custom domains/routes disabled or detached from these hostnames once the tunnel routes are verified.
 
 ## Startup
 
@@ -62,6 +58,19 @@ Production uses separate services and volumes:
 - `pg_data`
 - `media_uploads`
 
+## Legacy Worker/D1/KV cleanup status
+
+The previous Cloudflare Worker/OpenNext deployment used `wrangler.jsonc`, `open-next.config.ts`, generated `env.d.ts`, D1 contact-submission schema, and Cloudflare KV rate-limit documentation. Those files are no longer active configuration for this stack.
+
+Current replacements:
+
+- Public app: Docker `public-app` service built from `Dockerfile.public`.
+- CMS/content: Payload CMS and Postgres services in `compose.yml`.
+- Edge routing: Cloudflare Tunnel connector service `cloudflared` to local nginx.
+- Contact storage and rate limiting: Payload/Postgres plus nginx limits, not D1/KV.
+
+Remote Cloudflare Worker, D1, KV, and Sanity resources are not deleted by repo cleanup. Before remote deletion, use `docs/deployment/legacy-remote-cleanup-checklist.md` to verify tunnel routes, confirm Worker routes/custom domains are detached, archive Sanity before deleting it, and preserve any D1/KV/Sanity evidence the user wants to retain.
+
 ## Newsletter / Kit.com
 
 Leave `KIT_WEBHOOK_URL` and `STAGING_KIT_WEBHOOK_URL` empty until real Kit endpoints are available. Placeholder values such as `https://your-kit-webhook-url-here` are treated as not configured, logged in Payload as `provider_failed` / `kit_not_configured`, and return a safe 500 JSON response.
@@ -86,4 +95,4 @@ Off-host backup storage remains a follow-up decision.
 
 ## Rollback
 
-Until production cutover is approved, the existing Cloudflare Worker remains the production fallback. If production cutover later fails, remove/disable the production published application routes for `datasolace.com`, `cms.datasolace.com`, and alternate domains, then restore the previous Worker/custom-domain routing in Cloudflare. Keep the local Payload/Postgres backup from immediately before cutover so new submissions/content can be recovered or replayed if routing is rolled back.
+Use the local Payload/Postgres backup from immediately before major cleanup or routing changes as the primary data rollback point. The legacy Worker path is now historical only: reactivation would require restoring the removed Worker/OpenNext configuration from git history and reattaching Worker custom domains/routes in Cloudflare. Prefer fixing the Docker/tunnel stack in place unless the user explicitly asks for a Worker rollback.

@@ -1,5 +1,8 @@
 import path from 'node:path'
 
+// Historical one-time import utility retained for rollback/reconciliation only.
+// The public site now reads blog content from Payload; do not treat this script
+// as a runtime Sanity dependency. Archive/remove after Sanity decommissioning is final.
 const SANITY_PROJECT_ID = process.env.SANITY_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '9rq2s1dn'
 const SANITY_DATASET = process.env.SANITY_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
 const PAYLOAD_URL = (process.env.PAYLOAD_URL || 'http://localhost:3001').replace(/\/$/, '')
