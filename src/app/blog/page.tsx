@@ -17,22 +17,20 @@ export default async function Blog() {
       <section className="py-20 px-6 pt-32">
         <div className="max-w-6xl mx-auto">
           {/* Header Content */}
-          <div className="bg-white rounded-2xl p-12 mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-[var(--brand-blue)] mb-8">
-              Latest Insights & Updates
+          <div className="bg-white rounded-2xl p-8 sm:p-12 mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold text-[var(--brand-blue)] mb-8 text-balance">
+              Notes from the workshop.
             </h1>
-            
-            <div className="space-y-6 text-gray-700 text-lg leading-relaxed max-w-4xl">
+
+            <div className="space-y-6 text-[#374151] text-lg leading-relaxed max-w-[65ch]">
               <p>
-                Stay up to date with the latest developments in automation technology,
-                smart home solutions, and business optimization strategies from our team
-                of experts.
+                Writing on process automation for small businesses: how we map
+                work, connect systems, and keep them running — plus the
+                occasional technical deep-dive from our own tooling.
               </p>
-              
+
               <p>
-                From detailed technical guides to industry insights, our blog covers
-                everything you need to know about transforming your business and home
-                through intelligent automation.
+                Plain language where possible, real detail where it matters.
               </p>
             </div>
           </div>
