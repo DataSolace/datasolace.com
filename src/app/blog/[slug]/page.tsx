@@ -110,10 +110,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div className="flex space-x-4">
                   <span className="text-gray-600">Share:</span>
-                  <a href="#" className="text-[var(--brand-teal-text)] hover:text-[var(--brand-green)] transition-colors">
+                  <a
+                    href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`https://datasolace.com/blog/${slug}`)}&text=${encodeURIComponent(post.title)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[var(--brand-teal-text)] hover:text-[var(--brand-green)] transition-colors"
+                  >
                     Twitter
                   </a>
-                  <a href="#" className="text-[var(--brand-teal-text)] hover:text-[var(--brand-green)] transition-colors">
+                  <a
+                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://datasolace.com/blog/${slug}`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[var(--brand-teal-text)] hover:text-[var(--brand-green)] transition-colors"
+                  >
                     LinkedIn
                   </a>
                 </div>
