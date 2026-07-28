@@ -4,6 +4,8 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { getAllBlogPosts } from '../../lib/blog';
 
+export const dynamic = 'force-dynamic';
+
 export default async function Blog() {
   const blogPosts = await getAllBlogPosts();
 
@@ -49,6 +51,7 @@ export default async function Blog() {
                     alt={post.featuredImage.alt}
                     width={600}
                     height={400}
+                    unoptimized
                     className="w-full h-48 object-cover"
                   />
                 </div>
@@ -56,7 +59,7 @@ export default async function Blog() {
                 <div className="p-6">
                   {/* Category and Date */}
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-sm font-medium text-[var(--brand-teal)] bg-[var(--brand-teal)]/10 px-2 py-1 rounded">
+                    <span className="text-sm font-medium text-[var(--brand-teal-text)] bg-[var(--brand-teal)]/10 px-2 py-1 rounded">
                       {post.category}
                     </span>
                     <span className="text-sm text-gray-500">
@@ -76,7 +79,7 @@ export default async function Blog() {
 
                   {/* Read More Link */}
                   <div className="mt-4">
-                    <span className="text-[var(--brand-teal)] font-medium text-sm group-hover:text-[var(--brand-green)] transition-colors">
+                    <span className="text-[var(--brand-teal-text)] font-medium text-sm group-hover:text-[var(--brand-green)] transition-colors">
                       Read More →
                     </span>
                   </div>

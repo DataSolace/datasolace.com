@@ -3,21 +3,15 @@ import Image from 'next/image';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 import { notFound } from 'next/navigation';
-import { getBlogPostBySlug, getAllBlogPostSlugs, getRelatedBlogPosts } from '../../../lib/blog';
+import { getBlogPostBySlug, getRelatedBlogPosts } from '../../../lib/blog';
 import { marked } from 'marked';
-import { urlFor } from '../../../sanity/client';
+
+export const dynamic = 'force-dynamic';
 
 interface BlogPostPageProps {
   params: Promise<{
     slug: string;
   }>;
-}
-
-export async function generateStaticParams() {
-  const slugs = await getAllBlogPostSlugs();
-  return slugs.map((slug) => ({
-    slug,
-  }));
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -31,34 +25,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   // Get related posts
   const relatedPosts = await getRelatedBlogPosts(post._id, post.category, 2);
 
-  // Parse markdown content to HTML and handle Sanity image references
   const parseMarkdown = (markdown: string) => {
     try {
-      // Replace Sanity image references with proper URLs
-      const processedMarkdown = markdown.replace(
-        /!\[([^\]]*)\]\(sanity:\/\/([^)]+)\)/g,
-        (match, altText, assetId) => {
-          // Create a temporary image object for urlFor
-          const imageAsset = {
-            _type: 'image',
-            asset: {
-              _type: 'reference',
-              _ref: assetId
-            }
-          };
-
-          // Generate the image URL
-          const imageUrl = urlFor(imageAsset).url();
-
-          // Return standard markdown image syntax with the Sanity URL
-          return `![${altText}](${imageUrl})`;
-        }
-      );
-
-      return marked(processedMarkdown);
+      return marked(markdown);
     } catch (error) {
       console.error('Error parsing markdown:', error);
-      return markdown; // Fallback to raw markdown if parsing fails
+      return markdown;
     }
   };
 
@@ -87,7 +59,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {/* Header */}
             <header className="mb-8">
               <div className="flex items-center justify-between mb-4">
-                <span className="text-sm font-medium text-[var(--brand-teal)] bg-[var(--brand-teal)]/10 px-3 py-1 rounded">
+                <span className="text-sm font-medium text-[var(--brand-teal-text)] bg-[var(--brand-teal)]/10 px-3 py-1 rounded">
                   {post.category}
                 </span>
                 <span className="text-sm text-gray-500">
@@ -112,6 +84,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   alt={post.featuredImage.alt}
                   width={800}
                   height={400}
+                  unoptimized
                   className="w-full h-64 object-cover rounded-lg"
                 />
               </div>
@@ -137,17 +110,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div className="flex space-x-4">
                   <span className="text-gray-600">Share:</span>
-                  <a href="#" className="text-[var(--brand-teal)] hover:text-[var(--brand-green)] transition-colors">
+                  <a href="#" className="text-[var(--brand-teal-text)] hover:text-[var(--brand-green)] transition-colors">
                     Twitter
                   </a>
-                  <a href="#" className="text-[var(--brand-teal)] hover:text-[var(--brand-green)] transition-colors">
+                  <a href="#" className="text-[var(--brand-teal-text)] hover:text-[var(--brand-green)] transition-colors">
                     LinkedIn
                   </a>
                 </div>
                 
                 <Link
                   href="/blog"
-                  className="text-[var(--brand-teal)] hover:text-[var(--brand-green)] transition-colors font-medium"
+                  className="text-[var(--brand-teal-text)] hover:text-[var(--brand-green)] transition-colors font-medium"
                 >
                   ← Back to Blog
                 </Link>
@@ -172,7 +145,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     <p className="text-gray-600 text-sm mb-3">
                       {relatedPost.description.substring(0, 120)}...
                     </p>
-                    <span className="text-[var(--brand-teal)] text-sm font-medium">
+                    <span className="text-[var(--brand-teal-text)] text-sm font-medium">
                       Read More →
                     </span>
                   </Link>

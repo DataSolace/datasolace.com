@@ -1,101 +1,141 @@
+import { randomUUID } from 'node:crypto';
 import { NextRequest, NextResponse } from 'next/server';
-import { getCloudflareContext } from '@opennextjs/cloudflare';
-import { defaultRateLimit } from '../../../lib/rateLimit';
+import {
+  createPayloadDocument,
+  getClientIp,
+  getUserAgent,
+  hashIp,
+  isValidEmail,
+  normalizeEmail,
+  normalizeText,
+} from '../../../lib/payloadApi';
+
+export const runtime = 'nodejs';
 
 interface ContactFormData {
-  firstName: string;
-  lastName: string;
-  email: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
   phone?: string;
-  newsletter: boolean;
-  message: string;
+  newsletter?: boolean;
+  message?: string;
+  website?: string;
 }
 
-// CloudflareEnv is now properly generated in env.d.ts
+const MAX_BODY_LENGTH = 12_000;
+const MAX_NAME_LENGTH = 120;
+const MAX_PHONE_LENGTH = 80;
+const MAX_MESSAGE_LENGTH = 4_000;
+
+async function persistContactSubmission(data: Record<string, unknown>) {
+  return createPayloadDocument('contact-submissions', data);
+}
 
 export async function POST(request: NextRequest) {
-  try {
-    // Get Cloudflare context for database and KV access
-    const cfContext = getCloudflareContext();
-    const db = cfContext?.env?.DB;
-    const kv = cfContext?.env?.RATE_LIMIT_KV;
-    
-    if (!db) {
-      console.error('D1 database binding not found');
-      return NextResponse.json(
-        { error: 'Database not available' },
-        { status: 500 }
-      );
-    }
+  const requestId = randomUUID();
+  const ipHash = hashIp(getClientIp(request));
+  const userAgent = getUserAgent(request);
 
-    // Rate limiting check
-    if (kv) {
-      const identifier = defaultRateLimit.getIdentifierFromRequest(request);
-      const rateLimitResult = await defaultRateLimit.checkLimit(identifier, kv);
-      if (!rateLimitResult.success) {
-        const retryAfter = Math.ceil((rateLimitResult.resetTime - Date.now()) / 1000);
-        return NextResponse.json(
-          {
-            error: 'Too many requests. Please try again later.',
-            retryAfter,
-            resetTime: rateLimitResult.resetTime
-          },
-          {
-            status: 429,
-            headers: {
-              'Retry-After': retryAfter.toString(),
-              'X-RateLimit-Remaining': rateLimitResult.remaining.toString(),
-              'X-RateLimit-Reset': rateLimitResult.resetTime.toString()
-            }
-          }
-        );
+  try {
+    const contentLengthHeader = request.headers.get('content-length');
+    if (contentLengthHeader) {
+      const contentLength = Number.parseInt(contentLengthHeader, 10);
+      if (Number.isFinite(contentLength) && contentLength > MAX_BODY_LENGTH) {
+        await persistContactSubmission({
+          requestId,
+          status: 'invalid',
+          email: 'unknown@example.invalid',
+          message: 'Rejected contact submission: payload too large.',
+          ipHash,
+          userAgent,
+          errorDetail: `content_length_${contentLength}`,
+        });
+
+        return NextResponse.json({ error: 'Payload too large' }, { status: 413 });
       }
     }
 
-    const body: ContactFormData = await request.json();
-    // Validate required fields
-    if (!body.email || !body.message) {
+    const rawBody = (await request.json().catch(() => null)) as ContactFormData | null;
+    if (!rawBody || typeof rawBody !== 'object') {
+      return NextResponse.json({ error: 'Invalid request body' }, { status: 400 });
+    }
+
+    const honeypot = normalizeText(rawBody.website, 200);
+    const body = {
+      firstName: normalizeText(rawBody.firstName, MAX_NAME_LENGTH),
+      lastName: normalizeText(rawBody.lastName, MAX_NAME_LENGTH),
+      email: normalizeEmail(rawBody.email),
+      phone: normalizeText(rawBody.phone, MAX_PHONE_LENGTH),
+      newsletter: Boolean(rawBody.newsletter),
+      message: normalizeText(rawBody.message, MAX_MESSAGE_LENGTH),
+    };
+
+    if (honeypot) {
+      await persistContactSubmission({
+        requestId,
+        status: 'blocked_honeypot',
+        firstName: body.firstName,
+        lastName: body.lastName,
+        email: body.email || 'honeypot@example.invalid',
+        phone: body.phone,
+        newsletter: body.newsletter,
+        message: body.message || 'Blocked honeypot contact submission.',
+        ipHash,
+        userAgent,
+        errorDetail: `honeypot_field_populated:${honeypot.slice(0, 100)}`,
+      });
+
       return NextResponse.json(
-        { error: 'Email and message are required' },
-        { status: 400 }
+        {
+          success: true,
+          message: 'Contact form submitted successfully',
+          id: requestId,
+        },
+        { status: 201 },
       );
     }
 
-    // Insert the contact form submission into the database
-    const result = await db.prepare(`
-      INSERT INTO contact_submissions (
-        first_name, 
-        last_name, 
-        email, 
-        phone, 
-        newsletter, 
-        message, 
-        created_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?)
-    `).bind(
-      body.firstName || '',
-      body.lastName || '',
-      body.email,
-      body.phone || null,
-      body.newsletter || false,
-      body.message,
-      new Date().toISOString()
-    ).run();
+    if (!body.email || !body.message) {
+      return NextResponse.json(
+        { error: 'Email and message are required' },
+        { status: 400 },
+      );
+    }
+
+    if (!isValidEmail(body.email)) {
+      return NextResponse.json(
+        { error: 'Valid email address is required' },
+        { status: 400 },
+      );
+    }
+
+    const result = await persistContactSubmission({
+      requestId,
+      status: 'new',
+      firstName: body.firstName,
+      lastName: body.lastName,
+      email: body.email,
+      phone: body.phone || undefined,
+      newsletter: body.newsletter,
+      message: body.message,
+      ipHash,
+      userAgent,
+      source: 'datasolace-public-app',
+    });
 
     return NextResponse.json(
-      { 
-        success: true, 
+      {
+        success: true,
         message: 'Contact form submitted successfully',
-        id: result.meta.last_row_id 
+        id: result.id || requestId,
       },
-      { status: 201 }
+      { status: 201 },
     );
-
   } catch (error) {
     console.error('Error submitting contact form:', error);
     return NextResponse.json(
       { error: 'Failed to submit contact form' },
-      { status: 500 }
+      { status: 500 },
     );
   }
-} 
+}

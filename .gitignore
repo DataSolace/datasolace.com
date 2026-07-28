@@ -26,7 +26,17 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+.env
+.env.*
+!.env.example
 .env*.local
+
+# local backup/export artifacts
+.local-backups/
+
+# local tunnel secrets
+/tunnel_token
+/cloudflared-credentials.json
 
 # vercel
 .vercel
@@ -48,3 +58,16 @@ next-env.d.ts
 
 # planning and documentation
 .docs/
+
+# agent harness settings
+.claude/settings.local.json
+
+# vendored agent skills (installed via `npx impeccable install`)
+.claude/skills/
+.pi/skills/
+
+# impeccable tool output (critiques, design tokens, live-preview config)
+.impeccable/
+
+# firecrawl scrape cache
+.firecrawl/

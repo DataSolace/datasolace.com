@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DataSolace Homepage Hero Preview</title>
+    <style>
+      :root {
+        --brand-blue: #1d2d46;
+        --brand-blue-deep: #101d31;
+        --brand-white: #f2f5f5;
+        --brand-teal: #029979;
+        --brand-green: #04866e;
+        --ink: #111827;
+        --ink-soft: rgba(242, 245, 245, 0.78);
+        --ink-faint: rgba(242, 245, 245, 0.56);
+        --muted: #5d6b80;
+        --panel: #ffffff;
+        --line: rgba(255, 255, 255, 0.16);
+        --line-strong: rgba(242, 245, 245, 0.26);
+        --shadow: 0 24px 60px rgba(4, 12, 24, 0.34);
+        --teal-soft: rgba(2, 153, 121, 0.18);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--brand-blue);
+        color: var(--brand-white);
+        font-family: Montserrat, Arial, Helvetica, sans-serif;
+      }
+
+      button,
+      a {
+        font: inherit;
+      }
+
+      .preview-shell {
+        min-height: 100vh;
+        background:
+          linear-gradient(158deg, rgba(16, 29, 49, 0.92) 0%, rgba(29, 45, 70, 0.98) 55%, #243b5e 100%),
+          var(--brand-blue);
+      }
+
+      .notice {
+        border-bottom: 1px solid var(--line);
+        background: rgba(16, 29, 49, 0.7);
+        color: rgba(242, 245, 245, 0.78);
+        padding: 0.75rem 1rem;
+        text-align: center;
+        font-size: 0.875rem;
+      }
+
+      .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 1.2rem clamp(1rem, 4vw, 2rem);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        color: var(--brand-white);
+        text-decoration: none;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .brand img {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        color: rgba(242, 245, 245, 0.86);
+        font-size: 0.95rem;
+      }
+
+      .nav span:last-child {
+        border-radius: 8px;
+        background: var(--brand-teal);
+        color: #fff;
+        padding: 0.65rem 1rem;
+        font-weight: 700;
+      }
+
+      .hero-preview {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: clamp(2.25rem, 5vw, 5.5rem) clamp(1rem, 4vw, 2rem) 4.5rem;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 0.92fr) minmax(360px, 1.08fr);
+        gap: clamp(2.4rem, 6vw, 5.25rem);
+        align-items: center;
+        min-height: min(610px, calc(100vh - 9rem));
+      }
+
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        margin-bottom: 1.45rem;
+        color: rgba(242, 245, 245, 0.82);
+        font-size: 1rem;
+        font-weight: 800;
+      }
+
+      .kicker::before {
+        content: "";
+        display: inline-block;
+        width: 2.4rem;
+        height: 3px;
+        border-radius: 999px;
+        background: var(--brand-teal);
+      }
+
+      h1 {
+        max-width: 10ch;
+        margin: 0;
+        color: #fff;
+        font-size: clamp(3rem, 6vw, 5.15rem);
+        line-height: 1.01;
+        letter-spacing: 0;
+        text-wrap: balance;
+      }
+
+      .hero-copy {
+        max-width: 33rem;
+        margin: 1.6rem 0 0;
+        color: rgba(242, 245, 245, 0.84);
+        font-size: clamp(1.08rem, 1.8vw, 1.28rem);
+        line-height: 1.5;
+        text-wrap: pretty;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        margin-top: 2rem;
+      }
+
+      .cta-primary,
+      .cta-secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        border-radius: 8px;
+        padding: 0.95rem 1.25rem;
+        text-decoration: none;
+        font-weight: 800;
+      }
+
+      .cta-primary {
+        background: var(--brand-teal);
+        color: #fff;
+      }
+
+      .cta-secondary {
+        border: 1px solid var(--line-strong);
+        color: #fff;
+      }
+
+      .trust-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        margin: 2rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .trust-strip li {
+        border: 1px solid rgba(242, 245, 245, 0.18);
+        border-radius: 999px;
+        background: rgba(242, 245, 245, 0.07);
+        color: rgba(242, 245, 245, 0.82);
+        padding: 0.52rem 0.72rem;
+        font-size: 0.85rem;
+        font-weight: 800;
+      }
+
+      .visual-stage {
+        position: relative;
+        min-height: 470px;
+      }
+
+      .visual-stage::before {
+        content: "";
+        position: absolute;
+        inset: 10% 4% 8% 16%;
+        border-top: 1px solid rgba(242, 245, 245, 0.12);
+        border-bottom: 1px solid rgba(242, 245, 245, 0.08);
+        transform: skewY(-8deg);
+      }
+
+      .process-line {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .process-line path {
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .process-line .mess-line {
+        stroke: rgba(242, 245, 245, 0.34);
+        stroke-width: 2;
+      }
+
+      .process-line .main-line {
+        stroke: var(--brand-teal);
+        stroke-width: 6;
+      }
+
+      .process-line .guide-line {
+        stroke: rgba(242, 245, 245, 0.2);
+        stroke-width: 2;
+      }
+
+      .process-node {
+        position: absolute;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+      }
+
+      .node-small {
+        width: 0.95rem;
+        height: 0.95rem;
+        background: rgba(242, 245, 245, 0.86);
+      }
+
+      .node-large {
+        width: clamp(8.4rem, 15vw, 11rem);
+        height: clamp(8.4rem, 15vw, 11rem);
+        border: 1px solid rgba(242, 245, 245, 0.22);
+        background:
+          linear-gradient(180deg, rgba(242, 245, 245, 0.16), rgba(242, 245, 245, 0.05)),
+          rgba(16, 29, 49, 0.68);
+        box-shadow: 0 28px 70px rgba(4, 12, 24, 0.34);
+      }
+
+      .node-large img {
+        width: 52%;
+        height: 52%;
+        object-fit: contain;
+      }
+
+      .tag {
+        position: absolute;
+        display: inline-flex;
+        align-items: center;
+        min-height: 2.2rem;
+        border-radius: 999px;
+        background: rgba(242, 245, 245, 0.1);
+        color: rgba(242, 245, 245, 0.84);
+        padding: 0.48rem 0.72rem;
+        font-size: clamp(0.78rem, 1vw, 0.9rem);
+        font-weight: 800;
+        white-space: nowrap;
+      }
+
+      .tag.is-faint {
+        color: var(--ink-faint);
+      }
+
+      .tag.is-good {
+        background: var(--teal-soft);
+        color: #b8f4e7;
+      }
+
+      .label {
+        position: absolute;
+        max-width: 13rem;
+        color: rgba(242, 245, 245, 0.78);
+        font-size: clamp(0.82rem, 1.1vw, 0.96rem);
+        font-weight: 800;
+        line-height: 1.35;
+      }
+
+      .tag-email {
+        left: 4%;
+        top: 18%;
+      }
+
+      .tag-forms {
+        left: 9%;
+        top: 38%;
+      }
+
+      .tag-chasing {
+        left: 2%;
+        top: 59%;
+      }
+
+      .tag-intake {
+        right: 23%;
+        top: 24%;
+      }
+
+      .tag-follow {
+        right: 6%;
+        top: 45%;
+      }
+
+      .tag-records {
+        right: 18%;
+        top: 67%;
+      }
+
+      .label-before {
+        left: 0;
+        bottom: 10%;
+      }
+
+      .label-after {
+        right: 0;
+        bottom: 10%;
+        text-align: right;
+      }
+
+      .node-a {
+        left: 24%;
+        top: 26%;
+      }
+
+      .node-b {
+        left: 19%;
+        top: 52%;
+      }
+
+      .node-c {
+        left: 28%;
+        top: 70%;
+      }
+
+      .node-brand {
+        left: 43%;
+        top: 34%;
+      }
+
+      .node-d {
+        right: 31%;
+        top: 29%;
+        background: #a7f3df;
+      }
+
+      .node-e {
+        right: 19%;
+        top: 50%;
+        background: #a7f3df;
+      }
+
+      .node-f {
+        right: 30%;
+        top: 72%;
+        background: #a7f3df;
+      }
+
+      .quiet-caption {
+        position: absolute;
+        left: 43%;
+        top: calc(34% + clamp(8.4rem, 15vw, 11rem) + 0.95rem);
+        width: clamp(8.4rem, 15vw, 11rem);
+        color: rgba(242, 245, 245, 0.72);
+        font-size: 0.86rem;
+        font-weight: 800;
+        line-height: 1.35;
+        text-align: center;
+      }
+
+      @media (max-width: 900px) {
+        .nav {
+          display: none;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          min-height: auto;
+        }
+
+        h1 {
+          max-width: 12ch;
+        }
+
+        .visual-stage {
+          min-height: 430px;
+        }
+
+      }
+
+      @media (max-width: 580px) {
+        .hero-preview {
+          padding-top: 1.25rem;
+        }
+
+        h1 {
+          max-width: none;
+          font-size: clamp(2.55rem, 13vw, 3.55rem);
+        }
+
+        .cta-row {
+          display: grid;
+          margin-top: 1.5rem;
+        }
+
+        .cta-primary,
+        .cta-secondary {
+          width: 100%;
+        }
+
+        .trust-strip {
+          margin-top: 1.25rem;
+        }
+
+        .visual-stage {
+          min-height: 390px;
+          margin-top: 0.5rem;
+        }
+
+        .tag {
+          min-height: 2rem;
+          padding: 0.42rem 0.58rem;
+        }
+
+        .tag-email,
+        .tag-forms,
+        .tag-chasing {
+          left: 0;
+        }
+
+        .tag-intake,
+        .tag-follow,
+        .tag-records {
+          right: 0;
+        }
+
+        .label {
+          max-width: 10rem;
+          font-size: 0.78rem;
+        }
+
+        .quiet-caption {
+          font-size: 0.78rem;
+        }
+
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.001ms !important;
+          animation-duration: 0.001ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="preview-shell">
+      <div class="notice">Non-production hero preview. This standalone file does not change the live website.</div>
+
+      <header class="site-header" aria-label="Preview navigation">
+        <a class="brand" href="#">
+          <img src="../../public/logo.webp" alt="DataSolace" />
+          <span>DataSolace</span>
+        </a>
+        <nav class="nav" aria-label="Preview links">
+          <span>Services</span>
+          <span>Portfolio</span>
+          <span>Blog</span>
+          <span>Appointments</span>
+          <span>Start a conversation</span>
+        </nav>
+      </header>
+
+      <section class="hero-preview" aria-labelledby="preview-title">
+        <div class="hero">
+          <div>
+            <div class="kicker">Small business process automation</div>
+            <h1 id="preview-title">Automation shaped around your business.</h1>
+            <p class="hero-copy">
+              Direct, owner-led help with the admin and handoffs slowing your team down.
+            </p>
+            <div class="cta-row">
+              <a class="cta-primary" href="#">Start a conversation</a>
+              <a class="cta-secondary" href="#">See what we automate</a>
+            </div>
+            <ul class="trust-strip" aria-label="Trust points">
+              <li>Owner-led</li>
+              <li>Plain language</li>
+              <li>Built to maintain</li>
+            </ul>
+          </div>
+
+          <div class="visual-stage" aria-label="Messy manual work becoming a clearer automated process">
+            <svg class="process-line" viewBox="0 0 680 520" role="img" aria-hidden="true">
+              <path class="mess-line" d="M76 112 C142 74 171 184 239 142 C286 113 293 221 363 194" />
+              <path class="mess-line" d="M58 270 C137 232 157 350 235 312 C278 291 319 358 382 302" />
+              <path class="mess-line" d="M86 392 C150 430 198 337 256 390 C305 435 333 376 384 405" />
+              <path class="guide-line" d="M408 260 C468 222 528 222 603 238" />
+              <path class="guide-line" d="M408 260 C482 270 535 298 615 319" />
+              <path class="main-line" d="M408 260 C462 186 536 146 624 122" />
+              <path class="main-line" d="M408 260 C488 279 542 330 620 403" />
+            </svg>
+
+            <span class="tag tag-email is-faint">Email</span>
+            <span class="tag tag-forms is-faint">Forms</span>
+            <span class="tag tag-chasing is-faint">Chasing</span>
+
+            <span class="process-node node-small node-a"></span>
+            <span class="process-node node-small node-b"></span>
+            <span class="process-node node-small node-c"></span>
+
+            <span class="process-node node-large node-brand">
+              <img src="../../public/logo.webp" alt="" />
+            </span>
+            <span class="quiet-caption">Mapped with the people who run the work</span>
+
+            <span class="process-node node-small node-d"></span>
+            <span class="process-node node-small node-e"></span>
+            <span class="process-node node-small node-f"></span>
+
+            <span class="tag tag-intake is-good">Intake</span>
+            <span class="tag tag-follow is-good">Follow-up</span>
+            <span class="tag tag-records is-good">Records</span>
+
+            <span class="label label-before">Scattered requests, manual updates, unclear ownership.</span>
+            <span class="label label-after">A clear process your team can keep using.</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

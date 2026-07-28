@@ -1,0 +1,15 @@
+node_modules
+.next
+.open-next
+.wrangler
+.git
+.local-backups
+.env
+.env.*
+!.env.example
+tunnel_token
+cloudflared-credentials.json
+cms/node_modules
+cms/.next
+cms/media/*
+!cms/media/.gitkeep
