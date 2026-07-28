@@ -26,25 +26,22 @@ const kalam = Kalam({
 export const metadata: Metadata = {
   metadataBase: new URL('https://datasolace.com'),
   title: {
-    default: "DataSolace - Business & Home Automation Solutions | UK",
+    default: "DataSolace - Small Business Process Automation | UK",
     template: "%s | DataSolace"
   },
-  description: "Transform your business and home with cutting-edge automation solutions. From enterprise infrastructure to luxury smart homes, we deliver bespoke automation that scales with your needs. Based in the UK, serving clients worldwide.",
+  description: "Owner-led process automation for UK small businesses. We map how your work actually runs, connect the tools you already use, build what's missing, and keep it all running.",
   keywords: [
-    "business automation",
-    "home automation",
-    "smart home",
-    "enterprise solutions",
-    "luxury automation",
-    "IoT",
-    "smart technology",
-    "UK automation",
-    "business infrastructure",
-    "home security",
-    "smart building",
-    "automation consulting",
+    "small business automation",
+    "process automation",
+    "process mapping",
+    "business process documentation",
     "systems integration",
-    "workflow automation"
+    "workflow automation",
+    "custom internal tools",
+    "business admin automation",
+    "UK automation",
+    "self-hosted business systems",
+    "automation consulting"
   ],
   authors: [{ name: "DataSolace Ltd", url: "https://datasolace.com" }],
   creator: "DataSolace Ltd",
@@ -70,32 +67,25 @@ export const metadata: Metadata = {
     locale: 'en_GB',
     url: 'https://datasolace.com',
     siteName: 'DataSolace',
-    title: 'DataSolace - Business & Home Automation Solutions | UK',
-    description: 'Transform your business and home with cutting-edge automation solutions. From enterprise infrastructure to luxury smart homes, we deliver bespoke automation that scales with your needs.',
+    title: 'DataSolace - Small Business Process Automation | UK',
+    description: 'Owner-led process automation for UK small businesses. We map how your work actually runs, connect the tools you already use, build what\'s missing, and keep it all running.',
     images: [
       {
         url: '/logo.webp',
         width: 512,
         height: 512,
-        alt: 'DataSolace - Business & Home Automation Solutions',
-        type: 'image/webp',
-      },
-      {
-        url: '/SHI-hotpotAI_1920_1200.webp',
-        width: 1920,
-        height: 1200,
-        alt: 'DataSolace Automation Solutions',
+        alt: 'DataSolace - Small Business Process Automation',
         type: 'image/webp',
       },
     ],
   },
   twitter: {
-    card: 'summary_large_image',
+    card: 'summary',
     site: '@datasolace',
     creator: '@datasolace',
-    title: 'DataSolace - Business & Home Automation Solutions | UK',
-    description: 'Transform your business and home with cutting-edge automation solutions. From enterprise infrastructure to luxury smart homes.',
-    images: ['/SHI-hotpotAI_1920_1200.webp'],
+    title: 'DataSolace - Small Business Process Automation | UK',
+    description: 'Owner-led process automation for UK small businesses. We map the work, build the system, and keep it running.',
+    images: ['/logo.webp'],
   },
   other: {
     'theme-color': '#1D2D46',
@@ -125,7 +115,7 @@ export const metadata: Metadata = {
     canonical: 'https://datasolace.com',
   },
   category: 'technology',
-  classification: 'Business & Home Automation Solutions',
+  classification: 'Small Business Process Automation',
 };
 
 export const viewport: Viewport = {
@@ -143,8 +133,6 @@ export default function RootLayout({
   return (
     <html lang="en-GB">
       <head>
-        {/* Preload critical resources */}
-        <link rel="preload" href="/logo.webp" as="image" type="image/webp" />
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
 
@@ -158,7 +146,7 @@ export default function RootLayout({
               "name": "DataSolace Ltd",
               "url": "https://datasolace.com",
               "logo": "https://datasolace.com/logo.webp",
-              "description": "Transform your business and home with cutting-edge automation solutions. From enterprise infrastructure to luxury smart homes, we deliver bespoke automation that scales with your needs.",
+              "description": "Owner-led process automation for UK small businesses: process mapping and documentation, systems integration, custom internal tools, and managed hosting.",
               "foundingDate": "2024",
               "address": {
                 "@type": "PostalAddress",
@@ -180,22 +168,38 @@ export default function RootLayout({
               },
               "hasOfferCatalog": {
                 "@type": "OfferCatalog",
-                "name": "Automation Services",
+                "name": "Process Automation Services",
                 "itemListElement": [
                   {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Business Automation",
-                      "description": "Enterprise automation solutions including infrastructure, workflow optimisation, and systems integration"
+                      "name": "Process Mapping & Documentation",
+                      "description": "Observing how the work actually runs and writing it down so it stops depending on memory"
                     }
                   },
                   {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Home Automation",
-                      "description": "Luxury home automation solutions for comfort, security, and efficiency"
+                      "name": "Systems Integration",
+                      "description": "Connecting existing tools, APIs, and data flows so records move between systems without retyping"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Custom Internal Tools",
+                      "description": "Bespoke apps, forms, dashboards, and portals built around a specific workflow"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Hosting & Infrastructure",
+                      "description": "Running and maintaining delivered systems, including self-hosting, backups, and ongoing support"
                     }
                   }
                 ]
@@ -214,12 +218,11 @@ export default function RootLayout({
               "name": "DataSolace Ltd",
               "url": "https://datasolace.com",
               "logo": "https://datasolace.com/logo.webp",
-              "description": "UK-based automation solutions provider for businesses and homes",
+              "description": "Owner-led process automation partner for UK small businesses",
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "GB"
               },
-              "telephone": "+44",
               "email": "contact@datasolace.com",
               "priceRange": "££",
               "currenciesAccepted": "GBP",
@@ -228,7 +231,7 @@ export default function RootLayout({
                 "@type": "Country",
                 "name": "United Kingdom"
               },
-              "serviceType": ["Business Automation", "Home Automation", "Systems Integration"],
+              "serviceType": ["Process Mapping & Documentation", "Systems Integration", "Custom Internal Tools", "Hosting & Infrastructure"],
               "openingHours": "Mo-Fr 09:00-17:00"
             })
           }}

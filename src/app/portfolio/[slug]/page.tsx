@@ -240,7 +240,7 @@ export default async function PortfolioItem({ params }: { params: Promise<{ slug
                   {nextItemData.title}
                 </h3>
               </div>
-              <span className="text-[var(--brand-teal)] text-2xl group-hover:translate-x-2 transition-transform">
+              <span className="text-[var(--brand-teal-text)] text-2xl group-hover:translate-x-2 transition-transform">
                 →
               </span>
             </Link>

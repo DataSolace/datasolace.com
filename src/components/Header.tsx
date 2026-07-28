@@ -82,8 +82,10 @@ export default function Header({ currentPage }: HeaderProps) {
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMenu}
-          className="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5"
-          aria-label="Toggle menu"
+          className="lg:hidden flex flex-col justify-center items-center w-11 h-11 space-y-1.5"
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
         >
           <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
           <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
@@ -93,14 +95,14 @@ export default function Header({ currentPage }: HeaderProps) {
         {/* Contact Button - Hidden on mobile when menu is open */}
         <Link
           href="/#contact"
-          className={`bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 lg:px-6 lg:py-2 rounded-lg transition-colors text-xs sm:text-sm md:text-base ${isMenuOpen ? 'hidden' : 'block'}`}
+          className={`bg-[var(--brand-green)] hover:bg-[var(--brand-green-dark)] text-white font-semibold px-3 py-2 sm:px-4 sm:py-2 md:px-4 md:py-2 lg:px-6 lg:py-2 rounded-lg transition-colors text-sm md:text-base ${isMenuOpen ? 'hidden' : 'block'}`}
         >
           Contact Us
         </Link>
       </div>
 
       {/* Mobile Menu Dropdown */}
-      <div className={`lg:hidden absolute top-full left-0 right-0 bg-[var(--brand-blue)]/95 backdrop-blur-sm border-b border-white/10 transition-all duration-300 ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+      <div id="mobile-menu" className={`lg:hidden absolute top-full left-0 right-0 bg-[var(--brand-blue)]/95 backdrop-blur-sm border-b border-white/10 transition-all duration-300 ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
         <nav className="px-4 py-4 space-y-4 text-center">
           <Link
             href="/services"

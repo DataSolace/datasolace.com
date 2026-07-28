@@ -95,15 +95,15 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "name": "DataSolace - Business & Home Automation Solutions",
-            "description": "Transform your business and home with cutting-edge automation solutions. From enterprise infrastructure to luxury smart homes, we deliver bespoke automation that scales with your needs.",
+            "name": "DataSolace - Small Business Process Automation",
+            "description": "Owner-led process automation for UK small businesses. We map how your work actually runs, connect the tools you already use, build what's missing, and keep it all running.",
             "url": "https://datasolace.com",
             "mainEntity": {
               "@type": "Organization",
               "name": "DataSolace Ltd",
               "url": "https://datasolace.com",
               "logo": "https://datasolace.com/logo.webp",
-              "description": "Transform your business and home with cutting-edge automation solutions.",
+              "description": "Owner-led process automation partner for UK small businesses.",
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "GB"
@@ -151,16 +151,16 @@ export default function Home() {
                 Direct, owner-led help with the admin and handoffs slowing your team down.
               </p>
 
-              <div className="flex flex-wrap items-center gap-4 mb-10">
+              <div className="flex flex-wrap items-center gap-3 mb-10">
                 <Link
                   href="/#contact"
-                  className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-7 py-3.5 rounded-lg text-lg font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-6 py-3.5 rounded-lg text-xl font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   Start a conversation
                 </Link>
                 <Link
                   href="/services"
-                  className="text-white border border-white/35 hover:border-white/70 hover:bg-white/5 px-7 py-3.5 rounded-lg text-lg font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  className="text-white border border-white/35 hover:border-white/70 hover:bg-white/5 px-6 py-3.5 rounded-lg text-xl font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   See what we automate
                 </Link>
@@ -278,76 +278,62 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Features Section */}
-        <section className="bg-white py-20 px-6">
-          <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Let&apos;s Build 🔧<br />
-              <span className="inline-block mt-2">🚀 Brilliant Things</span>
-            </h2>
-            <p className="text-xl text-gray-700 mb-16 max-w-4xl mx-auto">
-              We are a trusted partner for Business and Home automation, bringing over a decade of systems design and engineering to those who want to focus on what matters most.
-            </p>
+        {/* Capabilities Section */}
+        <section className="bg-white py-20 md:py-24 px-6">
+          <div className="max-w-5xl mx-auto">
+            <div className="max-w-2xl mb-16">
+              <h2 className="text-5xl md:text-6xl font-bold text-[var(--brand-blue)] mb-6 text-balance">
+                We map the work before we build the system.
+              </h2>
+              <p className="text-xl leading-relaxed text-[#374151]">
+                DataSolace covers the whole span — understanding how the work
+                actually happens, connecting the tools you already use, building
+                what&apos;s missing, and keeping it all running. The people who design
+                your system are the people who answer when it needs changing.
+              </p>
+            </div>
 
-            <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-2 gap-16 items-center">
-                {/* Business Features */}
-                <div className="flex flex-col h-full">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center md:text-left">Business Solutions</h3>
-                  <ul className="space-y-4 mb-8 max-w-sm mx-auto md:mx-0 flex-grow">
-                    <li className="flex items-center">
-                      <span className="text-2xl mr-3 leading-none flex-shrink-0">💼</span>
-                      <span className="text-lg text-gray-700 leading-relaxed text-left">Infrastructure to Enable Business Growth</span>
-                    </li>
-                    <li className="flex items-center">
-                      <span className="text-2xl mr-3 leading-none flex-shrink-0">💼</span>
-                      <span className="text-lg text-gray-700 leading-relaxed text-left">Eliminate Time Consuming Activities</span>
-                    </li>
-                    <li className="flex items-center">
-                      <span className="text-2xl mr-3 leading-none flex-shrink-0">💼</span>
-                      <span className="text-lg text-gray-700 leading-relaxed text-left">Protect Business Intellectual Property</span>
-                    </li>
-                    <li className="flex items-center">
-                      <span className="text-2xl mr-3 leading-none flex-shrink-0">💼</span>
-                      <span className="text-lg text-gray-700 leading-relaxed text-left">Consolidate Systems and Optimise Workflows</span>
-                    </li>
-                  </ul>
-                  <div className="text-center md:text-left">
-                    <Link href="/appointments" className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block">
-                      🚀 Automate My Business
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Home Features */}
-                <div className="flex flex-col h-full">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center md:text-left">Home Solutions</h3>
-                  <ul className="space-y-4 mb-8 max-w-sm mx-auto md:mx-0 flex-grow">
-                    <li className="flex items-center">
-                      <span className="text-2xl mr-3 leading-none flex-shrink-0">🏠</span>
-                      <span className="text-lg text-gray-700 leading-relaxed text-left">Enhanced Home Comfort and Efficiency</span>
-                    </li>
-                    <li className="flex items-center">
-                      <span className="text-2xl mr-3 leading-none flex-shrink-0">🏠</span>
-                      <span className="text-lg text-gray-700 leading-relaxed text-left">Premises Security and Access Management</span>
-                    </li>
-                    <li className="flex items-center">
-                      <span className="text-2xl mr-3 leading-none flex-shrink-0">🏠</span>
-                      <span className="text-lg text-gray-700 leading-relaxed text-left">Environmental Monitoring and Protection</span>
-                    </li>
-                    <li className="flex items-center">
-                      <span className="text-2xl mr-3 leading-none flex-shrink-0">🏠</span>
-                      <span className="text-lg text-gray-700 leading-relaxed text-left">Unified control and automated daily routines</span>
-                    </li>
-                  </ul>
-                  <div className="text-center md:text-left">
-                    <Link href="/appointments" className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block">
-                      🚀 Automate My Home
-                    </Link>
-                  </div>
-                </div>
+            <div className="grid md:grid-cols-2 gap-x-16 gap-y-12 mb-16">
+              <div>
+                <h3 className="text-2xl font-bold text-[var(--brand-blue)] mb-3">Process mapping &amp; documentation</h3>
+                <p className="text-lg leading-relaxed text-[#374151] max-w-[52ch]">
+                  We sit with the people who run the work and write down how it
+                  really moves — who touches it, where it stalls, what lives only
+                  in someone&apos;s head — so the process stops depending on memory.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-[var(--brand-blue)] mb-3">Systems integration</h3>
+                <p className="text-lg leading-relaxed text-[#374151] max-w-[52ch]">
+                  Your inbox, forms, spreadsheets, and job records already hold
+                  the information. We connect them so it moves between systems
+                  without retyping, chasing, or copy-paste.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-[var(--brand-blue)] mb-3">Custom internal tools</h3>
+                <p className="text-lg leading-relaxed text-[#374151] max-w-[52ch]">
+                  When nothing off the shelf fits how you work, we build the
+                  form, dashboard, or portal your workflow actually needs —
+                  shaped around your process, not the other way round.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-[var(--brand-blue)] mb-3">Hosting &amp; infrastructure</h3>
+                <p className="text-lg leading-relaxed text-[#374151] max-w-[52ch]">
+                  We run what we build — hosting, backups, monitoring, and
+                  support — so the system keeps working long after it ships,
+                  maintained by the people who made it.
+                </p>
               </div>
             </div>
+
+            <Link
+              href="/appointments"
+              className="inline-block bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-8 py-4 rounded-lg text-xl font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-blue)]"
+            >
+              Book an intro call
+            </Link>
           </div>
         </section>
 
@@ -357,33 +343,39 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-16 items-center">
               {/* Left Side - Text Content */}
               <div>
-                <h2 className="text-5xl md:text-6xl font-bold text-[var(--brand-teal)] mb-6">
-                  Let&apos;s Work Together!
+                <h2 className="text-5xl md:text-6xl font-bold text-[var(--brand-teal)] mb-6 text-balance">
+                  Tell us where the work gets stuck.
                 </h2>
-                <div className="text-white text-xl space-y-2">
-                  <p>Want to impress guests with a</p>
-                  <p>home that seems to run itself?</p>
-                  <p>We&apos;ll show you how!</p>
-                  <p className="font-semibold mt-4">Get in touch today.</p>
+                <div className="text-white text-xl leading-relaxed space-y-4">
+                  <p>
+                    The chasing, the retyping, the job that keeps landing back
+                    on your desk — describe it the way you&apos;d describe it to a
+                    colleague.
+                  </p>
+                  <p>
+                    You&apos;ll be talking directly to the people who&apos;d build the
+                    system: plain answers about what&apos;s worth automating, and
+                    what isn&apos;t.
+                  </p>
                 </div>
               </div>
 
               {/* Right Side - Contact Form */}
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8">
                 {submitStatus === 'success' && (
-                  <div className="mb-6 p-4 bg-[var(--brand-teal)]/20 border border-[var(--brand-teal)] rounded-lg">
-                    <p className="text-[var(--brand-teal)] font-semibold">Thank you! Your message has been sent successfully.</p>
+                  <div role="status" className="mb-6 p-4 bg-[var(--brand-teal)]/20 border border-[var(--brand-teal)] rounded-lg">
+                    <p className="text-[#9BE1D0] font-semibold">Thank you! Your message has been sent successfully.</p>
                   </div>
                 )}
 
                 {submitStatus === 'error' && (
-                  <div className="mb-6 p-4 bg-red-500/20 border border-red-400 rounded-lg">
+                  <div role="alert" className="mb-6 p-4 bg-red-500/20 border border-red-400 rounded-lg">
                     <p className="text-red-400 font-semibold">Sorry, there was an error sending your message. Please try again.</p>
                   </div>
                 )}
 
                 {submitStatus === 'rate-limited' && (
-                  <div className="mb-6 p-4 bg-yellow-500/20 border border-yellow-400 rounded-lg">
+                  <div role="alert" className="mb-6 p-4 bg-yellow-500/20 border border-yellow-400 rounded-lg">
                     <p className="text-yellow-400 font-semibold">
                       Too many requests. Please wait a moment before trying again.
                       {rateLimitInfo.retryAfter && (
@@ -398,50 +390,58 @@ export default function Home() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-white text-sm font-medium mb-2">First Name</label>
+                      <label htmlFor="firstName" className="block text-white text-sm font-medium mb-2">First Name</label>
                       <input
                         type="text"
+                        id="firstName"
                         name="firstName"
+                        autoComplete="given-name"
                         value={formData.firstName}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-[var(--brand-teal)]"
+                        className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/75 focus:border-[var(--brand-teal)] focus-visible:outline-white"
                         placeholder="First Name"
                       />
                     </div>
                     <div>
-                      <label className="block text-white text-sm font-medium mb-2">Last Name</label>
+                      <label htmlFor="lastName" className="block text-white text-sm font-medium mb-2">Last Name</label>
                       <input
                         type="text"
+                        id="lastName"
                         name="lastName"
+                        autoComplete="family-name"
                         value={formData.lastName}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-[var(--brand-teal)]"
+                        className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/75 focus:border-[var(--brand-teal)] focus-visible:outline-white"
                         placeholder="Last Name"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-white text-sm font-medium mb-2">Email (required)</label>
+                    <label htmlFor="email" className="block text-white text-sm font-medium mb-2">Email (required)</label>
                     <input
                       type="email"
+                      id="email"
                       name="email"
+                      autoComplete="email"
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-[var(--brand-teal)]"
+                      className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/75 focus:border-[var(--brand-teal)] focus-visible:outline-white"
                       placeholder="your@email.com"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-white text-sm font-medium mb-2">Phone Number</label>
+                    <label htmlFor="phone" className="block text-white text-sm font-medium mb-2">Phone Number</label>
                     <input
                       type="tel"
+                      id="phone"
                       name="phone"
+                      autoComplete="tel"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-[var(--brand-teal)]"
+                      className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/75 focus:border-[var(--brand-teal)] focus-visible:outline-white"
                       placeholder="+44 20 7946 0958"
                     />
                   </div>
@@ -453,23 +453,24 @@ export default function Home() {
                       name="newsletter"
                       checked={formData.newsletter}
                       onChange={handleInputChange}
-                      className="w-4 h-4 text-[var(--brand-teal)] bg-white/20 border-white/30 rounded focus:ring-[var(--brand-teal)]"
+                      className="w-5 h-5 text-[var(--brand-teal)] bg-white/20 border-white/30 rounded focus-visible:outline-white"
                     />
-                    <label htmlFor="newsletter" className="ml-2 text-white text-sm">
+                    <label htmlFor="newsletter" className="ml-3 py-2 text-white text-sm">
                       Sign up for news and updates
                     </label>
                   </div>
 
                   <div>
-                    <label className="block text-white text-sm font-medium mb-2">Message (required)</label>
+                    <label htmlFor="message" className="block text-white text-sm font-medium mb-2">Message (required)</label>
                     <textarea
+                      id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
                       required
                       rows={4}
-                      className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-[var(--brand-teal)] resize-none"
-                      placeholder="Tell us about your automation needs..."
+                      className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/75 focus:border-[var(--brand-teal)] focus-visible:outline-white resize-none"
+                      placeholder="What's the process that's slowing you down?"
                     ></textarea>
                   </div>
 
@@ -490,13 +491,13 @@ export default function Home() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className={`px-8 py-3 rounded-lg font-semibold transition-colors ${
+                      className={`px-8 py-3 rounded-lg text-xl font-bold transition-colors focus-visible:outline-white ${
                         isSubmitting
                           ? 'bg-gray-500 cursor-not-allowed'
                           : 'bg-[var(--brand-teal)] hover:bg-[var(--brand-green)]'
                       } text-white`}
                     >
-                      {isSubmitting ? 'Sending...' : 'Send'}
+                      {isSubmitting ? 'Sending...' : 'Send message'}
                     </button>
                   </div>
                 </form>

@@ -9,6 +9,9 @@
   --brand-white: #F2F5F5;
   --brand-teal: #029979;
   --brand-green: #04866E;
+  /* Text-safe action colors: teal/green darkened to ≥4.5:1 on white surfaces */
+  --brand-teal-text: #02735B;
+  --brand-green-dark: #016450;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,6 +29,14 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+/* Visible keyboard focus everywhere; ≥3:1 against both the blue field and white panels */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--brand-teal);
+    outline-offset: 2px;
+  }
 }
 
 /* Markdown Content Styles */
@@ -85,30 +96,30 @@ body {
 }
 
 .prose a {
-  color: var(--brand-teal);
+  color: var(--brand-teal-text);
   text-decoration: underline;
-  text-decoration-color: var(--brand-teal);
+  text-decoration-color: var(--brand-teal-text);
   text-underline-offset: 2px;
 }
 
 .prose a:hover {
-  color: var(--brand-green);
-  text-decoration-color: var(--brand-green);
+  color: var(--brand-green-dark);
+  text-decoration-color: var(--brand-green-dark);
 }
 
 .prose blockquote {
-  border-left: 4px solid var(--brand-teal);
+  border-left: 1px solid var(--brand-teal);
   padding-left: 1rem;
   margin: 1.5rem 0;
   font-style: italic;
-  color: #666;
+  color: #4B5563;
 }
 
 .prose code {
   background-color: #f3f4f6;
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
-  font-family: 'Courier New', monospace;
+  font-family: var(--font-geist-mono), monospace;
   font-size: 0.875rem;
 }
 
@@ -130,7 +141,7 @@ body {
   height: auto;
   border-radius: 0.5rem;
   margin: 1.5rem 0;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
 .prose figure {
@@ -140,7 +151,7 @@ body {
 .prose figcaption {
   text-align: center;
   font-size: 0.875rem;
-  color: #666;
+  color: #4B5563;
   margin-top: 0.5rem;
 }
 
@@ -154,7 +165,7 @@ body {
 .prose [id*="caption"] {
   text-align: center;
   font-size: 0.875rem;
-  color: #666;
+  color: #4B5563;
   margin-top: 0.5rem;
   font-style: italic;
 }

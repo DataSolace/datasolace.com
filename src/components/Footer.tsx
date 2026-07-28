@@ -16,12 +16,12 @@ export default function Footer() {
           </div>
 
           {/* Center - Social Media Links */}
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-1">
             <a
               href="https://www.linkedin.com/company/datasolace"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--brand-white)] hover:text-[var(--brand-teal)] transition-colors"
+              className="p-2.5 text-[var(--brand-white)] hover:text-[var(--brand-teal)] transition-colors"
               aria-label="LinkedIn"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -33,7 +33,7 @@ export default function Footer() {
               href="https://twitter.com/datasolace"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--brand-white)] hover:text-[var(--brand-teal)] transition-colors"
+              className="p-2.5 text-[var(--brand-white)] hover:text-[var(--brand-teal)] transition-colors"
               aria-label="Twitter"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -45,7 +45,7 @@ export default function Footer() {
               href="https://www.instagram.com/datasolace"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--brand-white)] hover:text-[var(--brand-teal)] transition-colors"
+              className="p-2.5 text-[var(--brand-white)] hover:text-[var(--brand-teal)] transition-colors"
               aria-label="Instagram"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">

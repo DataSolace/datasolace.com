@@ -59,7 +59,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {/* Header */}
             <header className="mb-8">
               <div className="flex items-center justify-between mb-4">
-                <span className="text-sm font-medium text-[var(--brand-teal)] bg-[var(--brand-teal)]/10 px-3 py-1 rounded">
+                <span className="text-sm font-medium text-[var(--brand-teal-text)] bg-[var(--brand-teal)]/10 px-3 py-1 rounded">
                   {post.category}
                 </span>
                 <span className="text-sm text-gray-500">
@@ -110,17 +110,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div className="flex space-x-4">
                   <span className="text-gray-600">Share:</span>
-                  <a href="#" className="text-[var(--brand-teal)] hover:text-[var(--brand-green)] transition-colors">
+                  <a href="#" className="text-[var(--brand-teal-text)] hover:text-[var(--brand-green)] transition-colors">
                     Twitter
                   </a>
-                  <a href="#" className="text-[var(--brand-teal)] hover:text-[var(--brand-green)] transition-colors">
+                  <a href="#" className="text-[var(--brand-teal-text)] hover:text-[var(--brand-green)] transition-colors">
                     LinkedIn
                   </a>
                 </div>
                 
                 <Link
                   href="/blog"
-                  className="text-[var(--brand-teal)] hover:text-[var(--brand-green)] transition-colors font-medium"
+                  className="text-[var(--brand-teal-text)] hover:text-[var(--brand-green)] transition-colors font-medium"
                 >
                   ← Back to Blog
                 </Link>
@@ -145,7 +145,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     <p className="text-gray-600 text-sm mb-3">
                       {relatedPost.description.substring(0, 120)}...
                     </p>
-                    <span className="text-[var(--brand-teal)] text-sm font-medium">
+                    <span className="text-[var(--brand-teal-text)] text-sm font-medium">
                       Read More →
                     </span>
                   </Link>

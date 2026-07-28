@@ -86,44 +86,44 @@ export default function Appointments() {
             <h2 className="text-2xl font-bold text-white mb-6 text-center">What to Expect</h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div className="text-center">
-                <h3 className="text-xl font-semibold text-[var(--brand-teal)] mb-4">📞 Initial Consultation</h3>
+                <h3 className="text-xl font-semibold text-[var(--brand-teal-text)] mb-4">📞 Initial Consultation</h3>
                 <ul className="space-y-2 text-white/90 text-left inline-block">
                   <li className="flex items-start">
-                    <span className="text-[var(--brand-teal)] mr-2">•</span>
+                    <span className="text-[var(--brand-teal-text)] mr-2">•</span>
                     <span>30-minute discovery call</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-[var(--brand-teal)] mr-2">•</span>
+                    <span className="text-[var(--brand-teal-text)] mr-2">•</span>
                     <span>Understand your goals</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-[var(--brand-teal)] mr-2">•</span>
+                    <span className="text-[var(--brand-teal-text)] mr-2">•</span>
                     <span>Discuss current challenges</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-[var(--brand-teal)] mr-2">•</span>
+                    <span className="text-[var(--brand-teal-text)] mr-2">•</span>
                     <span>Explore potential solutions</span>
                   </li>
                 </ul>
               </div>
 
               <div className="text-center">
-                <h3 className="text-xl font-semibold text-[var(--brand-teal)] mb-4">🎯 Custom Solution Design</h3>
+                <h3 className="text-xl font-semibold text-[var(--brand-teal-text)] mb-4">🎯 Custom Solution Design</h3>
                 <ul className="space-y-2 text-white/90 text-left inline-block">
                   <li className="flex items-start">
-                    <span className="text-[var(--brand-teal)] mr-2">•</span>
+                    <span className="text-[var(--brand-teal-text)] mr-2">•</span>
                     <span>Tailored automation strategy</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-[var(--brand-teal)] mr-2">•</span>
+                    <span className="text-[var(--brand-teal-text)] mr-2">•</span>
                     <span>Technology recommendations</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-[var(--brand-teal)] mr-2">•</span>
+                    <span className="text-[var(--brand-teal-text)] mr-2">•</span>
                     <span>Implementation timeline</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-[var(--brand-teal)] mr-2">•</span>
+                    <span className="text-[var(--brand-teal-text)] mr-2">•</span>
                     <span>Investment overview</span>
                   </li>
                 </ul>
