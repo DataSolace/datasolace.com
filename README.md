@@ -1,58 +1,41 @@
 # DataSolace
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/next-starter-template)
+The public-facing website for DataSolace — owner-led process automation for UK small businesses. We map how the work actually runs, connect the tools already in use, build what's missing, and keep it all running.
 
-This is the public-facing repository for DataSolace's statically generated website, showcasing our expertise in business and home automation solutions.
+## What the site covers
 
-## About DataSolace
+- **Process mapping & documentation** — observing how work really moves and writing it down so it stops depending on memory
+- **Systems integration** — connecting existing tools, APIs, and data flows so records move between systems without retyping
+- **Custom internal tools** — bespoke apps, forms, dashboards, and portals built around a specific workflow
+- **Hosting & infrastructure** — running and maintaining delivered systems, including self-hosted setups, backups, and ongoing support
 
-DataSolace is a trusted partner for Business and Home automation, bringing over a decade of systems design and engineering to those who want to focus on what matters most.
-
-### Our Services
-
-#### Business Automation
-- **Infrastructure to Enable Business Growth** - Scalable solutions that grow with your business
-- **Eliminate Time Consuming Activities** - Streamline operations and boost productivity
-- **Protect Business Intellectual Property** - Secure systems and data protection
-- **Consolidate Systems and Optimise Workflows** - Unified platforms for better efficiency
-
-#### Home Automation
-- **Enhanced Home Comfort and Efficiency** - Luxury automation for modern living
-- **Premises Security and Access Management** - Advanced security solutions
-- **Environmental Monitoring and Protection** - Smart environmental controls
-- **Unified control and automated daily routines** - Seamless home management
+Product and design context for contributors lives in [PRODUCT.md](PRODUCT.md) and [DESIGN.md](DESIGN.md).
 
 ## Technology Stack
 
-This website is built with:
-- [Next.js](https://nextjs.org/) - React framework for production
-- [OpenNext](https://opennext.js.org/) - Cloudflare adapter for Next.js
-- [Cloudflare Workers](https://developers.cloudflare.com/workers/) - Edge computing platform
-- [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript
+- [Next.js 15](https://nextjs.org/) - public site (standalone output)
+- [Payload CMS](https://payloadcms.com/) - content management (blog, portfolio), backed by Postgres 16
+- [TypeScript](https://www.typescriptlang.org/) - type-safe JavaScript
+- [Tailwind CSS 4](https://tailwindcss.com/) - styling
+- Docker Compose + nginx + [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/) - self-hosted deployment
 
 ## Getting Started
 
 ### Prerequisites
 - Node.js (version 18 or higher)
-- npm, yarn, pnpm, or bun
+- Docker (only needed for the CMS-backed pages and full-stack work)
 
 ### Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-org/datasolace-com.git
-cd datasolace-com
+git clone https://github.com/DataSolace/datasolace.com.git
+cd datasolace.com
 ```
 
 2. Install dependencies:
 ```bash
 npm install
-# or
-yarn install
-# or
-pnpm install
-# or
-bun install
 ```
 
 3. Run the development server:
@@ -62,18 +45,21 @@ npm run dev
 
 4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Development
+The homepage, services, and appointments pages render standalone. Blog and portfolio pages fetch from Payload — bring up the CMS locally with `docker compose up postgres payload` (requires `POSTGRES_PASSWORD` and `PAYLOAD_SECRET` in your environment) if you're working on those.
 
-The website auto-updates as you edit files. You can start editing the main page by modifying `src/app/page.tsx`.
+## Development
 
 ### Pre-commit Hooks
 
 This project uses [Husky](https://typicode.github.io/husky/) to run pre-commit checks that ensure code quality:
 
+- **Secret scanning**: TruffleHog scans staged changes
 - **Linting**: Runs ESLint to catch code style issues and potential errors
 - **Build Check**: Verifies that the project builds successfully and TypeScript types are valid
 
-The pre-commit hook will automatically run when you make a commit. If any checks fail, the commit will be blocked until the issues are resolved.
+If any checks fail, the commit is blocked until the issues are resolved.
+
+> Note: the build check writes to the same `.next` directory as a running dev server, so `npm run dev` typically needs restarting (with `.next` removed) after each commit.
 
 To manually run the checks:
 ```bash
@@ -83,26 +69,24 @@ npm run check   # Run build and TypeScript checks
 
 ### Available Scripts
 
-| Command                           | Action                                       |
-| :-------------------------------- | :------------------------------------------- |
-| `npm run dev`                     | Start development server                     |
-| `npm run build`                   | Build your production site                   |
-| `npm run preview`                 | Preview your build locally                   |
-| `npm run build && npm run deploy` | Deploy your production site to Cloudflare    |
-| `npm run lint`                    | Run ESLint for code quality checks          |
-| `npm run check`                   | Run build and TypeScript validation         |
+| Command         | Action                              |
+| :-------------- | :---------------------------------- |
+| `npm run dev`   | Start development server            |
+| `npm run build` | Build the production site           |
+| `npm run start` | Serve the production build locally  |
+| `npm run lint`  | Run ESLint for code quality checks  |
+| `npm run check` | Run build and TypeScript validation |
 
 ## Deployment
 
-This website is deployed on Cloudflare Workers as a static website using the OpenNext Cloudflare adapter. The deployment process transforms the Next.js build output to run efficiently in Cloudflare's edge computing environment.
+The site is self-hosted with Docker Compose: Postgres, Payload CMS, the Next.js public app, and nginx, with all ingress via a Cloudflare Tunnel (no publicly exposed ports). Production and staging run side by side from the same compose file, and deploys are `docker compose up -d --build` on the host.
+
+See [docs/deployment/payload-local-stack.md](docs/deployment/payload-local-stack.md) for the full topology, secrets, and runbook. The previous Cloudflare Workers/OpenNext deployment is retired ([cleanup checklist](docs/deployment/legacy-remote-cleanup-checklist.md)).
 
 ## Contact
 
-Ready to automate your business or home? Get in touch with us:
-
 - **Website**: [datasolace.com](https://datasolace.com)
-- **Services**: Business and Home Automation
-- **Expertise**: Systems Design and Engineering
+- **Book an intro call**: [datasolace.com/appointments](https://datasolace.com/appointments)
 
 ## License
 

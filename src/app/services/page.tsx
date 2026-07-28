@@ -1,308 +1,225 @@
-'use client';
-
-import { useState } from 'react';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import Image from 'next/image';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: 'Services',
+  description:
+    'Process mapping, systems integration, custom internal tools, and managed hosting for UK small businesses — designed, built, and run by the same people.',
+};
+
+const capabilities = [
+  {
+    title: 'Process mapping & documentation',
+    body: 'Every engagement starts here. We sit with the people who run the work and write down how it really moves — who touches it, where it stalls, what lives only in someone’s head.',
+    examples: [
+      'A written map of how an enquiry becomes an invoice, including the exceptions',
+      'Handover notes and checklists that don’t depend on one person’s memory',
+      'A record you can train new starters from',
+    ],
+  },
+  {
+    title: 'Systems integration',
+    body: 'Your inbox, forms, spreadsheets, and job records already hold the information. We connect the tools you’ve already chosen so records move between them on their own.',
+    examples: [
+      'Enquiries from email, phone, and web forms logged in one place',
+      'Customer details that flow from quote to booking to invoice without retyping',
+      'Reminders and chase-ups triggered by what’s actually happening, not by memory',
+    ],
+  },
+  {
+    title: 'Custom internal tools',
+    body: 'When nothing off the shelf fits how you work, we build the missing piece — shaped around your process, not the other way round.',
+    examples: [
+      'A job sheet your team fills in on site from a phone',
+      'A dashboard showing where every job sits today',
+      'A portal where customers check progress without ringing the office',
+    ],
+  },
+  {
+    title: 'Hosting & infrastructure',
+    body: 'We run what we build. Hosting, backups, monitoring, updates, and the networks the work happens on — maintained by the people who designed the system, including self-hosted setups where your data stays on equipment you control.',
+    examples: [
+      'Systems hosted, backed up, and monitored without you thinking about them',
+      'Self-hosted options where privacy or ownership of your data matters',
+      'Secure, reliable networking in the places the work actually happens',
+    ],
+  },
+];
+
+const engagementSteps = [
+  {
+    step: '1',
+    title: 'Map the process',
+    body: 'A direct conversation, then time spent watching how the work actually runs. We write it down and agree what should change before proposing any system.',
+  },
+  {
+    step: '2',
+    title: 'Build the system',
+    body: 'We connect the tools you already use and build what’s missing, testing against real jobs — not a demo dataset.',
+  },
+  {
+    step: '3',
+    title: 'Keep it running',
+    body: 'We host and maintain what we deliver. When something needs changing, you talk to the people who built it.',
+  },
+];
 
 export default function Services() {
-  const [email, setEmail] = useState('');
-  const [website, setWebsite] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const handleNewsletterSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setSubmitStatus('error');
-      return;
-    }
-
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-
-    try {
-      const response = await fetch('/api/newsletter', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, website }),
-      });
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        setEmail(''); // Clear the form
-        setWebsite('');
-      } else {
-        setSubmitStatus('error');
-      }
-    } catch (error) {
-      console.error('Error subscribing to newsletter:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-[var(--brand-blue)]">
       <Header currentPage="services" />
 
-      {/* Main Content */}
       <main className="relative z-10 px-6 py-5 pt-36">
         <div className="max-w-6xl mx-auto">
-          {/* Services Card Container */}
-          <div className="bg-white rounded-2xl p-12 shadow-2xl">
-            {/* Title */}
-            <div className="text-center mb-16">
-              <h1 className="text-5xl md:text-6xl font-bold text-[var(--brand-blue)] mb-6">
-                Our services
+          {/* Capabilities */}
+          <div className="bg-white rounded-2xl p-8 sm:p-12 shadow-2xl">
+            <div className="max-w-2xl mb-16">
+              <h1 className="text-5xl md:text-6xl font-bold text-[var(--brand-blue)] mb-6 text-balance">
+                What we automate.
               </h1>
+              <p className="text-xl leading-relaxed text-[#374151]">
+                Four things, done properly: understanding how your work runs,
+                connecting the tools that carry it, building what&apos;s missing,
+                and keeping all of it running. No named clients appear below —
+                our client work is confidential — so we describe the work
+                itself, specifically.
+              </p>
             </div>
 
-            {/* Services Grid */}
-            <div className="grid md:grid-cols-3 gap-8 mb-16">
-              {/* Networking and Infrastructure */}
-              <div className="flex flex-col h-full">
-                <div className="text-center mb-6">
-                  <div className="w-full h-48 bg-[var(--brand-teal)] rounded-lg overflow-hidden">
-                    <Image
-                      src="/networking-and-infrastructure.webp"
-                      alt="Networking and Infrastructure"
-                      width={400}
-                      height={192}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-col flex-grow">
-                  <h3 className="text-2xl font-bold text-[var(--brand-blue)] mb-4 text-center">
-                    Networking and Infrastructure
-                  </h3>
-                  <p className="text-gray-700 mb-6 leading-relaxed text-center flex-grow">
-                    From secure Wi-Fi to reliable internet connections, we design and maintain robust networks that keep your business or home connected and operational.
+            <div className="grid md:grid-cols-2 gap-x-16 gap-y-14">
+              {capabilities.map((cap) => (
+                <div key={cap.title}>
+                  <h2 className="text-2xl font-bold text-[var(--brand-blue)] mb-3">
+                    {cap.title}
+                  </h2>
+                  <p className="text-lg leading-relaxed text-[#374151] max-w-[52ch] mb-4">
+                    {cap.body}
                   </p>
-                </div>
-              </div>
-
-              {/* Home Automation */}
-              <div className="flex flex-col h-full">
-                <div className="text-center mb-6">
-                  <div className="w-full h-48 bg-[var(--brand-teal)] rounded-lg overflow-hidden">
-                    <Image
-                      src="/home-automation.webp"
-                      alt="Home Automation"
-                      width={400}
-                      height={192}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-col flex-grow">
-                  <h3 className="text-2xl font-bold text-[var(--brand-blue)] mb-4 text-center">
-                    Home Automation
-                  </h3>
-                  <p className="text-gray-700 mb-6 leading-relaxed text-center flex-grow">
-                    Experience the convenience of a connected home. We design and install smart systems for lighting, thermostats, and more, creating a personalized living environment.
+                  <p className="text-sm font-semibold text-[#4B5563] mb-2">
+                    What that looks like
                   </p>
+                  <ul className="space-y-2">
+                    {cap.examples.map((example) => (
+                      <li key={example} className="flex items-start gap-2.5 text-[#374151] leading-relaxed">
+                        <span
+                          aria-hidden="true"
+                          className="mt-2.5 w-1.5 h-1.5 flex-shrink-0 rounded-full bg-[var(--brand-teal)]"
+                        />
+                        {example}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
-
-              {/* Self Hosted Concierge */}
-              <div className="flex flex-col h-full">
-                <div className="text-center mb-6">
-                  <div className="w-full h-48 bg-[var(--brand-teal)] rounded-lg overflow-hidden">
-                    <Image
-                      src="/self-hosted-concierge.webp"
-                      alt="Self Hosted Concierge"
-                      width={400}
-                      height={192}
-                      className="w-full h-full object-cover scale-125"
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-col flex-grow">
-                  <h3 className="text-2xl font-bold text-[var(--brand-blue)] mb-4 text-center">
-                    Self Hosted Concierge
-                  </h3>
-                  <p className="text-gray-700 mb-6 leading-relaxed text-center flex-grow">
-                    Advanced self-hosted solutions for busy tech enthusiasts. We handle the setup and maintenance, so you can enjoy cutting-edge apps and services without the time investment or loss of privacy.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
-
           </div>
         </div>
       </main>
 
-      {/* Smart Home Index Section */}
+      {/* How an engagement runs */}
       <section className="py-5 px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-white rounded-2xl p-12 shadow-2xl">
-            {/* Smart Home Index Header */}
-            <div className="mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold text-[var(--brand-blue)] mb-6">
-                Smart Home Index
-              </h2>
-              <div className="mb-8">
+          <div className="bg-white rounded-2xl p-8 sm:p-12 shadow-2xl">
+            <h2 className="text-4xl md:text-5xl font-bold text-[var(--brand-blue)] mb-12 text-balance">
+              How an engagement runs
+            </h2>
+            <ol className="grid md:grid-cols-3 gap-10">
+              {engagementSteps.map((item) => (
+                <li key={item.step} className="flex items-start gap-4">
+                  <span
+                    aria-hidden="true"
+                    className="flex-shrink-0 w-9 h-9 rounded-full border-2 border-[var(--brand-teal)] text-[var(--brand-blue)] font-bold grid place-items-center"
+                  >
+                    {item.step}
+                  </span>
+                  <div>
+                    <h3 className="text-xl font-bold text-[var(--brand-blue)] mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-[#374151] leading-relaxed">{item.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      {/* Build proof: Smart Home Index */}
+      <section className="py-5 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="bg-white rounded-2xl p-8 sm:p-12 shadow-2xl">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-4xl md:text-5xl font-bold text-[var(--brand-blue)] mb-6 text-balance">
+                  Something we built and run
+                </h2>
+                <p className="text-lg leading-relaxed text-[#374151] mb-4 max-w-[58ch]">
+                  Smart Home Index is a free, live device-comparison platform we
+                  designed, built, and operate ourselves. Thousands of devices,
+                  modelled consistently so they can actually be compared —
+                  running in production, maintained by us.
+                </p>
+                <p className="text-lg leading-relaxed text-[#374151] mb-8 max-w-[58ch]">
+                  It&apos;s the same discipline we bring to client systems: careful
+                  data modelling, honest search and comparison, and
+                  infrastructure that stays up.
+                </p>
                 <a
                   href="https://smarthomeindex.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-6 py-3 rounded-lg transition-colors font-semibold"
+                  className="inline-block bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-6 py-3.5 rounded-lg text-xl font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-blue)]"
                 >
-                  Go to the Smart Home Index
+                  Visit Smart Home Index
                 </a>
               </div>
-              <p className="text-lg text-gray-700 leading-relaxed max-w-4xl">
-                In today&apos;s rapidly evolving world of smart home technology, choosing the right devices for your home can feel overwhelming. With so many options available, how do you know which smart home gadgets are best suited for your needs? This is where the Smart Home Index comes in - a free, user-friendly platform that simplifies the process of finding and comparing smart home devices.
-              </p>
-            </div>
-
-            <div className="grid lg:grid-cols-2 gap-16 items-start">
-              {/* Left Side - Content and Main Image */}
-              <div className="space-y-8">
-                <div className="w-full">
+              <div className="relative">
+                <div className="max-w-md">
                   <Image
-                    src="/SHI-hotpotAI_1920_1200.webp"
-                    alt="Smart Home Index on MacBook"
-                    width={1920}
-                    height={1200}
+                    src="/SHI-device-select.webp"
+                    alt="Smart Home Index device selection screen listing comparable smart home devices"
+                    width={400}
+                    height={300}
                     className="w-full h-auto rounded-lg shadow-xl"
                   />
                 </div>
-                {/* Newsletter Signup */}
-                <div className="bg-green-50 border-2 border-[var(--brand-green)] rounded-lg p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    Stay up to date with Smart Home Index updates
-                  </h3>
-                  <p className="text-gray-700 mb-4">
-                    Sign up with your email address to receive news and updates, including new devices that are added to the Smart Home Index.
-                  </p>
-                  <form onSubmit={handleNewsletterSubmit}>
-                    <div className="flex gap-3">
-                      <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Email Address"
-                        required
-                        disabled={isSubmitting}
-                        className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[var(--brand-teal)] text-gray-900 disabled:opacity-50 disabled:cursor-not-allowed"
-                      />
-                      <div className="hidden" aria-hidden="true">
-                        <label htmlFor="newsletter-website">Website</label>
-                        <input
-                          id="newsletter-website"
-                          type="text"
-                          name="website"
-                          tabIndex={-1}
-                          autoComplete="off"
-                          value={website}
-                          onChange={(e) => setWebsite(e.target.value)}
-                        />
-                      </div>
-                      <button 
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="bg-[var(--brand-green)] hover:bg-[var(--brand-teal)] text-white px-6 py-3 rounded-lg transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
-                      >
-                        {isSubmitting ? 'Signing Up...' : 'Sign Up'}
-                      </button>
-                    </div>
-                    {submitStatus === 'success' && (
-                      <p className="text-sm text-green-600 mt-3">
-                        ✓ Successfully subscribed! Check your email to confirm.
-                      </p>
-                    )}
-                    {submitStatus === 'error' && (
-                      <p className="text-sm text-red-600 mt-3">
-                        Something went wrong. Please try again later.
-                      </p>
-                    )}
-                    {submitStatus === 'idle' && (
-                      <p className="text-sm text-gray-600 mt-3">
-                        We respect your privacy.
-                      </p>
-                    )}
-                  </form>
+                <div className="max-w-md ml-10 lg:ml-16 -mt-6 relative z-10">
+                  <Image
+                    src="/SHI-device-compare.webp"
+                    alt="Smart Home Index side-by-side device comparison screen"
+                    width={400}
+                    height={300}
+                    className="w-full h-auto rounded-lg shadow-xl"
+                  />
                 </div>
               </div>
-
-              {/* Right Side - Overlapping UI Elements */}
-              <div className="relative h-full">
-                <div className="relative h-full flex flex-col justify-between space-y-8">
-                  {/* Device Selection - Top Layer */}
-                  <div className="relative z-30 max-w-sm">
-                    <Image
-                      src="/SHI-device-select.webp"
-                      alt="Device Selection"
-                      width={400}
-                      height={300}
-                      className="w-full h-auto rounded-lg shadow-xl"
-                    />
-                  </div>
-                  {/* Device Info Card - Middle Layer */}
-                  <div className="relative z-20 max-w-sm ml-12">
-                    <Image
-                      src="/SHI-device-info.webp"
-                      alt="Device Information"
-                      width={400}
-                      height={300}
-                      className="w-full h-auto rounded-lg shadow-xl"
-                    />
-                  </div>
-                  {/* Device Comparison - Bottom Layer */}
-                  <div className="relative z-10 max-w-sm ml-24">
-                    <Image
-                      src="/SHI-device-compare.webp"
-                      alt="Device Comparison"
-                      width={400}
-                      height={300}
-                      className="w-full h-auto rounded-lg shadow-xl"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Why We Made It Section */}
-            <div className="mt-16">
-              <h3 className="text-2xl font-bold text-[var(--brand-blue)] mb-4">
-                Why did we make the Smart Home Index?
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                Search engines like Google and Amazon have become increasingly ineffective for finding smart home devices. The results are often skewed by sponsored products, making it difficult to find unbiased recommendations when wading through irrelevant listings. Additionally, vendors use inconsistent terminology, which makes comparing products across different brands a frustrating experience. With the wide variety of conflicting standards and smart home ecosystems, finding devices that truly fit your setup can be a daunting task. The Smart Home Index addresses these challenges by providing a clear, unbiased platform to search, compare, and choose the best devices for your smart home.
-              </p>
-              <p className="text-gray-700 leading-relaxed mt-4">
-                At DataSolace we are looking to further the accessibility of Smart Homes, so building a clear and accurate feature index was an essential step in this mission.
-              </p>
-            </div>
-
-            <div className="text-center mt-12">
-              <h3 className="text-3xl font-bold text-[var(--brand-blue)] mb-2">
-                Filter, Find, Learn, Compare
-              </h3>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Bottom Statement Section */}
-      <section className="py-5 px-6">
+      {/* Closing CTA */}
+      <section className="py-5 pb-10 px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-white rounded-2xl p-12 shadow-2xl">
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-[var(--brand-blue)] leading-relaxed">
-                We understand the unique needs of small businesses, startups, and high net worth individuals. Let us take care of your IT infrastructure, so you can{' '}
-                <span className="relative">
-                  focus on what you do best.
-                  <div className="absolute bottom-0 left-0 w-full h-1 bg-[var(--brand-teal)]"></div>
-                </span>
-              </div>
+          <div className="bg-white rounded-2xl p-8 sm:p-12 shadow-2xl">
+            <div className="max-w-2xl">
+              <h2 className="text-3xl md:text-4xl font-bold text-[var(--brand-blue)] mb-4 text-balance">
+                Small enough to know your process. Capable enough to run it.
+              </h2>
+              <p className="text-lg leading-relaxed text-[#374151] mb-8">
+                Tell us about the admin that keeps landing back on your desk,
+                and we&apos;ll tell you honestly what&apos;s worth automating.
+              </p>
+              <Link
+                href="/appointments"
+                className="inline-block bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-8 py-4 rounded-lg text-xl font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-blue)]"
+              >
+                Book an intro call
+              </Link>
             </div>
           </div>
         </div>
@@ -310,4 +227,4 @@ export default function Services() {
       <Footer />
     </div>
   );
-} 
+}
