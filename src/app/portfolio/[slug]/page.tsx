@@ -24,7 +24,7 @@ For a solo groomer, every enquiry is an interruption or a missed call. And a gro
 
 ## What the Site Does
 
-Every path through the site converges on one action: send a message that starts with the dog. The enquiry form asks for what Cat actually needs to know before she can say yes — so by the time she reads it, between grooms, the qualifying conversation has already happened.
+Every path through the site converges on one action: send a message that starts with the dog. The enquiry form asks for the dog's name, age, breed and size, then prompts for the groom package, coat condition, and temperament — everything Cat needs to know before she can say yes. By the time she reads it, between grooms, the qualifying conversation has already happened.
 
 The content does triage before the form is ever reached. The five commitments on the front page — single-pet crate-free appointments, natural shampoos, welfare first, eco-friendly practice, full insurance — tell the right owners they're in the right place, and the "by appointment only" hours set expectations without a single phone call.
 
