@@ -58,3 +58,16 @@ next-env.d.ts
 
 # planning and documentation
 .docs/
+
+# agent harness settings
+.claude/settings.local.json
+
+# vendored agent skills (installed via `npx impeccable install`)
+.claude/skills/
+.pi/skills/
+
+# impeccable tool output (critiques, design tokens, live-preview config)
+.impeccable/
+
+# firecrawl scrape cache
+.firecrawl/
