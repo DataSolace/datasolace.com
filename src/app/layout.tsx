@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Montserrat, Geist_Mono } from "next/font/google";
+import { Montserrat, Geist_Mono, Kalam } from "next/font/google";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -11,6 +11,14 @@ const montserrat = Montserrat({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+  display: 'swap',
+});
+
+// Handwritten annotation face for the hero's paper composition (decorative only)
+const kalam = Kalam({
+  weight: "400",
+  variable: "--font-hand",
   subsets: ["latin"],
   display: 'swap',
 });
@@ -227,7 +235,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${montserrat.variable} ${geistMono.variable} antialiased`}
+        className={`${montserrat.variable} ${geistMono.variable} ${kalam.variable} antialiased`}
       >
         {children}
       </body>
