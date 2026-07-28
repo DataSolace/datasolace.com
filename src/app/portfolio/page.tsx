@@ -27,21 +27,24 @@ export default function Portfolio() {
       <section className="py-20 px-6 pt-32">
         <div className="max-w-6xl mx-auto">
           {/* Header Content */}
-          <div className="bg-white rounded-2xl p-12 mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-[var(--brand-blue)] mb-8">
-              Take a closer look...
+          <div className="bg-white rounded-2xl p-8 sm:p-12 mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold text-[var(--brand-blue)] mb-8 text-balance">
+              Work we can show.
             </h1>
-            
-            <div className="space-y-6 text-gray-700 text-lg leading-relaxed max-w-4xl">
+
+            <div className="space-y-6 text-[#374151] text-lg leading-relaxed max-w-[65ch]">
               <p>
-                Here are some of our favourite DataSolace projects. Every client presents a
-                distinct set of challenges and specifications, so we work closely with them
-                to cater to their unique needs.
+                Most of what we build for businesses is confidential — clients
+                aren&apos;t named and their systems aren&apos;t shown. What we can share
+                in full are these two projects from our residential systems
+                practice, where DataSolace started.
               </p>
-              
+
               <p>
-                No two projects are identical, but using our industry gained experience we
-                ensure that every installation puts security and reliability first.
+                The setting is different from the work we do today; the
+                discipline isn&apos;t. Understand how things actually run, measure
+                honestly, automate only what earns its keep, and keep the
+                system working long after installation.
               </p>
             </div>
           </div>
@@ -52,7 +55,7 @@ export default function Portfolio() {
               <Link
                 key={study.id}
                 href={`/portfolio/${study.slug}`}
-                className="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                className="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 motion-reduce:transform-none motion-reduce:transition-none"
               >
                 <div className="relative w-full h-64 overflow-hidden">
                   <Image
@@ -75,14 +78,14 @@ export default function Portfolio() {
 
           {/* Call to Action */}
           <div className="text-center mt-16">
-            <p className="text-white text-xl mb-8">
-              Want to see your project featured here?
+            <p className="text-[var(--brand-white)]/90 text-xl mb-8">
+              The same discipline, pointed at your admin.
             </p>
             <Link
-              href="/#contact"
-              className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block"
+              href="/appointments"
+              className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-8 py-4 rounded-lg text-xl font-bold transition-colors inline-block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
-              Start Your Project
+              Book an intro call
             </Link>
           </div>
         </div>

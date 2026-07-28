@@ -50,10 +50,7 @@ Decided (July 2026):
 
 - **Smart Home Index** remains on the site as compact build proof on the services page — presented as a product DataSolace designed, built, and operates, evidencing data modelling and production infrastructure capability. It is not pitched as a smart-home offer and carries no dedicated newsletter signup.
 - **Self Hosted Concierge** is retired as a named service. Its substance (self-hosting, privacy-respecting setups, maintenance) is absorbed into the Hosting and Infrastructure capability.
-
-Explicitly undecided:
-
-- The future of the two published residential case studies (damp protection, smart-home mobility). Their framing is retired; whether they are removed, reframed, or archived is not settled.
+- **The two residential case studies** (damp protection, smart-home mobility) remain published, explicitly framed as work from the earlier residential systems practice — the engineering discipline behind the small business offer, not part of it. Business engagements stay confidential, and the portfolio page says so; the case studies are what can be shown in full.
 
 ## Brand Commitments
 

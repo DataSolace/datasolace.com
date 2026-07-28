@@ -104,6 +104,13 @@ Smart home technology is not just about convenience—it's about creating an env
   }
 };
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const item = portfolioItems[slug as keyof typeof portfolioItems];
+  if (!item) return { title: 'Portfolio' };
+  return { title: item.title, description: item.excerpt };
+}
+
 export default async function PortfolioItem({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const item = portfolioItems[slug as keyof typeof portfolioItems];
@@ -166,7 +173,11 @@ export default async function PortfolioItem({ params }: { params: Promise<{ slug
         <div className="max-w-4xl mx-auto">
           
           {/* Portfolio Content */}
-          <div className="bg-white rounded-2xl p-12 mb-16">
+          <div className="bg-white rounded-2xl p-8 sm:p-12 mb-16">
+            <p className="text-sm text-[#4B5563] border-b border-[#E5E7EB] pb-4 mb-8">
+              From our residential systems practice — earlier DataSolace work
+              that shaped how we approach business automation today.
+            </p>
             <div className="prose prose-lg max-w-none">
               {item.content.split('\n\n').map((paragraph: string, index: number) => {
                 const trimmed = paragraph.trim();
@@ -184,8 +195,8 @@ export default async function PortfolioItem({ params }: { params: Promise<{ slug
                 // Handle lists (lines starting with -)
                 if (trimmed.includes('\n- ')) {
                   const lines = trimmed.split('\n');
-                  const title = lines[0];
-                  const listItems = lines.slice(1).filter(line => line.trim().startsWith('- '));
+                  const title = lines[0].trim().startsWith('- ') ? null : lines[0];
+                  const listItems = lines.filter(line => line.trim().startsWith('- '));
                   
                   return (
                     <div key={index}>
@@ -194,12 +205,12 @@ export default async function PortfolioItem({ params }: { params: Promise<{ slug
                           {title}
                         </p>
                       )}
-                      <div className="bg-[var(--brand-teal)] rounded-xl p-8 mb-8">
+                      <div className="bg-[var(--brand-blue)] rounded-xl p-8 mb-8">
                         <ul className="grid md:grid-cols-2 gap-4">
                           {listItems.map((item, itemIndex) => (
                             <li key={itemIndex} className="flex items-start space-x-3">
-                              <span className="text-white text-lg mt-1">•</span>
-                              <span className="text-white/90">{item.replace('- ', '')}</span>
+                              <span aria-hidden="true" className="mt-2.5 w-1.5 h-1.5 flex-shrink-0 rounded-full bg-[var(--brand-teal)]" />
+                              <span className="text-[var(--brand-white)]/90">{item.replace('- ', '')}</span>
                             </li>
                           ))}
                         </ul>
@@ -219,12 +230,19 @@ export default async function PortfolioItem({ params }: { params: Promise<{ slug
           </div>
 
           {/* Call to Action */}
-          <div className="bg-white rounded-2xl p-12 mb-16 text-center">
+          <div className="bg-white rounded-2xl p-8 sm:p-12 mb-16 text-center">
+            <h2 className="text-2xl font-bold text-[var(--brand-blue)] mb-3">
+              Curious what this looks like for a business?
+            </h2>
+            <p className="text-[#374151] mb-8 max-w-md mx-auto leading-relaxed">
+              The same measure-first discipline applies to admin, handoffs, and
+              the systems your team runs on.
+            </p>
             <Link
               href="/#contact"
-              className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block"
+              className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-8 py-4 rounded-lg text-xl font-bold transition-colors inline-block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-blue)]"
             >
-              Get in touch with us to discuss your property automation issues
+              Tell us about your process
             </Link>
           </div>
 
