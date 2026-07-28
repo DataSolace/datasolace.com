@@ -46,11 +46,14 @@ Constraints:
 - Networking and infrastructure are retained as a **business capability**, folded into the small business offer. The residential and smart-home framing is retired from site-facing copy.
 - The team is small and owner-led. Claims must not imply a scale, headcount, or service tier the business does not have.
 
+Decided (July 2026):
+
+- **Smart Home Index** remains on the site as compact build proof on the services page — presented as a product DataSolace designed, built, and operates, evidencing data modelling and production infrastructure capability. It is not pitched as a smart-home offer and carries no dedicated newsletter signup.
+- **Self Hosted Concierge** is retired as a named service. Its substance (self-hosting, privacy-respecting setups, maintenance) is absorbed into the Hosting and Infrastructure capability.
+
 Explicitly undecided:
 
 - The future of the two published residential case studies (damp protection, smart-home mobility). Their framing is retired; whether they are removed, reframed, or archived is not settled.
-- Whether Smart Home Index (smarthomeindex.com) remains presented on this site, and if so in what relationship to the small business offer.
-- Whether Self Hosted Concierge survives as a named service or is absorbed into hosting and infrastructure.
 
 ## Brand Commitments
 
