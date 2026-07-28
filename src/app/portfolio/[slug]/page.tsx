@@ -59,18 +59,18 @@ A market trader's most-asked question is "where will you be this weekend?" — a
 
 The market schedule is the heart of the site. Upcoming markets appear as dated cards with venues and directions — one permanent address that always holds the current answer, instead of a feed that has to be re-posted every week.
 
-The product catalogue works the same way: real products with prices and categories that Cara maintains as batches change, plus an online shop, so orders arrive as structured records rather than direct messages that have to be transcribed. A recipe notebook gives the site a reason to be revisited between markets.
+The product catalogue works the same way: real products with prices and categories that Cara maintains as batches change. The bag doesn't pretend to be a supermarket checkout — it composes a structured order, every line item listed, with the customer's collection preference attached, so what lands in Cara's inbox is an order she can fulfil rather than a message she has to decode. A recipe notebook gives the site a reason to be revisited between markets.
 
 ## Design Decisions
 
 - A warm, produce-led palette and hand-made feel that matches what's in the jar — the site looks like the stall
 - Photography from the actual garden and market stalls, not stock food imagery
 - The schedule designed as the primary destination, because it answers the question customers actually ask
-- Content the owner can keep current herself — a maintained site, not a launched-and-abandoned one
+- An order flow sized to the business — structured email orders with a collection preference, not a payment gateway the operation doesn't need yet
 
 ## Built to Keep Running
 
-Like everything we deliver, the site is hosted and maintained by DataSolace on our own infrastructure. The schedule, catalogue, and notebook stay current because updating them is easy — and because the people who built the system are still running it.
+The schedule, catalogue, and notebook all live in a content management system Cara updates herself — the site stays current because keeping it current is easy. The whole stack is self-hosted and maintained by DataSolace on the same infrastructure we run our own systems on.
     `
   },
   'safeguarding-tenants-damp-protection': {
