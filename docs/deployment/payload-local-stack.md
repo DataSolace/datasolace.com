@@ -73,7 +73,38 @@ Remote Cloudflare Worker, D1, KV, and Sanity resources are not deleted by repo c
 
 ## Newsletter / Kit.com
 
-Leave `KIT_WEBHOOK_URL` and `STAGING_KIT_WEBHOOK_URL` empty until real Kit endpoints are available. Placeholder values such as `https://your-kit-webhook-url-here` are treated as not configured, logged in Payload as `provider_failed` / `kit_not_configured`, and return a safe 500 JSON response.
+`/api/newsletter` subscribes through the Kit API v4: it upserts the subscriber
+(`POST https://api.kit.com/v4/subscribers`) and then attaches the tag for the
+requested newsletter (`POST /v4/tags/{tag_id}/subscribers`), authenticating with
+the `X-Kit-Api-Key` header.
+
+Configuration (per environment, staging uses the `STAGING_` prefix):
+
+- `KIT_API_KEY` — a V4 API key created under Kit account settings > Developer.
+- `KIT_TAG_ID_DATASOLACE` — numeric tag ID for the general `datasolace` list
+  (the default when the frontend sends no `newsletterId`).
+- `KIT_TAG_ID_SMART_HOME_INDEX` — numeric tag ID for the `smart-home-index`
+  list (retained for future SHI placements; no live form sends it today).
+
+Operational notes:
+
+- Leave all Kit variables empty until real values are available. Missing or
+  non-numeric configuration is logged in Payload as `provider_failed` /
+  `kit_not_configured` and returns a safe 500 JSON response; the site otherwise
+  functions normally, so clearing these variables (and restarting the public
+  app) is also the rollback path.
+- Key rotation: reset the key in Kit's Developer settings, update `.env`, then
+  restart the affected `public-app` / `staging-public-app` service. Old keys
+  stop working immediately after reset.
+- Testing: use a personal test address on staging first. Repeat signups are
+  safe — Kit's subscriber create is an upsert, and a repeat is recorded in
+  Payload as `already_subscribed` (both Kit calls return 200) rather than
+  `subscribed`.
+- Auditing: every attempt writes a `newsletter-events` document (statuses:
+  `subscribed`, `already_subscribed`, `provider_failed`, `invalid`,
+  `blocked_honeypot`) with the Kit subscriber ID in `providerResponseId` and a
+  truncated `errorDetail` on failures. Investigate provider issues from those
+  events; API keys are never stored in them.
 
 ## Backups
 

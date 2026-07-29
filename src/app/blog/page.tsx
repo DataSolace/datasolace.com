@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import NewsletterSignup from '../../components/NewsletterSignup';
 import { getAllBlogPosts } from '../../lib/blog';
 
 export const dynamic = 'force-dynamic';
@@ -91,6 +92,11 @@ export default async function Blog() {
                 </div>
               </Link>
             ))}
+          </div>
+
+          {/* Newsletter Signup */}
+          <div className="mt-16 max-w-2xl mx-auto">
+            <NewsletterSignup />
           </div>
 
           {/* Call to Action */}

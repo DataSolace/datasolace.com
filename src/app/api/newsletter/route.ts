@@ -18,11 +18,39 @@ interface NewsletterSubscriptionData {
   website?: string;
 }
 
-async function logNewsletterEvent(data: Record<string, unknown>) {
-  return createPayloadDocument('newsletter-events', data);
+const KIT_API_BASE_URL = 'https://api.kit.com/v4';
+const MAX_ERROR_DETAIL_LENGTH = 2_000;
+const DEFAULT_NEWSLETTER_ID = 'datasolace';
+
+const NEWSLETTER_TAG_ENV_VARS: Record<string, string> = {
+  datasolace: 'KIT_TAG_ID_DATASOLACE',
+  'smart-home-index': 'KIT_TAG_ID_SMART_HOME_INDEX',
+};
+
+interface KitConfig {
+  apiKey: string;
+  tagId: string;
 }
 
-async function readKitResponse(response: Response): Promise<{ text: string; json?: unknown; id?: string }> {
+function resolveKitConfig(newsletterId: string): KitConfig | null {
+  const apiKey = process.env.KIT_API_KEY;
+  const tagEnvVar = NEWSLETTER_TAG_ENV_VARS[newsletterId];
+  const tagId = tagEnvVar ? process.env[tagEnvVar] : undefined;
+
+  if (!apiKey || !tagId || !/^\d+$/.test(tagId)) {
+    return null;
+  }
+
+  return { apiKey, tagId };
+}
+
+interface KitResponseData {
+  text: string;
+  json?: unknown;
+  subscriberId?: string;
+}
+
+async function readKitResponse(response: Response): Promise<KitResponseData> {
   const text = await response.text().catch(() => '');
   if (!text) {
     return { text };
@@ -30,22 +58,36 @@ async function readKitResponse(response: Response): Promise<{ text: string; json
 
   try {
     const json = JSON.parse(text) as Record<string, unknown>;
-    const subscriber = json.subscriber && typeof json.subscriber === 'object' ? json.subscriber as Record<string, unknown> : undefined;
-    const subscription = json.subscription && typeof json.subscription === 'object' ? json.subscription as Record<string, unknown> : undefined;
-    const idCandidates = [json.id, subscriber?.id, subscription?.id];
-    const id = idCandidates.find((candidate): candidate is string => typeof candidate === 'string');
-    return { text, json, id };
+    const subscriber = json.subscriber && typeof json.subscriber === 'object'
+      ? json.subscriber as Record<string, unknown>
+      : undefined;
+    const id = subscriber?.id;
+    const subscriberId = typeof id === 'string' || typeof id === 'number' ? String(id) : undefined;
+    return { text, json, subscriberId };
   } catch {
     return { text };
   }
+}
+
+async function kitPost(config: KitConfig, path: string, body: Record<string, unknown>): Promise<Response> {
+  return fetch(`${KIT_API_BASE_URL}${path}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Kit-Api-Key': config.apiKey,
+    },
+    body: JSON.stringify(body),
+  });
+}
+
+async function logNewsletterEvent(data: Record<string, unknown>) {
+  return createPayloadDocument('newsletter-events', data);
 }
 
 export async function POST(request: NextRequest) {
   const requestId = randomUUID();
   const ipHash = hashIp(getClientIp(request));
   const userAgent = getUserAgent(request);
-  const kitApiKey = process.env.KIT_API_KEY;
-  const kitWebhookUrl = process.env.KIT_WEBHOOK_URL;
 
   try {
     const rawBody = (await request.json().catch(() => null)) as NewsletterSubscriptionData | null;
@@ -54,7 +96,8 @@ export async function POST(request: NextRequest) {
     }
 
     const email = normalizeEmail(rawBody.email);
-    const newsletterId = normalizeText(rawBody.newsletterId, 120) || 'smart-home-index';
+    const requestedNewsletterId = normalizeText(rawBody.newsletterId, 120);
+    const newsletterId = requestedNewsletterId || DEFAULT_NEWSLETTER_ID;
     const honeypot = normalizeText(rawBody.website, 200);
 
     if (honeypot) {
@@ -78,6 +121,24 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    if (!(newsletterId in NEWSLETTER_TAG_ENV_VARS)) {
+      await logNewsletterEvent({
+        requestId,
+        email: email || 'invalid@example.invalid',
+        newsletterId,
+        status: 'invalid',
+        provider: 'kit',
+        ipHash,
+        userAgent,
+        errorCode: 'invalid_newsletter_id',
+      });
+
+      return NextResponse.json(
+        { error: 'Unknown newsletter' },
+        { status: 400 },
+      );
+    }
+
     if (!email || !isValidEmail(email)) {
       await logNewsletterEvent({
         requestId,
@@ -96,12 +157,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (
-      !kitApiKey ||
-      !kitWebhookUrl ||
-      !kitWebhookUrl.startsWith('https://') ||
-      kitWebhookUrl.includes('your-kit-webhook-url-here')
-    ) {
+    const kitConfig = resolveKitConfig(newsletterId);
+    if (!kitConfig) {
       await logNewsletterEvent({
         requestId,
         email,
@@ -113,26 +170,20 @@ export async function POST(request: NextRequest) {
         errorCode: 'kit_not_configured',
       });
 
-      console.error('Kit.com API key or webhook URL not configured');
+      console.error('Kit API key or tag ID not configured for newsletter:', newsletterId);
       return NextResponse.json(
         { error: 'Newsletter service not configured' },
         { status: 500 },
       );
     }
 
-    let kitResponse: Response;
+    let subscriberResponse: Response;
+    let tagResponse: Response | null = null;
     try {
-      kitResponse = await fetch(kitWebhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${kitApiKey}`,
-        },
-        body: JSON.stringify({
-          email,
-          newsletter_id: newsletterId,
-        }),
-      });
+      subscriberResponse = await kitPost(kitConfig, '/subscribers', { email_address: email });
+      if (subscriberResponse.ok) {
+        tagResponse = await kitPost(kitConfig, `/tags/${kitConfig.tagId}/subscribers`, { email_address: email });
+      }
     } catch (error) {
       const detail = error instanceof Error ? error.message : String(error);
       await logNewsletterEvent({
@@ -144,19 +195,21 @@ export async function POST(request: NextRequest) {
         ipHash,
         userAgent,
         errorCode: 'kit_fetch_failed',
-        errorDetail: detail.slice(0, 2_000),
+        errorDetail: detail.slice(0, MAX_ERROR_DETAIL_LENGTH),
       });
 
-      console.error('Kit.com fetch failed:', error);
+      console.error('Kit fetch failed:', error);
       return NextResponse.json(
         { error: 'Failed to subscribe to newsletter' },
         { status: 500 },
       );
     }
 
-    const kitData = await readKitResponse(kitResponse);
+    if (!subscriberResponse.ok || !tagResponse || !tagResponse.ok) {
+      const failedStep = !subscriberResponse.ok ? 'subscriber' : 'tag';
+      const failedResponse = !subscriberResponse.ok ? subscriberResponse : tagResponse!;
+      const failedData = await readKitResponse(failedResponse);
 
-    if (!kitResponse.ok) {
       await logNewsletterEvent({
         requestId,
         email,
@@ -165,24 +218,32 @@ export async function POST(request: NextRequest) {
         provider: 'kit',
         ipHash,
         userAgent,
-        errorCode: `kit_${kitResponse.status}`,
-        errorDetail: kitData.text.slice(0, 2_000),
+        errorCode: `kit_${failedStep}_${failedResponse.status}`,
+        errorDetail: failedData.text.slice(0, MAX_ERROR_DETAIL_LENGTH),
       });
 
-      console.error('Kit.com API error:', kitData.text);
+      console.error(`Kit ${failedStep} request failed:`, failedResponse.status, failedData.text.slice(0, 500));
       return NextResponse.json(
         { error: 'Failed to subscribe to newsletter' },
         { status: 500 },
       );
     }
 
+    const subscriberData = await readKitResponse(subscriberResponse);
+    const tagData = await readKitResponse(tagResponse);
+
+    // Kit returns 201 when the subscriber/tagging is new and 200 when it
+    // already existed; 200 on both calls means this email was already on
+    // this list.
+    const alreadySubscribed = subscriberResponse.status === 200 && tagResponse.status === 200;
+
     await logNewsletterEvent({
       requestId,
       email,
       newsletterId,
-      status: kitResponse.status === 200 || kitResponse.status === 201 ? 'subscribed' : 'provider_accepted',
+      status: alreadySubscribed ? 'already_subscribed' : 'subscribed',
       provider: 'kit',
-      providerResponseId: kitData.id,
+      providerResponseId: tagData.subscriberId || subscriberData.subscriberId,
       ipHash,
       userAgent,
     });
@@ -191,7 +252,6 @@ export async function POST(request: NextRequest) {
       {
         success: true,
         message: 'Successfully subscribed to newsletter',
-        data: kitData.json ?? null,
       },
       { status: 200 },
     );
