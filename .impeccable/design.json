@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-29T16:02:23Z",
+  "generatedAt": "2026-07-29T16:27:03Z",
   "title": "Design System: DataSolace",
   "extensions": {
     "colorMeta": {
@@ -8,6 +8,7 @@
         "role": "primary",
         "displayName": "DataSolace Blue",
         "canonical": "oklch(29.6% 0.051 259.0)",
+        "purpose": "Dominant brand field: page backgrounds, header/footer chrome, dark hero. CSS token.",
         "tonalRamp": [
           "oklch(15.0% 0.045 259.0)",
           "oklch(26.4% 0.051 259.0)",
@@ -23,6 +24,7 @@
         "role": "primary",
         "displayName": "Signal Teal",
         "canonical": "oklch(60.8% 0.119 171.0)",
+        "purpose": "Action and emphasis: button fills, active nav on blue, focus outlines, hero footage accent. Never text on light. CSS token.",
         "tonalRamp": [
           "oklch(15.0% 0.066 171.0)",
           "oklch(26.4% 0.093 171.0)",
@@ -38,6 +40,7 @@
         "role": "secondary",
         "displayName": "Assured Green",
         "canonical": "oklch(55.4% 0.104 174.1)",
+        "purpose": "Hover for primary teal actions; fill for the compact header button (4.53:1 with white). CSS token.",
         "tonalRamp": [
           "oklch(15.0% 0.061 174.1)",
           "oklch(26.4% 0.085 174.1)",
@@ -53,6 +56,7 @@
         "role": "secondary",
         "displayName": "Action Text Teal",
         "canonical": "oklch(49.5% 0.096 171.6)",
+        "purpose": "Text-safe teal \u22654.5:1 on white \u2014 teal text and links on light surfaces. CSS token.",
         "tonalRamp": [
           "oklch(15.0% 0.059 171.6)",
           "oklch(26.4% 0.081 171.6)",
@@ -68,6 +72,7 @@
         "role": "secondary",
         "displayName": "Deep Action Green",
         "canonical": "oklch(44.9% 0.086 172.7)",
+        "purpose": "Darkest action step: prose-link hover and compact header button hover. CSS token.",
         "tonalRamp": [
           "oklch(15.0% 0.056 172.7)",
           "oklch(26.4% 0.075 172.7)",
@@ -83,6 +88,7 @@
         "role": "neutral",
         "displayName": "Quiet White",
         "canonical": "oklch(96.8% 0.003 197.1)",
+        "purpose": "Brand off-white for footer text and support copy on dark surfaces. CSS token.",
         "tonalRamp": [
           "oklch(15.0% 0.003 197.1)",
           "oklch(26.4% 0.003 197.1)",
@@ -98,6 +104,7 @@
         "role": "neutral",
         "displayName": "Panel White",
         "canonical": "oklch(100.0% 0.000 89.9)",
+        "purpose": "Primary reading surface for service, blog, portfolio and scheduling content.",
         "tonalRamp": [
           "oklch(15.0% 0.000 89.9)",
           "oklch(26.4% 0.000 89.9)",
@@ -113,6 +120,7 @@
         "role": "neutral",
         "displayName": "Mint",
         "canonical": "oklch(85.8% 0.074 177.6)",
+        "purpose": "Small light-teal text on the blue field \u2014 hero kicker, form success on dark panels.",
         "tonalRamp": [
           "oklch(15.0% 0.052 177.6)",
           "oklch(26.4% 0.069 177.6)",
@@ -128,6 +136,7 @@
         "role": "neutral",
         "displayName": "Ink",
         "canonical": "oklch(20.5% 0.000 89.9)",
+        "purpose": "Root foreground and high-contrast text anchor.",
         "tonalRamp": [
           "oklch(15.0% 0.000 89.9)",
           "oklch(26.4% 0.000 89.9)",
@@ -139,25 +148,11 @@
           "oklch(95.0% 0.000 89.9)"
         ]
       },
-      "text-strong": {
-        "role": "neutral",
-        "displayName": "Strong Text",
-        "canonical": "oklch(21.0% 0.032 264.7)",
-        "tonalRamp": [
-          "oklch(15.0% 0.032 264.7)",
-          "oklch(26.4% 0.032 264.7)",
-          "oklch(37.9% 0.032 264.7)",
-          "oklch(49.3% 0.032 264.7)",
-          "oklch(60.7% 0.032 264.7)",
-          "oklch(72.1% 0.032 264.7)",
-          "oklch(83.6% 0.032 264.7)",
-          "oklch(95.0% 0.032 264.7)"
-        ]
-      },
       "text-body": {
         "role": "neutral",
         "displayName": "Body Text",
         "canonical": "oklch(37.3% 0.031 259.7)",
+        "purpose": "Default long-form text on white panels.",
         "tonalRamp": [
           "oklch(15.0% 0.031 259.7)",
           "oklch(26.4% 0.031 259.7)",
@@ -173,6 +168,7 @@
         "role": "neutral",
         "displayName": "Muted Text",
         "canonical": "oklch(44.6% 0.026 256.8)",
+        "purpose": "Metadata, excerpts and lower-emphasis content.",
         "tonalRamp": [
           "oklch(15.0% 0.026 256.8)",
           "oklch(26.4% 0.026 256.8)",
@@ -188,6 +184,7 @@
         "role": "neutral",
         "displayName": "Soft Border",
         "canonical": "oklch(92.8% 0.006 264.5)",
+        "purpose": "Dividers and light separation in prose or legal pages.",
         "tonalRamp": [
           "oklch(15.0% 0.006 264.5)",
           "oklch(26.4% 0.006 264.5)",
@@ -198,171 +195,6 @@
           "oklch(83.6% 0.006 264.5)",
           "oklch(95.0% 0.006 264.5)"
         ]
-      },
-      "field-border": {
-        "role": "neutral",
-        "displayName": "Field Border",
-        "canonical": "oklch(87.2% 0.009 258.3)",
-        "tonalRamp": [
-          "oklch(15.0% 0.009 258.3)",
-          "oklch(26.4% 0.009 258.3)",
-          "oklch(37.9% 0.009 258.3)",
-          "oklch(49.3% 0.009 258.3)",
-          "oklch(60.7% 0.009 258.3)",
-          "oklch(72.1% 0.009 258.3)",
-          "oklch(83.6% 0.009 258.3)",
-          "oklch(95.0% 0.009 258.3)"
-        ]
-      },
-      "paper-torn": {
-        "role": "tertiary",
-        "displayName": "Torn Note",
-        "canonical": "oklch(94.1% 0.003 197.1)",
-        "tonalRamp": [
-          "oklch(15.0% 0.003 197.1)",
-          "oklch(26.4% 0.003 197.1)",
-          "oklch(37.9% 0.003 197.1)",
-          "oklch(49.3% 0.003 197.1)",
-          "oklch(60.7% 0.003 197.1)",
-          "oklch(72.1% 0.003 197.1)",
-          "oklch(83.6% 0.003 197.1)",
-          "oklch(95.0% 0.003 197.1)"
-        ]
-      },
-      "paper-torn-ink": {
-        "role": "tertiary",
-        "displayName": "Torn Note Ink",
-        "canonical": "oklch(40.8% 0.045 263.2)",
-        "tonalRamp": [
-          "oklch(15.0% 0.044 263.2)",
-          "oklch(26.4% 0.045 263.2)",
-          "oklch(37.9% 0.045 263.2)",
-          "oklch(49.3% 0.045 263.2)",
-          "oklch(60.7% 0.045 263.2)",
-          "oklch(72.1% 0.045 263.2)",
-          "oklch(83.6% 0.045 263.2)",
-          "oklch(95.0% 0.035 263.2)"
-        ]
-      },
-      "paper-sticky": {
-        "role": "tertiary",
-        "displayName": "Sticky Note",
-        "canonical": "oklch(90.2% 0.058 98.9)",
-        "tonalRamp": [
-          "oklch(15.0% 0.047 98.9)",
-          "oklch(26.4% 0.058 98.9)",
-          "oklch(37.9% 0.058 98.9)",
-          "oklch(49.3% 0.058 98.9)",
-          "oklch(60.7% 0.058 98.9)",
-          "oklch(72.1% 0.058 98.9)",
-          "oklch(83.6% 0.049 98.9)",
-          "oklch(95.0% 0.036 98.9)"
-        ]
-      },
-      "paper-sticky-ink": {
-        "role": "tertiary",
-        "displayName": "Sticky Note Ink",
-        "canonical": "oklch(39.2% 0.035 99.1)",
-        "tonalRamp": [
-          "oklch(15.0% 0.035 99.1)",
-          "oklch(26.4% 0.035 99.1)",
-          "oklch(37.9% 0.035 99.1)",
-          "oklch(49.3% 0.035 99.1)",
-          "oklch(60.7% 0.035 99.1)",
-          "oklch(72.1% 0.035 99.1)",
-          "oklch(83.6% 0.035 99.1)",
-          "oklch(95.0% 0.034 99.1)"
-        ]
-      },
-      "sheet-meta": {
-        "role": "tertiary",
-        "displayName": "Sheet Meta",
-        "canonical": "oklch(52.4% 0.037 258.4)",
-        "tonalRamp": [
-          "oklch(15.0% 0.037 258.4)",
-          "oklch(26.4% 0.037 258.4)",
-          "oklch(37.9% 0.037 258.4)",
-          "oklch(49.3% 0.037 258.4)",
-          "oklch(60.7% 0.037 258.4)",
-          "oklch(72.1% 0.037 258.4)",
-          "oklch(83.6% 0.037 258.4)",
-          "oklch(95.0% 0.034 258.4)"
-        ]
-      },
-      "annotation-blue": {
-        "role": "tertiary",
-        "displayName": "Margin Annotation",
-        "canonical": "oklch(82.5% 0.045 264.3)",
-        "tonalRamp": [
-          "oklch(15.0% 0.044 264.3)",
-          "oklch(26.4% 0.045 264.3)",
-          "oklch(37.9% 0.045 264.3)",
-          "oklch(49.3% 0.045 264.3)",
-          "oklch(60.7% 0.045 264.3)",
-          "oklch(72.1% 0.045 264.3)",
-          "oklch(83.6% 0.045 264.3)",
-          "oklch(95.0% 0.035 264.3)"
-        ]
-      },
-      "chip-system-bg": {
-        "role": "tertiary",
-        "displayName": "System Chip Fill",
-        "canonical": "oklch(94.8% 0.031 181.8)",
-        "tonalRamp": [
-          "oklch(15.0% 0.031 181.8)",
-          "oklch(26.4% 0.031 181.8)",
-          "oklch(37.9% 0.031 181.8)",
-          "oklch(49.3% 0.031 181.8)",
-          "oklch(60.7% 0.031 181.8)",
-          "oklch(72.1% 0.031 181.8)",
-          "oklch(83.6% 0.031 181.8)",
-          "oklch(95.0% 0.031 181.8)"
-        ]
-      },
-      "chip-system-ink": {
-        "role": "tertiary",
-        "displayName": "System Chip Ink",
-        "canonical": "oklch(40.6% 0.074 179.1)",
-        "tonalRamp": [
-          "oklch(15.0% 0.052 179.1)",
-          "oklch(26.4% 0.069 179.1)",
-          "oklch(37.9% 0.074 179.1)",
-          "oklch(49.3% 0.074 179.1)",
-          "oklch(60.7% 0.074 179.1)",
-          "oklch(72.1% 0.071 179.1)",
-          "oklch(83.6% 0.054 179.1)",
-          "oklch(95.0% 0.037 179.1)"
-        ]
-      },
-      "chip-neutral-bg": {
-        "role": "tertiary",
-        "displayName": "Neutral Chip Fill",
-        "canonical": "oklch(95.6% 0.003 197.1)",
-        "tonalRamp": [
-          "oklch(15.0% 0.003 197.1)",
-          "oklch(26.4% 0.003 197.1)",
-          "oklch(37.9% 0.003 197.1)",
-          "oklch(49.3% 0.003 197.1)",
-          "oklch(60.7% 0.003 197.1)",
-          "oklch(72.1% 0.003 197.1)",
-          "oklch(83.6% 0.003 197.1)",
-          "oklch(95.0% 0.003 197.1)"
-        ]
-      },
-      "chip-neutral-ink": {
-        "role": "tertiary",
-        "displayName": "Neutral Chip Ink",
-        "canonical": "oklch(43.1% 0.048 263.2)",
-        "tonalRamp": [
-          "oklch(15.0% 0.045 263.2)",
-          "oklch(26.4% 0.048 263.2)",
-          "oklch(37.9% 0.048 263.2)",
-          "oklch(49.3% 0.048 263.2)",
-          "oklch(60.7% 0.048 263.2)",
-          "oklch(72.1% 0.048 263.2)",
-          "oklch(83.6% 0.046 263.2)",
-          "oklch(95.0% 0.035 263.2)"
-        ]
       }
     },
     "typographyMeta": {
@@ -372,7 +204,11 @@
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Page titles, section leads, and primary conversion blocks."
+        "purpose": "Page titles, section leads and primary conversion blocks."
+      },
+      "hero-h1": {
+        "displayName": "Hero H1",
+        "purpose": "Homepage hero headline, stepped below Display so the video keeps focal weight. Overlay layout 3rem\u21923.5rem; stacked layout 2.5rem\u21923.75rem."
       },
       "title": {
         "displayName": "Title",
@@ -384,15 +220,11 @@
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Long-form copy on white panels; keep line length near 65\u201375ch."
+        "purpose": "Long-form copy on white panels; line length near 65\u201375ch."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Form labels, metadata, badges, categories, compact nav text; sentence case."
-      },
-      "hand": {
-        "displayName": "Hand (Kalam)",
-        "purpose": "Handwritten annotations inside the hero paper composition only; decorative, never UI or body copy."
+        "purpose": "Form labels, metadata, badges, categories, compact nav; sentence case. The hero kicker is this tier in Mint."
       }
     },
     "shadows": [
@@ -415,21 +247,6 @@
         "name": "card-hover",
         "value": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
         "purpose": "Interactive cards on hover."
-      },
-      {
-        "name": "sheet-lift",
-        "value": "0 18px 44px -12px rgba(7,17,31,0.55), 0 2px 6px rgba(7,17,31,0.25)",
-        "purpose": "The maintained process sheet on the blue field \u2014 offset paper shadow, blue-tinted, never glossy."
-      },
-      {
-        "name": "scrap-torn",
-        "value": "0 8px 20px -6px rgba(7,17,31,0.5)",
-        "purpose": "Torn paper scrap behind the sheet; shallower than sheet-lift."
-      },
-      {
-        "name": "scrap-sticky",
-        "value": "0 6px 16px -5px rgba(7,17,31,0.45)",
-        "purpose": "Sticky-note scrap behind the sheet; shallower than sheet-lift."
       }
     ],
     "motion": [
@@ -441,7 +258,12 @@
       {
         "name": "duration-standard",
         "value": "300ms",
-        "purpose": "Default duration for hover transitions; transform-based motion carries motion-reduce overrides."
+        "purpose": "Default hover-transition duration; every transform-based hover carries a motion-reduce variant."
+      },
+      {
+        "name": "hero-scrub-travel",
+        "value": "260vh",
+        "purpose": "Scroll distance the pinned hero stage maps to the video playhead in overlay layout. Disabled under prefers-reduced-motion, which rests on the final frame."
       }
     ],
     "breakpoints": [
@@ -460,6 +282,10 @@
       {
         "name": "xl",
         "value": "1280px"
+      },
+      {
+        "name": "hero-overlay",
+        "value": "min-width:1024px and min-aspect-ratio:7/5"
       }
     ]
   },
@@ -475,16 +301,16 @@
     {
       "name": "Secondary Hero Button",
       "kind": "button",
-      "refersTo": "button-primary",
-      "description": "Dark-field companion action: transparent with a translucent white border; never used on white panels.",
-      "html": "<div class=\"ds-darkbg\"><button class=\"ds-btn-hero-secondary\">See how we work</button></div>",
+      "refersTo": "button-hero-secondary",
+      "description": "Dark-field companion action: transparent with a translucent white border. Blue field only, never on white panels.",
+      "html": "<div class=\"ds-darkbg\"><button class=\"ds-btn-hero-secondary\">See what we automate</button></div>",
       "css": ".ds-darkbg { background:#1D2D46; padding:24px; border-radius:12px; display:inline-block; } .ds-btn-hero-secondary { background:transparent; color:#fff; font-family: Montserrat, Arial, Helvetica, sans-serif; font-size:1.25rem; font-weight:700; line-height:1.4; padding:14px 24px; border:1px solid rgba(255,255,255,.35); border-radius:8px; cursor:pointer; transition:border-color .3s, background-color .3s; } .ds-btn-hero-secondary:hover { border-color:rgba(255,255,255,.7); background:rgba(255,255,255,.05); } .ds-btn-hero-secondary:focus-visible { outline:2px solid #fff; outline-offset:2px; }"
     },
     {
       "name": "Compact Header Button",
       "kind": "button",
       "refersTo": "button-compact",
-      "description": "Small green header CTA \u2014 green (not teal) because small white text needs 4.5:1.",
+      "description": "Small green header CTA \u2014 green not teal, because small white text needs 4.5:1.",
       "html": "<button class=\"ds-btn-compact\">Contact Us</button>",
       "css": ".ds-btn-compact { background:#04866E; color:#fff; font-family: Montserrat, Arial, Helvetica, sans-serif; font-size:0.875rem; font-weight:600; line-height:1.4; padding:8px 24px; border:none; border-radius:8px; cursor:pointer; transition:background-color .3s; } .ds-btn-compact:hover { background:#016450; } .ds-btn-compact:focus-visible { outline:2px solid #029979; outline-offset:2px; }"
     },
@@ -500,7 +326,7 @@
       "name": "Media Card",
       "kind": "card",
       "refersTo": "card-media",
-      "description": "Interactive blog/portfolio card: white, 8px corners, card-rest shadow lifting on hover; respects reduced motion.",
+      "description": "Interactive blog/portfolio card: white, 8px corners, card-rest shadow lifting on hover, text-safe teal title hover, reduced-motion guarded.",
       "html": "<a href=\"#\" class=\"ds-card\"><div class=\"ds-card-img\"></div><div class=\"ds-card-body\"><span class=\"ds-chip\">Security</span><h3>Card title runs here</h3><p>Two lines of muted excerpt text sit under the title, clamped and quiet.</p><span class=\"ds-card-more\">Read More \u2192</span></div></a>",
       "css": ".ds-card { display:block; width:300px; background:#fff; border-radius:8px; overflow:hidden; text-decoration:none; box-shadow:0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1); transition:box-shadow .3s, transform .3s; } .ds-card:hover { transform:translateY(-8px); box-shadow:0 20px 25px -5px rgb(0 0 0 / .1), 0 8px 10px -6px rgb(0 0 0 / .1); } .ds-card:focus-visible { outline:2px solid #029979; outline-offset:2px; } @media (prefers-reduced-motion: reduce) { .ds-card, .ds-card:hover { transform:none; transition:none; } } .ds-card-img { height:120px; background:linear-gradient(135deg,#1D2D46 60%,#029979); } .ds-card-body { padding:24px; font-family: Montserrat, Arial, Helvetica, sans-serif; } .ds-card-body h3 { color:#1D2D46; font-size:1.125rem; font-weight:700; line-height:1.25; margin:12px 0 8px; transition:color .3s; } .ds-card:hover h3 { color:#02735B; } .ds-card-body p { color:#4B5563; font-size:0.875rem; line-height:1.6; margin:0 0 12px; } .ds-card-more { color:#02735B; font-size:0.875rem; font-weight:500; } .ds-card:hover .ds-card-more { color:#04866E; }"
     },
@@ -508,7 +334,7 @@
       "name": "Dark Form Field",
       "kind": "input",
       "refersTo": "input-dark",
-      "description": "Contact-form field on the blue field: translucent white fill, readable placeholder, teal focus border with white focus ring.",
+      "description": "Contact-form field on the blue field: translucent white fill, readable placeholder, teal focus border with a white focus ring.",
       "html": "<div class=\"ds-darkbg\"><label class=\"ds-field-label\" for=\"ds-in\">Your name</label><input id=\"ds-in\" class=\"ds-input-dark\" placeholder=\"Jane Smith\"></div>",
       "css": ".ds-darkbg { background:#1D2D46; padding:24px; border-radius:12px; display:inline-block; } .ds-field-label { display:block; color:#F2F5F5; font-family: Montserrat, Arial, Helvetica, sans-serif; font-size:0.875rem; font-weight:500; margin-bottom:6px; } .ds-input-dark { background:rgba(255,255,255,.2); color:#fff; font-family: Montserrat, Arial, Helvetica, sans-serif; font-size:1rem; padding:12px 16px; border:1px solid rgba(255,255,255,.3); border-radius:8px; width:260px; transition:border-color .3s; } .ds-input-dark::placeholder { color:rgba(255,255,255,.75); } .ds-input-dark:focus { border-color:#029979; } .ds-input-dark:focus-visible { outline:2px solid #fff; outline-offset:2px; }"
     },
@@ -516,7 +342,7 @@
       "name": "Prose Link",
       "kind": "custom",
       "refersTo": "chip-teal",
-      "description": "Long-form link treatment: Action Text Teal with Deep Action Green hover \u2014 teal never appears as text on white in its raw form.",
+      "description": "Long-form link treatment: Action Text Teal with Deep Action Green hover \u2014 raw Signal Teal never appears as text on white.",
       "html": "<p class=\"ds-prose\">We map the process first, then <a href=\"#\" class=\"ds-link\">connect the tools you already use</a> so records move on their own.</p>",
       "css": ".ds-prose { color:#374151; font-family: Montserrat, Arial, Helvetica, sans-serif; font-size:1rem; line-height:1.7; max-width:60ch; } .ds-link { color:#02735B; text-decoration:underline; text-underline-offset:2px; transition:color .2s; } .ds-link:hover { color:#016450; } .ds-link:focus-visible { outline:2px solid #029979; outline-offset:2px; }"
     },
@@ -529,23 +355,23 @@
       "css": ".ds-nav { background:rgba(29,45,70,.92); padding:16px 24px; border-radius:8px; display:flex; gap:24px; align-items:center; } .ds-nav-link { color:#fff; font-family: Montserrat, Arial, Helvetica, sans-serif; font-size:1rem; text-decoration:none; transition:color .3s; } .ds-nav-link:hover { color:#029979; } .ds-nav-active { color:#029979; font-weight:600; } .ds-nav-link:focus-visible { outline:2px solid #029979; outline-offset:2px; } .ds-btn-compact { background:#04866E; color:#fff; font-family: Montserrat, Arial, Helvetica, sans-serif; font-size:0.875rem; font-weight:600; padding:8px 24px; border:none; border-radius:8px; cursor:pointer; transition:background-color .3s; } .ds-btn-compact:hover { background:#016450; }"
     },
     {
-      "name": "Process Sheet (Signature)",
+      "name": "Hero Copy Block (Signature)",
       "kind": "custom",
-      "refersTo": "process-sheet",
-      "description": "Compact rendition of the brand's proof object: a maintained process document on the blue field with the single teal timeline thread and owner chips.",
-      "html": "<div class=\"ds-sheetfield\"><div class=\"ds-sheet\"><div class=\"ds-sheet-meta\">Process sheet \u00b7 Maintained</div><div class=\"ds-sheet-title\">Enquiry to booked job</div><div class=\"ds-step\"><span class=\"ds-step-num\">1</span><div><div class=\"ds-step-text\">Enquiry lands in shared inbox and is logged automatically.</div><span class=\"ds-owner ds-owner-system\">System</span></div></div><div class=\"ds-step\"><span class=\"ds-step-num\">2</span><div><div class=\"ds-step-text\">Owner reviews and books the site visit.</div><span class=\"ds-owner ds-owner-team\">Team</span></div></div></div></div>",
-      "css": ".ds-sheetfield { background:#1D2D46; padding:28px; border-radius:12px; display:inline-block; } .ds-sheet { background:#fff; border-radius:4px; padding:24px 28px; width:300px; box-shadow:0 18px 44px -12px rgba(7,17,31,.55), 0 2px 6px rgba(7,17,31,.25); font-family: Montserrat, Arial, Helvetica, sans-serif; } .ds-sheet-meta { color:#5D6B80; font-size:0.6875rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; margin-bottom:8px; } .ds-sheet-title { color:#1D2D46; font-size:1.05rem; font-weight:700; margin-bottom:14px; } .ds-step { display:flex; gap:12px; position:relative; padding-bottom:16px; } .ds-step:not(:last-child)::before { content:\"\"; position:absolute; left:11px; top:24px; bottom:-2px; width:2px; background:rgba(2,153,121,.7); } .ds-step-num { flex:none; width:24px; height:24px; border-radius:9999px; border:2px solid #029979; background:#fff; color:#1D2D46; font-size:0.6875rem; font-weight:600; display:flex; align-items:center; justify-content:center; } .ds-step-text { color:#374151; font-size:0.8125rem; line-height:1.5; margin-bottom:4px; } .ds-owner { font-size:0.625rem; font-weight:600; padding:2px 6px; border-radius:3px; display:inline-block; } .ds-owner-system { background:#D8F5EF; color:#00564A; } .ds-owner-team { background:#EEF1F1; color:#42506B; }"
+      "refersTo": "hero-h1",
+      "description": "The hero's copy zone as it sits over the scroll-driven video: Mint kicker, stepped white H1, quiet support line, paired CTAs. The video itself is the signature moment \u2014 see the direction contract in src/components/ScrubHero.tsx.",
+      "html": "<div class=\"ds-hero\"><p class=\"ds-hero-kicker\">Small business process automation</p><h1 class=\"ds-hero-h1\">Automation shaped around your business.</h1><p class=\"ds-hero-support\">Owner-led help with the admin slowing your team down.</p><div class=\"ds-hero-ctas\"><button class=\"ds-btn-primary\">Start a conversation</button><button class=\"ds-btn-hero-secondary\">See what we automate</button></div></div>",
+      "css": ".ds-hero { background:#1D2D46; padding:40px; border-radius:12px; max-width:560px; font-family: Montserrat, Arial, Helvetica, sans-serif; } .ds-hero-kicker { color:#9BE1D0; font-size:0.875rem; font-weight:500; letter-spacing:.025em; margin:0 0 20px; } .ds-hero-h1 { color:#fff; font-size:3rem; font-weight:700; line-height:1.05; margin:0 0 24px; text-wrap:balance; } .ds-hero-support { color:rgba(242,245,245,.85); font-size:1.25rem; line-height:1.6; margin:0 0 36px; max-width:40ch; } .ds-hero-ctas { display:flex; flex-wrap:wrap; gap:12px; } .ds-hero-ctas .ds-btn-primary { background:#029979; color:#fff; font-size:1.25rem; font-weight:700; padding:14px 24px; border:none; border-radius:8px; cursor:pointer; transition:background-color .3s; } .ds-hero-ctas .ds-btn-primary:hover { background:#04866E; } .ds-hero-ctas .ds-btn-primary:focus-visible, .ds-hero-ctas .ds-btn-hero-secondary:focus-visible { outline:2px solid #fff; outline-offset:2px; } .ds-hero-ctas .ds-btn-hero-secondary { background:transparent; color:#fff; font-size:1.25rem; font-weight:700; padding:14px 24px; border:1px solid rgba(255,255,255,.35); border-radius:8px; cursor:pointer; transition:border-color .3s, background-color .3s; } .ds-hero-ctas .ds-btn-hero-secondary:hover { border-color:rgba(255,255,255,.7); background:rgba(255,255,255,.05); }"
     }
   ],
   "narrative": {
     "northStar": "The Owner's Control Room",
-    "overview": "The DataSolace system should feel like a calm control room run by people who know the equipment, the workflow, and the client by name. The current visual language is built from a saturated deep blue field, crisp white content panels, practical teal actions, large Montserrat headings, and real project imagery. It is direct and legible first, with polish coming from confident contrast, spacing, and useful hierarchy.\n\nThis is a brand marketing system, not an app shell. Visitors should feel that DataSolace is technically capable and personally reachable, with a small-team advantage that larger consultancies and tool-first automation agencies cannot easily copy. The interface should stay boutique in the sense of being specific and owner-led, not decorative or precious.\n\nThe homepage now leads with the brand's own proof: a maintained process sheet \u2014 a white paper artifact on the blue field, with scattered handwritten scraps behind it \u2014 showing the actual deliverable instead of an abstract workflow diagram. The document world it introduces (paper tones, handwritten annotations, owner chips, a single teal timeline rule) is a bounded extension of the control-room identity, not a second design system.",
+    "overview": "The DataSolace system should feel like a calm control room run by people who know the equipment, the workflow, and the client by name. The current visual language is built from a saturated deep blue field, crisp white content panels, practical teal actions, large Montserrat headings, and real project imagery. It is direct and legible first, with polish coming from confident contrast, spacing, and useful hierarchy.\n\nThis is a brand marketing system, not an app shell. Visitors should feel that DataSolace is technically capable and personally reachable, with a small-team advantage that larger consultancies and tool-first automation agencies cannot easily copy. The interface should stay boutique in the sense of being specific and owner-led, not decorative or precious.\n\nThe homepage leads with the brand's promise performed rather than described: a scroll-driven video in which a wall of sticky notes and string \u2014 the customer's real, fragile process \u2014 is drawn into a screen and becomes a running automation workflow. The transformation is the proof, and the visitor's own scroll drives it. This replaced an earlier CSS process-sheet composition in June 2026; the paper-artifact world it introduced is retired and should not be reintroduced.",
     "keyCharacteristics": [
       "Deep blue brand field with white panels for explanation and conversion.",
       "Teal actions used sparingly and consistently for the next useful step.",
       "Montserrat typography with heavy, direct headings and readable body copy.",
       "Rounded but restrained panels, cards, images, and inputs.",
-      "Real process, infrastructure, documentation, and small-business imagery over abstract decoration \u2014 with the process sheet itself as the signature artifact."
+      "Real process, infrastructure, documentation, and small-business imagery over abstract decoration \u2014 with the scroll-driven hero transformation as the signature moment."
     ],
     "rules": [
       {
@@ -569,8 +395,8 @@
         "section": "colors"
       },
       {
-        "name": "The Paper Stays on the Sheet Rule",
-        "body": "The paper artifact palette belongs to the hero's document world. Do not promote scrap, sticky, or annotation colors into general UI chrome.",
+        "name": "The Six Token Rule",
+        "body": "Only six brand colors are declared as CSS custom properties in globals.css (blue, teal, green, teal-text, green-dark, brand-white). Everything else is a literal value used inline. Adding a seventh brand color means adding a token, not scattering a new hex.",
         "section": "colors"
       },
       {
@@ -580,7 +406,7 @@
       },
       {
         "name": "The One Family Rule",
-        "body": "Montserrat is the brand voice; Geist Mono is the code voice; Kalam exists solely as the handwritten annotation face inside the paper artifact. Do not introduce further faces, and do not let Kalam escape the document world.",
+        "body": "Montserrat is the brand voice; Geist Mono is the code voice. Two faces, no more. A new face needs a reason the existing weights and sizes genuinely cannot serve.",
         "section": "typography"
       },
       {
@@ -596,13 +422,13 @@
     ],
     "dos": [
       "Do use DataSolace Blue (#1D2D46) as the main brand field for marketing pages.",
-      "Do reserve Signal Teal (#029979) for CTA fills, active states, focused controls, and structural accents like the timeline rule.",
+      "Do reserve Signal Teal (#029979) for CTA fills, active states, focused controls, and the concentrated accent in the hero footage.",
       "Do use Action Text Teal (#02735B) whenever teal appears as text on white or light surfaces, with Deep Action Green (#016450) on hover.",
       "Do keep body copy on white panels when explanations are long.",
-      "Do use real imagery and real artifacts \u2014 the process sheet, documentation, projects, infrastructure \u2014 when a section needs visual weight.",
+      "Do use real imagery and real artifacts \u2014 the hero footage, documentation, projects, infrastructure \u2014 when a section needs visual weight.",
       "Do write direct, owner-led copy that makes the personal service advantage visible.",
       "Do keep focus states, form labels, and placeholder text readable for older users; every interactive element gets the 2px visible focus outline, adapted to its surface.",
-      "Do respect reduced-motion preferences for hover movement, card lifts, and menu transitions."
+      "Do respect reduced-motion preferences for hover movement, card lifts, menu transitions, and the hero scrub \u2014 every transform-based hover carries a motion-reduce: variant."
     ],
     "donts": [
       "Don't set Signal Teal (#029979) as text on white or light surfaces \u2014 it fails 4.5:1; use Action Text Teal instead.",
@@ -611,10 +437,11 @@
       "Don't make it feel like a no-code agency template: no walls of app logos, generic connector diagrams, or one-size-fits-all tool-stack claims.",
       "Don't make it feel like a corporate IT consultancy: no faceless enterprise language, stock business imagery, or claims that feel larger than the team.",
       "Don't make it feel like bookkeeping software: no flat administrative visuals or copy that makes process improvement feel like paperwork.",
-      "Don't use emoji as the primary visual system for CTAs, headings, or service categories. (The last emoji CTAs were removed; keep it that way.)",
-      "Don't let Kalam or the paper artifact palette leak out of the hero's document world into general UI.",
-      "Don't use gradient text, colored side-stripe borders, decorative glass cards, or repeated tiny uppercase section labels \u2014 the sheet's own meta labels are document furniture, not a UI pattern.",
-      "Don't over-round cards or panels. Keep content panels at 16px, standard cards/inputs at 8px, and paper artifacts at 4px unless a specific component needs otherwise.",
+      "Don't use emoji as the primary visual system for CTAs, headings, or service categories.",
+      "Don't reintroduce the retired paper-artifact world \u2014 handwriting faces, scrap/sticky tones, owner chips, or a document-styled hero. It was replaced in June 2026 and nothing in the codebase uses it.",
+      "Don't add a second scroll-scrubbed video or competing signature animation; the hero's power depends on being the only one.",
+      "Don't use gradient text, colored side-stripe borders, decorative glass cards, or repeated tiny uppercase section labels.",
+      "Don't over-round cards or panels. Keep content panels at 16px and standard cards/inputs at 8px unless a specific component needs otherwise.",
       "Don't rely on color alone for active, focus, error, or disabled states."
     ]
   }
