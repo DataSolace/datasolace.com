@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import Header from '../../components/Header';
@@ -5,6 +6,12 @@ import Footer from '../../components/Footer';
 import { getAllBlogPosts } from '../../lib/blog';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+  title: 'Blog',
+  description:
+    'Writing on process automation for small businesses: how we map work, connect systems, and keep them running — plus the occasional technical deep-dive from our own tooling.',
+};
 
 export default async function Blog() {
   const blogPosts = await getAllBlogPosts();
@@ -84,19 +91,6 @@ export default async function Blog() {
                 </div>
               </Link>
             ))}
-          </div>
-
-          {/* Pagination or Load More */}
-          <div className="text-center mt-16">
-            <Link
-              href="/blog"
-              className="text-white hover:text-[var(--brand-teal)] transition-colors inline-flex items-center text-xl"
-            >
-              Older Posts
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
           </div>
 
           {/* Call to Action */}
