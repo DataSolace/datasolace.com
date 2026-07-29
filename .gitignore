@@ -62,9 +62,11 @@ next-env.d.ts
 # agent harness settings
 .claude/settings.local.json
 
-# vendored agent skills (installed via `npx impeccable install`)
+# vendored agent skills (installed via `npx impeccable install` / `npx skills add`)
 .claude/skills/
 .pi/skills/
+.agents/
+skills-lock.json
 
 # impeccable tool output (critiques, design tokens, live-preview config)
 .impeccable/*
