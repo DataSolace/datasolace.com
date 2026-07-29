@@ -50,7 +50,7 @@ export default async function Blog() {
                 href={`/blog/${post.slug.current}`}
                 className="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 motion-reduce:transform-none motion-reduce:transition-none"
               >
-                <div className="aspect-w-16 aspect-h-12 bg-gray-200">
+                <div className="bg-gray-200">
                   <Image
                     src={post.featuredImage.asset.url}
                     alt={post.featuredImage.alt}
@@ -73,9 +73,9 @@ export default async function Blog() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-[var(--brand-blue)] group-hover:text-[var(--brand-teal-text)] transition-colors leading-tight mb-3">
+                  <h2 className="text-lg font-bold text-[var(--brand-blue)] group-hover:text-[var(--brand-teal-text)] transition-colors leading-tight mb-3">
                     {post.title}
-                  </h3>
+                  </h2>
 
                   {/* Description */}
                   <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
@@ -99,10 +99,10 @@ export default async function Blog() {
               Ready to implement these solutions in your business?
             </p>
             <Link
-              href="/#contact"
-              className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block"
+              href="/appointments"
+              className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-8 py-4 rounded-lg text-xl font-bold transition-colors inline-block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
-              Get Started Today
+              Book an intro call
             </Link>
           </div>
         </div>

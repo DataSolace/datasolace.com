@@ -42,6 +42,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   // Get related posts
   const relatedPosts = await getRelatedBlogPosts(post._id, post.category, 2);
 
+  const excerpt = (text: string, max = 120) => {
+    if (text.length <= max) return text;
+    const cut = text.lastIndexOf(' ', max);
+    return `${text.slice(0, cut > 0 ? cut : max)}…`;
+  };
+
   const parseMarkdown = (markdown: string) => {
     try {
       return marked(markdown);
@@ -128,12 +134,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <div className="flex space-x-4">
                   <span className="text-gray-600">Share:</span>
                   <a
-                    href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`https://datasolace.com/blog/${slug}`)}&text=${encodeURIComponent(post.title)}`}
+                    href={`https://x.com/intent/post?url=${encodeURIComponent(`https://datasolace.com/blog/${slug}`)}&text=${encodeURIComponent(post.title)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[var(--brand-teal-text)] hover:text-[var(--brand-green)] transition-colors"
                   >
-                    Twitter
+                    X
                   </a>
                   <a
                     href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://datasolace.com/blog/${slug}`)}`}
@@ -156,11 +162,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </article>
 
           {/* Related Posts */}
-          <div className="mt-16">
-            <h2 className="text-2xl font-bold text-white mb-8">Related Posts</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {relatedPosts.length > 0 ? (
-                relatedPosts.map((relatedPost) => (
+          {relatedPosts.length > 0 && (
+            <div className="mt-16">
+              <h2 className="text-2xl font-bold text-white mb-8">Related Posts</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                {relatedPosts.map((relatedPost) => (
                   <Link
                     key={relatedPost._id}
                     href={`/blog/${relatedPost.slug.current}`}
@@ -170,25 +176,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       {relatedPost.title}
                     </h3>
                     <p className="text-gray-600 text-sm mb-3">
-                      {relatedPost.description.substring(0, 120)}...
+                      {excerpt(relatedPost.description)}
                     </p>
                     <span className="text-[var(--brand-teal-text)] text-sm font-medium">
                       Read More →
                     </span>
                   </Link>
-                ))
-              ) : (
-                <div className="bg-white rounded-lg p-6">
-                  <h3 className="text-lg font-bold text-[var(--brand-blue)] mb-2">
-                    More posts coming soon...
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-3">
-                    We&apos;re working on bringing you more great content. Check back soon!
-                  </p>
-                </div>
-              )}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
 
