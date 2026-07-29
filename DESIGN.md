@@ -11,21 +11,9 @@ colors:
   white: "#FFFFFF"
   mint: "#9BE1D0"
   ink: "#171717"
-  text-strong: "#111827"
   text-body: "#374151"
   text-muted: "#4B5563"
   border-muted: "#E5E7EB"
-  field-border: "#D1D5DB"
-  paper-torn: "#E9ECEC"
-  paper-torn-ink: "#3D4A63"
-  paper-sticky: "#E8E0B4"
-  paper-sticky-ink: "#4A4630"
-  sheet-meta: "#5D6B80"
-  annotation-blue: "#B7C6E4"
-  chip-system-bg: "#D8F5EF"
-  chip-system-ink: "#00564A"
-  chip-neutral-bg: "#EEF1F1"
-  chip-neutral-ink: "#42506B"
 typography:
   display:
     fontFamily: "Montserrat, Arial, Helvetica, sans-serif"
@@ -63,11 +51,11 @@ typography:
     fontWeight: 500
     lineHeight: 1.4
     letterSpacing: "normal"
-  hand:
-    fontFamily: "Kalam, cursive"
-    fontSize: "1.05rem"
-    fontWeight: 400
-    lineHeight: 1.375
+  hero-h1:
+    fontFamily: "Montserrat, Arial, Helvetica, sans-serif"
+    fontSize: "3rem"
+    fontWeight: 700
+    lineHeight: 1.05
     letterSpacing: "normal"
 rounded:
   sm: "4px"
@@ -128,11 +116,12 @@ components:
     textColor: "{colors.brand-teal-text}"
     rounded: "{rounded.sm}"
     padding: "4px 8px"
-  process-sheet:
-    backgroundColor: "{colors.white}"
-    textColor: "{colors.text-body}"
-    rounded: "{rounded.sm}"
-    padding: "24px 28px"
+  button-hero-secondary:
+    backgroundColor: "transparent"
+    textColor: "{colors.white}"
+    typography: "{typography.cta}"
+    rounded: "{rounded.md}"
+    padding: "14px 24px"
 ---
 
 # Design System: DataSolace
@@ -145,7 +134,7 @@ The DataSolace system should feel like a calm control room run by people who kno
 
 This is a brand marketing system, not an app shell. Visitors should feel that DataSolace is technically capable and personally reachable, with a small-team advantage that larger consultancies and tool-first automation agencies cannot easily copy. The interface should stay boutique in the sense of being specific and owner-led, not decorative or precious.
 
-The homepage now leads with the brand's own proof: a maintained process sheet — a white paper artifact on the blue field, with scattered handwritten scraps behind it — showing the actual deliverable instead of an abstract workflow diagram. The document world it introduces (paper tones, handwritten annotations, owner chips, a single teal timeline rule) is a bounded extension of the control-room identity, not a second design system.
+The homepage leads with the brand's promise performed rather than described: a scroll-driven video in which a wall of sticky notes and string — the customer's real, fragile process — is drawn into a screen and becomes a running automation workflow. The transformation *is* the proof, and the visitor's own scroll drives it. This replaced an earlier CSS process-sheet composition in June 2026; the paper-artifact world it introduced is retired and should not be reintroduced.
 
 The system explicitly rejects generic SaaS marketing, AI automation guru energy, no-code agency gloss, faceless corporate IT consultancy tone, and dull bookkeeping-software visuals. Any future redesign should preserve the practical blue-and-teal identity while removing legacy patterns that work against the brand, especially vague automation language and low-substance spectacle.
 
@@ -154,7 +143,7 @@ The system explicitly rejects generic SaaS marketing, AI automation guru energy,
 - Teal actions used sparingly and consistently for the next useful step.
 - Montserrat typography with heavy, direct headings and readable body copy.
 - Rounded but restrained panels, cards, images, and inputs.
-- Real process, infrastructure, documentation, and small-business imagery over abstract decoration — with the process sheet itself as the signature artifact.
+- Real process, infrastructure, documentation, and small-business imagery over abstract decoration — with the scroll-driven hero transformation as the signature moment.
 
 ## 2. Colors
 
@@ -173,25 +162,15 @@ The palette is a committed dark-blue identity with teal and green action colors,
 
 ### Neutral
 
-- **Quiet White** (#F2F5F5): Brand off-white for footer text and soft support copy on dark surfaces; also the tinted callout fill inside the process sheet.
+- **Quiet White** (#F2F5F5): Brand off-white for footer text and soft support copy on dark surfaces.
 - **Panel White** (#FFFFFF): The primary reading surface for service, blog, portfolio, and scheduling content.
 - **Mint** (#9BE1D0): Light teal for small text on the blue field — the hero kicker and form success message on dark panels.
 - **Ink** (#171717): Root foreground and high-contrast text anchor.
-- **Strong Text** (#111827): Headings and strong body text on white panels.
 - **Body Text** (#374151): Default long-form text on white panels.
 - **Muted Text** (#4B5563): Metadata, excerpts, and lower-emphasis content.
 - **Soft Border** (#E5E7EB): Dividers and light separation in prose or legal pages.
-- **Field Border** (#D1D5DB): Light-form field stroke on white panels.
 
-### Paper Artifact Palette
-
-Intentional document-world colors, used only inside the hero's paper composition. They are quiet, desaturated, and slightly warm or cool so the paper reads as physical material against the blue field.
-
-- **Torn Note** (#E9ECEC) with ink #3D4A63: the grey scrap of the old way.
-- **Sticky Note** (#E8E0B4) with ink #4A4630: the yellowed reminder of the old way.
-- **Sheet Meta** (#5D6B80): uppercase meta labels on the process sheet.
-- **Margin Annotation** (#B7C6E4): the handwritten aside sitting on the blue field.
-- **Owner Chips**: System = #D8F5EF fill / #00564A ink; Team and Office = #EEF1F1 fill / #42506B ink.
+Greys below the named set come from Tailwind's default scale (`text-gray-700` for prose bodies, `text-gray-600`/`500` for metadata). Prefer the named tokens above for new work; the Tailwind greys are incumbent, not a second palette.
 
 ### Named Rules
 
@@ -203,39 +182,26 @@ Intentional document-world colors, used only inside the hero's paper composition
 
 **The White Panel Rule.** Long explanations belong on Panel White. Large bodies of text should not sit directly on the blue field unless they are short, high-contrast, and part of a hero or CTA.
 
-**The Paper Stays on the Sheet Rule.** The paper artifact palette belongs to the hero's document world. Do not promote scrap, sticky, or annotation colors into general UI chrome.
+**The Six Token Rule.** Only six brand colors are declared as CSS custom properties in `globals.css` (blue, teal, green, teal-text, green-dark, brand-white). Everything else in this section is a literal value used inline. Adding a seventh brand color means adding a token, not scattering a new hex.
 
 ## 3. Typography
 
 **Display Font:** Montserrat, with Arial and Helvetica fallbacks  
 **Body Font:** Montserrat, with Arial and Helvetica fallbacks  
-**Mono Font:** Geist Mono (`--font-geist-mono`), used for code in prose content.  
-**Handwritten Font:** Kalam (`--font-hand`), 400 only — decorative annotations inside the hero's paper composition, never for UI or body copy.
+**Mono Font:** Geist Mono (`--font-geist-mono`), used for code in prose content.
 
-**Character:** The type system is single-family, geometric, and plain-spoken. It gets its authority from weight, scale, and spacing rather than decorative contrast. Kalam is the one sanctioned outside voice: it plays "a human wrote on this" inside the document world and nowhere else.
+**Character:** The type system is single-family, geometric, and plain-spoken. It gets its authority from weight, scale, and spacing rather than decorative contrast. Montserrat carries every surface; Geist Mono appears only where code is being shown.
 
 ### Hierarchy
 
 - **Display** (700, `clamp(3.75rem, 7vw, 6rem)`, 1): Homepage-scale headlines and major marketing statements. Keep max size at or below 6rem.
 - **Headline** (700, `clamp(3rem, 5vw, 3.75rem)`, 1.1): Page titles, section leads, and primary conversion blocks.
-- **Hero H1** (700, stepped `2.5rem → 3rem → 3.5rem`, 1.05): The homepage hero headline steps below Display so the paper artifact keeps focal weight. This is a deliberate local step, not a new ramp tier.
+- **Hero H1** (700, 1.05): The homepage hero headline steps below Display so the video keeps focal weight. Two variants by layout — overlay (copy over the pinned video) runs `3rem → 3.5rem`; stacked (phones and tall windows) runs `2.5rem → 3.75rem`. A deliberate local step, not a new ramp tier.
 - **Title** (700, `1.5rem`, 1.25): Service names, card titles, form section headings, and key subheads.
 - **CTA** (700, `1.25rem`, 1.4): Primary call-to-action button text — hero CTAs, "Book an intro call", "Send message".
 - **Body** (400, `1rem`, 1.7): Long-form copy on white panels. Keep readable line lengths near 65 to 75 characters.
 - **Large Body** (400 or 500, `1.125rem` to `1.25rem`, 1.6): Introductory page copy, hero support text, and short explanatory sections.
-- **Label** (500, `0.875rem`, 1.4): Form labels, metadata, badges, categories, and compact navigation text. Use sentence case by default.
-- **Hand** (Kalam 400, `1.05rem` scraps / `1rem` margin note, snug): Handwritten annotations in the hero paper composition. Decorative only; always paired with real copy or an aria label.
-
-### Document Micro-Type
-
-Inside the process sheet only, a compressed ramp keeps the artifact reading as a real document:
-
-- `0.8125rem` — sheet body: step descriptions, subtitle, revision line.
-- `0.75rem` — exceptions callout.
-- `0.6875rem` (600, uppercase, tracked) — meta labels ("Process sheet", "Maintained") and step numerals.
-- `0.625rem` (600) — owner chips.
-
-These sizes are for the document artifact, not for marketing or UI copy.
+- **Label** (500, `0.875rem`, 1.4): Form labels, metadata, badges, categories, and compact navigation text. Use sentence case by default. The hero kicker is this tier in Mint with light tracking.
 
 ### Prose Ramp
 
@@ -245,7 +211,7 @@ Long-form `.prose` content uses its own smaller ramp: h1 `2rem`/700, h2 `1.5rem`
 
 **The Plain Speech Rule.** Use type to clarify, not to perform. Avoid all-caps body text, over-tight tracking, and ornamental font swaps.
 
-**The One Family Rule.** Montserrat is the brand voice; Geist Mono is the code voice; Kalam exists solely as the handwritten annotation face inside the paper artifact. Do not introduce further faces, and do not let Kalam escape the document world.
+**The One Family Rule.** Montserrat is the brand voice; Geist Mono is the code voice. Two faces, no more. A new face needs a reason the existing weights and sizes genuinely cannot serve.
 
 ## 4. Elevation
 
@@ -257,8 +223,8 @@ The system uses a hybrid of tonal layering and shadows. The blue field creates t
 - **Media Lift** (`box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)`): Image previews and product screenshots, currently expressed with `shadow-xl`.
 - **Card Rest** (`box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)`): Blog and portfolio cards, and prose images, currently expressed with `shadow-lg`.
 - **Card Hover** (`box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)`): Interactive cards on hover.
-- **Sheet Lift** (`box-shadow: 0 18px 44px -12px rgba(7,17,31,0.55), 0 2px 6px rgba(7,17,31,0.25)`): The maintained process sheet on the blue field — an offset paper shadow, deeper and blue-tinted, never glossy.
-- **Scrap Shadows** (`0 8px 20px -6px rgba(7,17,31,0.5)` torn note; `0 6px 16px -5px rgba(7,17,31,0.45)`): The muted paper scraps behind the sheet; shallower than Sheet Lift so the sheet clearly sits on top.
+
+The hero video needs no shadow: it is full-bleed on the blue field in overlay layout, and a panel in stacked layout. Depth there comes from the chiaroscuro in the footage itself.
 
 ### Named Rules
 
@@ -288,27 +254,27 @@ The system uses a hybrid of tonal layering and shadows. The blue field creates t
 
 - **Style:** Low-opacity teal background, usually `#0299791A`, with `4px` radius and Action Text Teal (`#02735B`) text per the Text-Safe Teal Rule.
 - **Use:** Categories, blog labels, and compact metadata. Keep them quiet and informational.
-- **Hero trust chips:** On the blue field, small `1.5px` teal dot + `0.875rem` medium text in `brand-white/80` — a list, not pills.
-- **Owner chips:** Document-world only — see the Process Sheet below.
+- **Scope:** Chips are an informational pattern on white panels. The hero carries no chips — its copy block is kicker, headline, support line, and CTAs only.
 
 ### Cards / Containers
 
-- **Corner Style:** Large content panels use `16px`; media cards and smaller cards use `8px`; the paper artifact uses `4px` (paper, not UI).
+- **Corner Style:** Large content panels use `16px`; media cards and smaller cards use `8px`.
 - **Background:** White for primary reading surfaces. Dark translucent panels appear only on blue sections.
-- **Shadow Strategy:** Large panels may use Panel High; interactive cards use Card Rest and Card Hover; the process sheet uses Sheet Lift.
+- **Shadow Strategy:** Large panels may use Panel High; interactive cards use Card Rest and Card Hover.
 - **Border:** Light borders are appropriate for fields and legal/prose dividers. Avoid colored side stripes.
 - **Internal Padding:** Use `48px` for major panels, `24px` to `32px` for cards, and reduce carefully on mobile.
 
-### The Process Sheet (Signature Artifact)
+### The Scroll-Driven Hero (Signature Moment)
 
-The hero's maintained process sheet is the brand's proof object: a white document at `4px` corners under Sheet Lift, sitting above two rotated paper scraps, on the blue field.
+The homepage hero is the brand's proof object: a video in which a wall of sticky notes and string is drawn into a screen and becomes a running automation workflow. The transformation *is* the claim. The full direction contract lives at the top of `src/components/ScrubHero.tsx` and governs any change to it.
 
-- **Anatomy:** uppercase meta labels (Sheet Meta #5D6B80) → bold blue document title → muted subtitle → numbered step list → tinted exceptions callout (Quiet White fill, `3px` radius) → revision line above a Soft Border rule → handwritten margin annotation (#B7C6E4, Kalam) off the bottom edge.
-- **The one teal thread:** a single `2px` vertical timeline rule at `brand-teal/70` connecting white step numerals ringed in 2px teal. Teal is concentrated here and in the revision-line check; nowhere else on the sheet.
-- **Owner chips:** `0.625rem`/600 at `3px` radius — System in #D8F5EF/#00564A, Team and Office in #EEF1F1/#42506B.
-- **Scraps:** torn note (#E9ECEC, clip-path torn edge, -6° rotation) and sticky note (#E8E0B4, +3° rotation), both carrying Kalam handwriting in their own ink colors.
-- **Accessibility:** the whole composition is `role="img"` with a descriptive label; internals are `aria-hidden`.
-- **Rule:** this is a composed artifact, not a card pattern. Reuse it deliberately (e.g., a services variant), never as a generic container.
+- **Thesis:** show the promise rather than describe it. An owner recognises their own note-covered wall, then watches it become a calm system — understanding "we build it and keep it running" without reading a word.
+- **Own-world palette:** deep blue ground (#1D2D46), chiaroscuro desk scene, teal (#029979) concentrated in the string, the screen glow, and the workflow wires. The one teal thread discipline carried over from the retired process sheet.
+- **Mechanic:** the video never autoplays; the visitor's scroll drives the playhead. Landscape desktop (`lg+`, aspect ≥ 7/5) pins the stage and scrubs across 260vh with copy overlaid on the dark left zone. Phones and tall windows use an unpinned page with a wheel/touch scroll-lock that releases when the video completes.
+- **Reduced motion:** no scrub, no lock — the video rests on its final frame. The scrollbar and keyboard bypass the lock by design; those visitors simply skip the animation and read the copy.
+- **Accessibility:** the video carries a descriptive `aria-label`; all meaning is duplicated in the real hero copy beside it. The animation is never required to understand the page.
+- **Assets:** `/hero/hero-desktop.mp4` (1080p) and `/hero/hero-mobile.mp4` (720p), all-but-keyframe encoded (`g=2`) for frame-accurate scrubbing, plus a poster JPG for instant first paint. Masters live in `assets-src/hero/`.
+- **Rule:** this is a composed signature moment, not a reusable pattern. Do not add a second scroll-scrubbed video elsewhere on the site; its power depends on being the only one.
 
 ### Inputs / Fields
 
@@ -351,13 +317,13 @@ The hero's maintained process sheet is the brand's proof object: a white documen
 ### Do:
 
 - **Do** use DataSolace Blue (`#1D2D46`) as the main brand field for marketing pages.
-- **Do** reserve Signal Teal (`#029979`) for CTA fills, active states, focused controls, and structural accents like the timeline rule.
+- **Do** reserve Signal Teal (`#029979`) for CTA fills, active states, focused controls, and the concentrated accent in the hero footage.
 - **Do** use Action Text Teal (`#02735B`) whenever teal appears as text on white or light surfaces, with Deep Action Green (`#016450`) on hover.
 - **Do** keep body copy on white panels when explanations are long.
-- **Do** use real imagery and real artifacts — the process sheet, documentation, projects, infrastructure — when a section needs visual weight.
+- **Do** use real imagery and real artifacts — the hero footage, documentation, projects, infrastructure — when a section needs visual weight.
 - **Do** write direct, owner-led copy that makes the personal service advantage visible.
 - **Do** keep focus states, form labels, and placeholder text readable for older users; every interactive element gets the 2px visible focus outline, adapted to its surface.
-- **Do** respect reduced-motion preferences for hover movement, card lifts, and menu transitions.
+- **Do** respect reduced-motion preferences for hover movement, card lifts, menu transitions, and the hero scrub — every transform-based hover carries a `motion-reduce:` variant.
 
 ### Don't:
 
@@ -368,7 +334,8 @@ The hero's maintained process sheet is the brand's proof object: a white documen
 - **Don't** make it feel like a corporate IT consultancy: no faceless enterprise language, stock business imagery, or claims that feel larger than the team.
 - **Don't** make it feel like bookkeeping software: no flat administrative visuals or copy that makes process improvement feel like paperwork.
 - **Don't** use emoji as the primary visual system for CTAs, headings, or service categories. (The last emoji CTAs were removed; keep it that way.)
-- **Don't** let Kalam or the paper artifact palette leak out of the hero's document world into general UI.
-- **Don't** use gradient text, colored side-stripe borders, decorative glass cards, or repeated tiny uppercase section labels — the sheet's own meta labels are document furniture, not a UI pattern.
-- **Don't** over-round cards or panels. Keep content panels at `16px`, standard cards/inputs at `8px`, and paper artifacts at `4px` unless a specific component needs otherwise.
+- **Don't** reintroduce the retired paper-artifact world — handwriting faces, scrap/sticky tones, owner chips, or a document-styled hero. It was replaced in June 2026 and nothing in the codebase uses it.
+- **Don't** add a second scroll-scrubbed video or competing signature animation; the hero's power depends on being the only one.
+- **Don't** use gradient text, colored side-stripe borders, decorative glass cards, or repeated tiny uppercase section labels.
+- **Don't** over-round cards or panels. Keep content panels at `16px` and standard cards/inputs at `8px` unless a specific component needs otherwise.
 - **Don't** rely on color alone for active, focus, error, or disabled states.
