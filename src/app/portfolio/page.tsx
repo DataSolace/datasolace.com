@@ -3,13 +3,7 @@ import Image from 'next/image';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
-/*
- * DRAFT — PENDING CLIENT PERMISSION
- * The client website case studies below name real clients and show their
- * sites. Do not merge to main until both clients have consented to being
- * featured. Tracked in the PR description.
- */
-
+// Client website case studies are published with each client's consent (July 2026).
 const clientWork = [
   {
     id: 'barkbuddiez',

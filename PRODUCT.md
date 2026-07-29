@@ -50,7 +50,8 @@ Decided (July 2026):
 
 - **Smart Home Index** remains on the site as compact build proof on the services page — presented as a product DataSolace designed, built, and operates, evidencing data modelling and production infrastructure capability. It is not pitched as a smart-home offer and carries no dedicated newsletter signup.
 - **Self Hosted Concierge** is retired as a named service. Its substance (self-hosting, privacy-respecting setups, maintenance) is absorbed into the Hosting and Infrastructure capability.
-- **The two residential case studies** (damp protection, smart-home mobility) remain published, explicitly framed as work from the earlier residential systems practice — the engineering discipline behind the small business offer, not part of it. Business engagements stay confidential, and the portfolio page says so; the case studies are what can be shown in full.
+- **The two residential case studies** (damp protection, smart-home mobility) remain published, explicitly framed as work from the earlier residential systems practice — the engineering discipline behind the small business offer, not part of it. Internal business engagements stay confidential, and the portfolio page says so.
+- **Client websites are featured by name with consent.** The portfolio leads with commissioned public websites (BarkBuddiez, Cara's Kitchen) as live, verifiable client work, each walked through as the front door of a business process rather than as web design for its own sake.
 
 ## Brand Commitments
 
@@ -82,7 +83,8 @@ Avoid bookkeeping-software dullness: flat administrative visuals, bland office s
 
 **What exists.**
 
-- **Delivered small business work.** Real process automation has been delivered for small business clients. It is **anonymised only**: it can be described concretely in terms of the situation and what changed, but clients cannot be named and the work cannot be visually identified. No client photographs, screenshots, or recognisable artefacts may appear on the site.
+- **Delivered small business work.** Real process automation has been delivered for small business clients. Internal-systems work is **anonymised only**: it can be described concretely in terms of the situation and what changed, but clients cannot be named and the work cannot be visually identified. No client photographs, screenshots, or recognisable artefacts from internal systems may appear on the site.
+- **Commissioned public client websites** are exempt from the anonymity rule where the client has consented to being featured. Two exist and are published as named, linked case studies (consent obtained July 2026): **BarkBuddiez** (barkbuddiezgrooming.co.uk, one-to-one dog grooming, launched June 2026) and **Cara's Kitchen** (caras.kitchen, handmade preserves, launched spring 2026). Both are built, self-hosted, and maintained by DataSolace on the same stack as its own systems.
 - **Own internal systems.** DataSolace runs its own automations and tooling. These are showable and are the only operational systems that can be depicted directly.
 - **Adjacent infrastructure and networking work.** Previously delivered under the older positioning, this involved genuine systems and process work and legitimately reframes as business capability.
 - **Smart Home Index** — a real, live, free device comparison platform at `smarthomeindex.com`, with existing screenshots (`public/SHI-*.webp`). Real proof of build capability, but residential in subject.
@@ -92,7 +94,7 @@ Avoid bookkeeping-software dullness: flat administrative visuals, bland office s
 
 - **No named clients.** No client names, logos, or identifiable details exist for use.
 - **No testimonials or quotes.** `customer_feedback.webp` is an image asset, not a collection of real published testimonials.
-- **No published small business case study.** The two live case studies (damp protection in a rental property; smart-home lighting for mobility) are residential and predate the pivot. Nothing on the site currently demonstrates small business process automation.
+- **No published internal-systems case study for a small business.** The client website case studies demonstrate public-facing work; the process automation delivered inside businesses remains describable only in anonymised terms.
 - **No metrics, benchmarks, time-saved figures, client counts, or years-in-business claims** have been established. These must not be invented to fill a proof section.
 - **No photography of client premises, staff, or real operations** is available or permitted.
 

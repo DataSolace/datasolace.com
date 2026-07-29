@@ -4,14 +4,13 @@ import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 
 // Portfolio case study data
-// DRAFT — the two client website studies are PENDING CLIENT PERMISSION;
-// do not merge to main until both clients have consented to being featured.
+// Client website studies are published with each client's consent (July 2026).
 const portfolioItems = {
   'barkbuddiez-dog-grooming': {
     title: 'BarkBuddiez: Enquiries That Arrive With the Dog\'s Details',
     heroImage: '/portfolio-barkbuddiez.jpeg',
     excerpt: 'A calm, boutique website for a one-person grooming salon — built so new business arrives written down, not as a missed phone call.',
-    date: '2026',
+    date: 'June 2026',
     author: 'DataSolace Team',
     context: 'Live client work — visit the site itself below. Featured with the client\'s permission.',
     liveUrl: 'https://barkbuddiezgrooming.co.uk',
@@ -44,7 +43,7 @@ The site runs on the same self-hosted stack DataSolace uses for its own systems,
     title: 'Cara\'s Kitchen: A Market Stall With a Permanent Address',
     heroImage: '/portfolio-caras-kitchen.jpeg',
     excerpt: 'Handmade chutneys and jams from Lincolnshire — with a maintained market schedule, a real product catalogue, and orders that arrive structured.',
-    date: '2026',
+    date: 'Spring 2026',
     author: 'DataSolace Team',
     context: 'Live client work — visit the site itself below. Featured with the client\'s permission.',
     liveUrl: 'https://caras.kitchen',
