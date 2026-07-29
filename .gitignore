@@ -71,3 +71,5 @@ next-env.d.ts
 
 # firecrawl scrape cache
 .firecrawl/
+# Hero video source masters (regenerable via Higgsfield; too large for the repo)
+/assets-src/
