@@ -1,18 +1,8 @@
 'use client';
 
 /*
- * HERO DIRECTION CONTRACT
- * THESIS: Proof is the paperwork. The hero shows DataSolace's actual deliverable —
- * a maintained process sheet — refusing the category's abstract workflow diagram.
- * OWN-WORLD: Deep blue ground (#1D2D46), white paper artifact at 4px corners,
- * Montserrat document typography, one Kalam handwritten annotation, teal (#029979)
- * concentrated in a single timeline rule. Depth from offset shadow, never gloss.
- * STORY: An owner recognises their own scattered notes beneath a calm, owned,
- * revision-marked process — and believes this firm writes work down and keeps it.
- * FIRST VIEWPORT: Two columns. Left: kicker, H1, support, two CTAs, trust chips.
- * Right: two muted scraps under the process sheet; revision line is the focal beat.
- * FORM: Maintained process sheet — ranked #1 of 4 derived structures; local
- * extension inside the established world, no concept seed.
+ * The hero (scroll-driven sticky-note → automation transformation) lives in
+ * src/components/ScrubHero.tsx, which carries its direction contract.
  */
 
 import { useState } from 'react';
@@ -20,6 +10,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ScrubHero from '../components/ScrubHero';
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -136,147 +127,8 @@ export default function Home() {
       <Header currentPage="home" />
 
       <div className="bg-[var(--brand-blue)]">
-        {/* Hero Section */}
-        <section className="relative px-6 pt-28 sm:pt-32 md:pt-36 pb-16 md:pb-24">
-          <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center min-h-[62vh]">
-            {/* Copy column */}
-            <div className="max-w-xl">
-              <p className="text-sm font-medium tracking-wide text-[#9BE1D0] mb-5">
-                Small business process automation
-              </p>
-              <h1 className="text-[2.5rem] leading-[1.05] sm:text-5xl md:text-[3.5rem] font-bold text-white mb-6 text-balance">
-                Automation shaped around your business.
-              </h1>
-              <p className="text-lg md:text-xl leading-relaxed text-[var(--brand-white)]/85 mb-9 max-w-[46ch]">
-                Direct, owner-led help with the admin and handoffs slowing your team down.
-              </p>
-
-              <div className="flex flex-wrap items-center gap-3 mb-10">
-                <Link
-                  href="/#contact"
-                  className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-6 py-3.5 rounded-lg text-xl font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                >
-                  Start a conversation
-                </Link>
-                <Link
-                  href="/services"
-                  className="text-white border border-white/35 hover:border-white/70 hover:bg-white/5 px-6 py-3.5 rounded-lg text-xl font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                >
-                  See what we automate
-                </Link>
-              </div>
-
-              <ul aria-label="How we work" className="flex flex-wrap gap-x-7 gap-y-3">
-                {['Owner-led', 'Plain language', 'Built to maintain'].map((chip) => (
-                  <li key={chip} className="flex items-center gap-2 text-sm font-medium text-[var(--brand-white)]/80">
-                    <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-[var(--brand-teal)]" />
-                    {chip}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Visual column: the maintained process sheet */}
-            <div
-              role="img"
-              aria-label="Scattered handwritten notes sitting behind a clear, maintained process sheet listing five owned steps from enquiry to invoice."
-              className="relative mx-auto w-full max-w-md lg:max-w-none select-none"
-            >
-              <div aria-hidden="true" className="relative pt-10 pb-16 lg:pt-12">
-                {/* Scrap: torn note (the old way) */}
-                <div className="hidden sm:block absolute top-0 -left-2 lg:-left-6 w-44 p-4 pb-6 bg-[#E9ECEC] text-[#3D4A63] -rotate-6 shadow-[0_8px_20px_-6px_rgba(7,17,31,0.5)] [clip-path:polygon(0_0,100%_0,100%_88%,92%_100%,74%_91%,55%_100%,34%_92%,15%_100%,0_90%)]">
-                  <p className="[font-family:var(--font-hand)] text-[1.05rem] leading-snug">
-                    ring them back Tues??
-                    <br />
-                    <span className="line-through decoration-[1.5px]">invoice sent?</span> still not!!
-                  </p>
-                </div>
-
-                {/* Scrap: sticky note (the old way) */}
-                <div className="absolute top-2 right-0 lg:right-2 w-36 p-3.5 bg-[#E8E0B4] text-[#4A4630] rotate-3 shadow-[0_6px_16px_-5px_rgba(7,17,31,0.45)]">
-                  <p className="[font-family:var(--font-hand)] text-[1.05rem] leading-snug">
-                    who&apos;s chasing this?
-                  </p>
-                </div>
-
-                {/* The maintained process sheet */}
-                <div className="relative mt-6 mx-auto sm:ml-10 lg:ml-14 max-w-sm lg:max-w-[26rem] bg-white rounded-[4px] shadow-[0_18px_44px_-12px_rgba(7,17,31,0.55),0_2px_6px_rgba(7,17,31,0.25)] p-6 sm:p-7">
-                  <div className="flex items-start justify-between gap-3 mb-1.5">
-                    <p className="text-[0.6875rem] font-semibold tracking-wide uppercase text-[#5D6B80]">
-                      Process sheet
-                    </p>
-                    <p className="text-[0.6875rem] font-semibold tracking-wide uppercase text-[#5D6B80]">
-                      Maintained
-                    </p>
-                  </div>
-                  <h2 className="text-xl font-bold text-[var(--brand-blue)] mb-1">
-                    Enquiry to invoice
-                  </h2>
-                  <p className="text-[0.8125rem] text-[#4B5563] mb-5">
-                    Mapped with the people who run the work
-                  </p>
-
-                  <ol className="relative space-y-3.5 mb-5">
-                    {/* The one teal thread: the document's own timeline rule */}
-                    <span className="absolute left-[11px] top-2 bottom-2 w-0.5 bg-[var(--brand-teal)]/70" />
-                    {[
-                      { step: 'Enquiry arrives — email, call, or form — logged in one place', owner: 'System' },
-                      { step: 'Quote drafted from the job notes, sent for a quick check', owner: 'Office' },
-                      { step: 'Booking confirmed; customer reminded the day before', owner: 'System' },
-                      { step: 'Job completed; notes captured on site', owner: 'Team' },
-                      { step: 'Invoice raised the same day; chasing happens by itself', owner: 'System' },
-                    ].map((row, i) => (
-                      <li key={i} className="relative flex items-start gap-3 pl-0">
-                        <span className="relative z-10 flex-shrink-0 w-6 h-6 rounded-full bg-white border-2 border-[var(--brand-teal)] text-[var(--brand-blue)] text-[0.6875rem] font-bold grid place-items-center">
-                          {i + 1}
-                        </span>
-                        <span className="text-[0.8125rem] leading-snug text-[#374151] pt-0.5 flex-1">
-                          {row.step}
-                        </span>
-                        <span
-                          className={`flex-shrink-0 text-[0.625rem] font-semibold px-1.5 py-0.5 rounded-[3px] mt-0.5 ${
-                            row.owner === 'System'
-                              ? 'bg-[#D8F5EF] text-[#00564A]'
-                              : 'bg-[#EEF1F1] text-[#42506B]'
-                          }`}
-                        >
-                          {row.owner}
-                        </span>
-                      </li>
-                    ))}
-                  </ol>
-
-                  <div className="bg-[var(--brand-white)] rounded-[3px] px-3.5 py-2.5 mb-5">
-                    <p className="text-[0.75rem] leading-snug text-[#374151]">
-                      <span className="font-semibold text-[var(--brand-blue)]">Exceptions:</span>{' '}
-                      urgent jobs jump straight to booking — flagged, never lost.
-                    </p>
-                  </div>
-
-                  {/* Focal beat: the revision line */}
-                  <div className="flex items-center gap-2 pt-3.5 border-t border-[#E5E7EB]">
-                    <svg width="13" height="13" viewBox="0 0 12 12" fill="none" aria-hidden="true" className="text-[var(--brand-teal)]">
-                      <path d="M2 6.5L4.7 9L10 3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <p className="text-[0.8125rem] font-semibold text-[var(--brand-blue)]">
-                      Revision 3 — reviewed with the team
-                    </p>
-                  </div>
-
-                  {/* Handwritten margin annotation */}
-                  <div className="absolute -bottom-14 right-1 lg:-right-6 w-40 -rotate-2 text-[#B7C6E4]">
-                    <svg width="30" height="24" viewBox="0 0 30 24" fill="none" aria-hidden="true" className="ml-2 mb-0.5">
-                      <path d="M4 22C7 12 13 5 26 3M26 3l-6.5 1M26 3l-1.5 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <p className="[font-family:var(--font-hand)] text-[1rem] leading-tight">
-                      this used to live in three inboxes
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Hero: scroll-driven transformation — direction contract lives in src/components/ScrubHero.tsx */}
+        <ScrubHero />
 
         {/* Capabilities Section */}
         <section className="bg-white py-20 md:py-24 px-6">
