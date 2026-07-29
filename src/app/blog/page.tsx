@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import Header from '../../components/Header';
@@ -5,6 +6,12 @@ import Footer from '../../components/Footer';
 import { getAllBlogPosts } from '../../lib/blog';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+  title: 'Blog',
+  description:
+    'Writing on process automation for small businesses: how we map work, connect systems, and keep them running — plus the occasional technical deep-dive from our own tooling.',
+};
 
 export default async function Blog() {
   const blogPosts = await getAllBlogPosts();
@@ -41,9 +48,9 @@ export default async function Blog() {
               <Link
                 key={post._id}
                 href={`/blog/${post.slug.current}`}
-                className="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                className="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 motion-reduce:transform-none motion-reduce:transition-none"
               >
-                <div className="aspect-w-16 aspect-h-12 bg-gray-200">
+                <div className="bg-gray-200">
                   <Image
                     src={post.featuredImage.asset.url}
                     alt={post.featuredImage.alt}
@@ -66,9 +73,9 @@ export default async function Blog() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-[var(--brand-blue)] group-hover:text-[var(--brand-teal)] transition-colors leading-tight mb-3">
+                  <h2 className="text-lg font-bold text-[var(--brand-blue)] group-hover:text-[var(--brand-teal-text)] transition-colors leading-tight mb-3">
                     {post.title}
-                  </h3>
+                  </h2>
 
                   {/* Description */}
                   <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
@@ -86,29 +93,16 @@ export default async function Blog() {
             ))}
           </div>
 
-          {/* Pagination or Load More */}
-          <div className="text-center mt-16">
-            <Link
-              href="/blog"
-              className="text-white hover:text-[var(--brand-teal)] transition-colors inline-flex items-center text-xl"
-            >
-              Older Posts
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </div>
-
           {/* Call to Action */}
           <div className="text-center mt-16">
             <p className="text-white text-xl mb-8">
-              Ready to implement these solutions in your business or home?
+              Ready to implement these solutions in your business?
             </p>
             <Link
-              href="/#contact"
-              className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors inline-block"
+              href="/appointments"
+              className="bg-[var(--brand-teal)] hover:bg-[var(--brand-green)] text-white px-8 py-4 rounded-lg text-xl font-bold transition-colors inline-block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
-              Get Started Today
+              Book an intro call
             </Link>
           </div>
         </div>

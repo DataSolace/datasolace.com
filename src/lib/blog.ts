@@ -69,6 +69,13 @@ function rewritePublicMediaUrls(markdown: string | undefined): string | undefine
   return markdown?.replace(/https?:\/\/[^\s)"']+(\/api\/media\/file\/[^\s)"']+)/g, '$1')
 }
 
+// Posts migrated from WordPress still carry [caption]...[/caption] shortcodes,
+// which marked passes through as literal text. Drop the markers and keep the
+// image and caption text they wrap.
+function stripWordPressShortcodes(markdown: string | undefined): string | undefined {
+  return markdown?.replace(/\[\/?caption[^\]]*\]/g, '')
+}
+
 function mediaUrl(media: PayloadMedia | string | number | undefined): string {
   if (!media || typeof media === 'string' || typeof media === 'number') {
     return ''
@@ -111,7 +118,7 @@ function toBlogPost(post: PayloadBlogPost): BlogPost | null {
     tags: post.tags?.map((tag) => tag.tag).filter((tag): tag is string => Boolean(tag)),
     contentType: post.contentType,
     content: post.content,
-    markdownContent: rewritePublicMediaUrls(post.markdownContent),
+    markdownContent: stripWordPressShortcodes(rewritePublicMediaUrls(post.markdownContent)),
   }
 }
 
