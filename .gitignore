@@ -67,7 +67,9 @@ next-env.d.ts
 .pi/skills/
 
 # impeccable tool output (critiques, design tokens, live-preview config)
-.impeccable/
+.impeccable/*
+!.impeccable/design.json
+!.impeccable/surfaces/
 
 # firecrawl scrape cache
 .firecrawl/
