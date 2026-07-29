@@ -48,7 +48,7 @@ export default async function Blog() {
               <Link
                 key={post._id}
                 href={`/blog/${post.slug.current}`}
-                className="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                className="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 motion-reduce:transform-none motion-reduce:transition-none"
               >
                 <div className="aspect-w-16 aspect-h-12 bg-gray-200">
                   <Image
@@ -73,7 +73,7 @@ export default async function Blog() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-[var(--brand-blue)] group-hover:text-[var(--brand-teal)] transition-colors leading-tight mb-3">
+                  <h3 className="text-lg font-bold text-[var(--brand-blue)] group-hover:text-[var(--brand-teal-text)] transition-colors leading-tight mb-3">
                     {post.title}
                   </h3>
 
