@@ -1,0 +1,621 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-29T16:02:23Z",
+  "title": "Design System: DataSolace",
+  "extensions": {
+    "colorMeta": {
+      "brand-blue": {
+        "role": "primary",
+        "displayName": "DataSolace Blue",
+        "canonical": "oklch(29.6% 0.051 259.0)",
+        "tonalRamp": [
+          "oklch(15.0% 0.045 259.0)",
+          "oklch(26.4% 0.051 259.0)",
+          "oklch(37.9% 0.051 259.0)",
+          "oklch(49.3% 0.051 259.0)",
+          "oklch(60.7% 0.051 259.0)",
+          "oklch(72.1% 0.051 259.0)",
+          "oklch(83.6% 0.047 259.0)",
+          "oklch(95.0% 0.035 259.0)"
+        ]
+      },
+      "brand-teal": {
+        "role": "primary",
+        "displayName": "Signal Teal",
+        "canonical": "oklch(60.8% 0.119 171.0)",
+        "tonalRamp": [
+          "oklch(15.0% 0.066 171.0)",
+          "oklch(26.4% 0.093 171.0)",
+          "oklch(37.9% 0.119 171.0)",
+          "oklch(49.3% 0.119 171.0)",
+          "oklch(60.7% 0.119 171.0)",
+          "oklch(72.1% 0.096 171.0)",
+          "oklch(83.6% 0.069 171.0)",
+          "oklch(95.0% 0.042 171.0)"
+        ]
+      },
+      "brand-green": {
+        "role": "secondary",
+        "displayName": "Assured Green",
+        "canonical": "oklch(55.4% 0.104 174.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.061 174.1)",
+          "oklch(26.4% 0.085 174.1)",
+          "oklch(37.9% 0.104 174.1)",
+          "oklch(49.3% 0.104 174.1)",
+          "oklch(60.7% 0.104 174.1)",
+          "oklch(72.1% 0.088 174.1)",
+          "oklch(83.6% 0.064 174.1)",
+          "oklch(95.0% 0.040 174.1)"
+        ]
+      },
+      "brand-teal-text": {
+        "role": "secondary",
+        "displayName": "Action Text Teal",
+        "canonical": "oklch(49.5% 0.096 171.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.059 171.6)",
+          "oklch(26.4% 0.081 171.6)",
+          "oklch(37.9% 0.096 171.6)",
+          "oklch(49.3% 0.096 171.6)",
+          "oklch(60.7% 0.096 171.6)",
+          "oklch(72.1% 0.083 171.6)",
+          "oklch(83.6% 0.062 171.6)",
+          "oklch(95.0% 0.040 171.6)"
+        ]
+      },
+      "brand-green-dark": {
+        "role": "secondary",
+        "displayName": "Deep Action Green",
+        "canonical": "oklch(44.9% 0.086 172.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.056 172.7)",
+          "oklch(26.4% 0.075 172.7)",
+          "oklch(37.9% 0.086 172.7)",
+          "oklch(49.3% 0.086 172.7)",
+          "oklch(60.7% 0.086 172.7)",
+          "oklch(72.1% 0.078 172.7)",
+          "oklch(83.6% 0.058 172.7)",
+          "oklch(95.0% 0.039 172.7)"
+        ]
+      },
+      "brand-white": {
+        "role": "neutral",
+        "displayName": "Quiet White",
+        "canonical": "oklch(96.8% 0.003 197.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.003 197.1)",
+          "oklch(26.4% 0.003 197.1)",
+          "oklch(37.9% 0.003 197.1)",
+          "oklch(49.3% 0.003 197.1)",
+          "oklch(60.7% 0.003 197.1)",
+          "oklch(72.1% 0.003 197.1)",
+          "oklch(83.6% 0.003 197.1)",
+          "oklch(95.0% 0.003 197.1)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Panel White",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 89.9)",
+          "oklch(26.4% 0.000 89.9)",
+          "oklch(37.9% 0.000 89.9)",
+          "oklch(49.3% 0.000 89.9)",
+          "oklch(60.7% 0.000 89.9)",
+          "oklch(72.1% 0.000 89.9)",
+          "oklch(83.6% 0.000 89.9)",
+          "oklch(95.0% 0.000 89.9)"
+        ]
+      },
+      "mint": {
+        "role": "neutral",
+        "displayName": "Mint",
+        "canonical": "oklch(85.8% 0.074 177.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.052 177.6)",
+          "oklch(26.4% 0.069 177.6)",
+          "oklch(37.9% 0.074 177.6)",
+          "oklch(49.3% 0.074 177.6)",
+          "oklch(60.7% 0.074 177.6)",
+          "oklch(72.1% 0.071 177.6)",
+          "oklch(83.6% 0.054 177.6)",
+          "oklch(95.0% 0.037 177.6)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(20.5% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 89.9)",
+          "oklch(26.4% 0.000 89.9)",
+          "oklch(37.9% 0.000 89.9)",
+          "oklch(49.3% 0.000 89.9)",
+          "oklch(60.7% 0.000 89.9)",
+          "oklch(72.1% 0.000 89.9)",
+          "oklch(83.6% 0.000 89.9)",
+          "oklch(95.0% 0.000 89.9)"
+        ]
+      },
+      "text-strong": {
+        "role": "neutral",
+        "displayName": "Strong Text",
+        "canonical": "oklch(21.0% 0.032 264.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.032 264.7)",
+          "oklch(26.4% 0.032 264.7)",
+          "oklch(37.9% 0.032 264.7)",
+          "oklch(49.3% 0.032 264.7)",
+          "oklch(60.7% 0.032 264.7)",
+          "oklch(72.1% 0.032 264.7)",
+          "oklch(83.6% 0.032 264.7)",
+          "oklch(95.0% 0.032 264.7)"
+        ]
+      },
+      "text-body": {
+        "role": "neutral",
+        "displayName": "Body Text",
+        "canonical": "oklch(37.3% 0.031 259.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.031 259.7)",
+          "oklch(26.4% 0.031 259.7)",
+          "oklch(37.9% 0.031 259.7)",
+          "oklch(49.3% 0.031 259.7)",
+          "oklch(60.7% 0.031 259.7)",
+          "oklch(72.1% 0.031 259.7)",
+          "oklch(83.6% 0.031 259.7)",
+          "oklch(95.0% 0.031 259.7)"
+        ]
+      },
+      "text-muted": {
+        "role": "neutral",
+        "displayName": "Muted Text",
+        "canonical": "oklch(44.6% 0.026 256.8)",
+        "tonalRamp": [
+          "oklch(15.0% 0.026 256.8)",
+          "oklch(26.4% 0.026 256.8)",
+          "oklch(37.9% 0.026 256.8)",
+          "oklch(49.3% 0.026 256.8)",
+          "oklch(60.7% 0.026 256.8)",
+          "oklch(72.1% 0.026 256.8)",
+          "oklch(83.6% 0.026 256.8)",
+          "oklch(95.0% 0.026 256.8)"
+        ]
+      },
+      "border-muted": {
+        "role": "neutral",
+        "displayName": "Soft Border",
+        "canonical": "oklch(92.8% 0.006 264.5)",
+        "tonalRamp": [
+          "oklch(15.0% 0.006 264.5)",
+          "oklch(26.4% 0.006 264.5)",
+          "oklch(37.9% 0.006 264.5)",
+          "oklch(49.3% 0.006 264.5)",
+          "oklch(60.7% 0.006 264.5)",
+          "oklch(72.1% 0.006 264.5)",
+          "oklch(83.6% 0.006 264.5)",
+          "oklch(95.0% 0.006 264.5)"
+        ]
+      },
+      "field-border": {
+        "role": "neutral",
+        "displayName": "Field Border",
+        "canonical": "oklch(87.2% 0.009 258.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.009 258.3)",
+          "oklch(26.4% 0.009 258.3)",
+          "oklch(37.9% 0.009 258.3)",
+          "oklch(49.3% 0.009 258.3)",
+          "oklch(60.7% 0.009 258.3)",
+          "oklch(72.1% 0.009 258.3)",
+          "oklch(83.6% 0.009 258.3)",
+          "oklch(95.0% 0.009 258.3)"
+        ]
+      },
+      "paper-torn": {
+        "role": "tertiary",
+        "displayName": "Torn Note",
+        "canonical": "oklch(94.1% 0.003 197.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.003 197.1)",
+          "oklch(26.4% 0.003 197.1)",
+          "oklch(37.9% 0.003 197.1)",
+          "oklch(49.3% 0.003 197.1)",
+          "oklch(60.7% 0.003 197.1)",
+          "oklch(72.1% 0.003 197.1)",
+          "oklch(83.6% 0.003 197.1)",
+          "oklch(95.0% 0.003 197.1)"
+        ]
+      },
+      "paper-torn-ink": {
+        "role": "tertiary",
+        "displayName": "Torn Note Ink",
+        "canonical": "oklch(40.8% 0.045 263.2)",
+        "tonalRamp": [
+          "oklch(15.0% 0.044 263.2)",
+          "oklch(26.4% 0.045 263.2)",
+          "oklch(37.9% 0.045 263.2)",
+          "oklch(49.3% 0.045 263.2)",
+          "oklch(60.7% 0.045 263.2)",
+          "oklch(72.1% 0.045 263.2)",
+          "oklch(83.6% 0.045 263.2)",
+          "oklch(95.0% 0.035 263.2)"
+        ]
+      },
+      "paper-sticky": {
+        "role": "tertiary",
+        "displayName": "Sticky Note",
+        "canonical": "oklch(90.2% 0.058 98.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0.047 98.9)",
+          "oklch(26.4% 0.058 98.9)",
+          "oklch(37.9% 0.058 98.9)",
+          "oklch(49.3% 0.058 98.9)",
+          "oklch(60.7% 0.058 98.9)",
+          "oklch(72.1% 0.058 98.9)",
+          "oklch(83.6% 0.049 98.9)",
+          "oklch(95.0% 0.036 98.9)"
+        ]
+      },
+      "paper-sticky-ink": {
+        "role": "tertiary",
+        "displayName": "Sticky Note Ink",
+        "canonical": "oklch(39.2% 0.035 99.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.035 99.1)",
+          "oklch(26.4% 0.035 99.1)",
+          "oklch(37.9% 0.035 99.1)",
+          "oklch(49.3% 0.035 99.1)",
+          "oklch(60.7% 0.035 99.1)",
+          "oklch(72.1% 0.035 99.1)",
+          "oklch(83.6% 0.035 99.1)",
+          "oklch(95.0% 0.034 99.1)"
+        ]
+      },
+      "sheet-meta": {
+        "role": "tertiary",
+        "displayName": "Sheet Meta",
+        "canonical": "oklch(52.4% 0.037 258.4)",
+        "tonalRamp": [
+          "oklch(15.0% 0.037 258.4)",
+          "oklch(26.4% 0.037 258.4)",
+          "oklch(37.9% 0.037 258.4)",
+          "oklch(49.3% 0.037 258.4)",
+          "oklch(60.7% 0.037 258.4)",
+          "oklch(72.1% 0.037 258.4)",
+          "oklch(83.6% 0.037 258.4)",
+          "oklch(95.0% 0.034 258.4)"
+        ]
+      },
+      "annotation-blue": {
+        "role": "tertiary",
+        "displayName": "Margin Annotation",
+        "canonical": "oklch(82.5% 0.045 264.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.044 264.3)",
+          "oklch(26.4% 0.045 264.3)",
+          "oklch(37.9% 0.045 264.3)",
+          "oklch(49.3% 0.045 264.3)",
+          "oklch(60.7% 0.045 264.3)",
+          "oklch(72.1% 0.045 264.3)",
+          "oklch(83.6% 0.045 264.3)",
+          "oklch(95.0% 0.035 264.3)"
+        ]
+      },
+      "chip-system-bg": {
+        "role": "tertiary",
+        "displayName": "System Chip Fill",
+        "canonical": "oklch(94.8% 0.031 181.8)",
+        "tonalRamp": [
+          "oklch(15.0% 0.031 181.8)",
+          "oklch(26.4% 0.031 181.8)",
+          "oklch(37.9% 0.031 181.8)",
+          "oklch(49.3% 0.031 181.8)",
+          "oklch(60.7% 0.031 181.8)",
+          "oklch(72.1% 0.031 181.8)",
+          "oklch(83.6% 0.031 181.8)",
+          "oklch(95.0% 0.031 181.8)"
+        ]
+      },
+      "chip-system-ink": {
+        "role": "tertiary",
+        "displayName": "System Chip Ink",
+        "canonical": "oklch(40.6% 0.074 179.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.052 179.1)",
+          "oklch(26.4% 0.069 179.1)",
+          "oklch(37.9% 0.074 179.1)",
+          "oklch(49.3% 0.074 179.1)",
+          "oklch(60.7% 0.074 179.1)",
+          "oklch(72.1% 0.071 179.1)",
+          "oklch(83.6% 0.054 179.1)",
+          "oklch(95.0% 0.037 179.1)"
+        ]
+      },
+      "chip-neutral-bg": {
+        "role": "tertiary",
+        "displayName": "Neutral Chip Fill",
+        "canonical": "oklch(95.6% 0.003 197.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.003 197.1)",
+          "oklch(26.4% 0.003 197.1)",
+          "oklch(37.9% 0.003 197.1)",
+          "oklch(49.3% 0.003 197.1)",
+          "oklch(60.7% 0.003 197.1)",
+          "oklch(72.1% 0.003 197.1)",
+          "oklch(83.6% 0.003 197.1)",
+          "oklch(95.0% 0.003 197.1)"
+        ]
+      },
+      "chip-neutral-ink": {
+        "role": "tertiary",
+        "displayName": "Neutral Chip Ink",
+        "canonical": "oklch(43.1% 0.048 263.2)",
+        "tonalRamp": [
+          "oklch(15.0% 0.045 263.2)",
+          "oklch(26.4% 0.048 263.2)",
+          "oklch(37.9% 0.048 263.2)",
+          "oklch(49.3% 0.048 263.2)",
+          "oklch(60.7% 0.048 263.2)",
+          "oklch(72.1% 0.048 263.2)",
+          "oklch(83.6% 0.046 263.2)",
+          "oklch(95.0% 0.035 263.2)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Homepage-scale headlines and major marketing statements; max 6rem."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Page titles, section leads, and primary conversion blocks."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Service names, card titles, form section headings, key subheads."
+      },
+      "cta": {
+        "displayName": "CTA",
+        "purpose": "Primary call-to-action button text \u2014 hero CTAs, 'Book an intro call'."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Long-form copy on white panels; keep line length near 65\u201375ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Form labels, metadata, badges, categories, compact nav text; sentence case."
+      },
+      "hand": {
+        "displayName": "Hand (Kalam)",
+        "purpose": "Handwritten annotations inside the hero paper composition only; decorative, never UI or body copy."
+      }
+    },
+    "shadows": [
+      {
+        "name": "panel-high",
+        "value": "0 25px 50px -12px rgb(0 0 0 / 0.25)",
+        "purpose": "Large white panels on the blue field (shadow-2xl)."
+      },
+      {
+        "name": "media-lift",
+        "value": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+        "purpose": "Image previews and product screenshots (shadow-xl)."
+      },
+      {
+        "name": "card-rest",
+        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        "purpose": "Blog/portfolio cards and prose images at rest (shadow-lg)."
+      },
+      {
+        "name": "card-hover",
+        "value": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+        "purpose": "Interactive cards on hover."
+      },
+      {
+        "name": "sheet-lift",
+        "value": "0 18px 44px -12px rgba(7,17,31,0.55), 0 2px 6px rgba(7,17,31,0.25)",
+        "purpose": "The maintained process sheet on the blue field \u2014 offset paper shadow, blue-tinted, never glossy."
+      },
+      {
+        "name": "scrap-torn",
+        "value": "0 8px 20px -6px rgba(7,17,31,0.5)",
+        "purpose": "Torn paper scrap behind the sheet; shallower than sheet-lift."
+      },
+      {
+        "name": "scrap-sticky",
+        "value": "0 6px 16px -5px rgba(7,17,31,0.45)",
+        "purpose": "Sticky-note scrap behind the sheet; shallower than sheet-lift."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Default easing for color, shadow and transform transitions."
+      },
+      {
+        "name": "duration-standard",
+        "value": "300ms",
+        "purpose": "Default duration for hover transitions; transform-based motion carries motion-reduce overrides."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main conversion action \u2014 teal fill, white CTA type; hover deepens to Assured Green.",
+      "html": "<button class=\"ds-btn-primary\">Book an intro call</button>",
+      "css": ".ds-btn-primary { background:#029979; color:#fff; font-family: Montserrat, Arial, Helvetica, sans-serif; font-size:1.25rem; font-weight:700; line-height:1.4; padding:14px 24px; border:none; border-radius:8px; cursor:pointer; transition:background-color .3s cubic-bezier(.4,0,.2,1); } .ds-btn-primary:hover { background:#04866E; } .ds-btn-primary:focus-visible { outline:2px solid #1D2D46; outline-offset:2px; }"
+    },
+    {
+      "name": "Secondary Hero Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Dark-field companion action: transparent with a translucent white border; never used on white panels.",
+      "html": "<div class=\"ds-darkbg\"><button class=\"ds-btn-hero-secondary\">See how we work</button></div>",
+      "css": ".ds-darkbg { background:#1D2D46; padding:24px; border-radius:12px; display:inline-block; } .ds-btn-hero-secondary { background:transparent; color:#fff; font-family: Montserrat, Arial, Helvetica, sans-serif; font-size:1.25rem; font-weight:700; line-height:1.4; padding:14px 24px; border:1px solid rgba(255,255,255,.35); border-radius:8px; cursor:pointer; transition:border-color .3s, background-color .3s; } .ds-btn-hero-secondary:hover { border-color:rgba(255,255,255,.7); background:rgba(255,255,255,.05); } .ds-btn-hero-secondary:focus-visible { outline:2px solid #fff; outline-offset:2px; }"
+    },
+    {
+      "name": "Compact Header Button",
+      "kind": "button",
+      "refersTo": "button-compact",
+      "description": "Small green header CTA \u2014 green (not teal) because small white text needs 4.5:1.",
+      "html": "<button class=\"ds-btn-compact\">Contact Us</button>",
+      "css": ".ds-btn-compact { background:#04866E; color:#fff; font-family: Montserrat, Arial, Helvetica, sans-serif; font-size:0.875rem; font-weight:600; line-height:1.4; padding:8px 24px; border:none; border-radius:8px; cursor:pointer; transition:background-color .3s; } .ds-btn-compact:hover { background:#016450; } .ds-btn-compact:focus-visible { outline:2px solid #029979; outline-offset:2px; }"
+    },
+    {
+      "name": "Category Chip",
+      "kind": "chip",
+      "refersTo": "chip-teal",
+      "description": "Quiet informational label for categories and blog metadata; text-safe teal ink.",
+      "html": "<span class=\"ds-chip\">Customer Experience</span>",
+      "css": ".ds-chip { background:rgba(2,153,121,.1); color:#02735B; font-family: Montserrat, Arial, Helvetica, sans-serif; font-size:0.875rem; font-weight:500; line-height:1.4; padding:4px 8px; border-radius:4px; display:inline-block; }"
+    },
+    {
+      "name": "Media Card",
+      "kind": "card",
+      "refersTo": "card-media",
+      "description": "Interactive blog/portfolio card: white, 8px corners, card-rest shadow lifting on hover; respects reduced motion.",
+      "html": "<a href=\"#\" class=\"ds-card\"><div class=\"ds-card-img\"></div><div class=\"ds-card-body\"><span class=\"ds-chip\">Security</span><h3>Card title runs here</h3><p>Two lines of muted excerpt text sit under the title, clamped and quiet.</p><span class=\"ds-card-more\">Read More \u2192</span></div></a>",
+      "css": ".ds-card { display:block; width:300px; background:#fff; border-radius:8px; overflow:hidden; text-decoration:none; box-shadow:0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1); transition:box-shadow .3s, transform .3s; } .ds-card:hover { transform:translateY(-8px); box-shadow:0 20px 25px -5px rgb(0 0 0 / .1), 0 8px 10px -6px rgb(0 0 0 / .1); } .ds-card:focus-visible { outline:2px solid #029979; outline-offset:2px; } @media (prefers-reduced-motion: reduce) { .ds-card, .ds-card:hover { transform:none; transition:none; } } .ds-card-img { height:120px; background:linear-gradient(135deg,#1D2D46 60%,#029979); } .ds-card-body { padding:24px; font-family: Montserrat, Arial, Helvetica, sans-serif; } .ds-card-body h3 { color:#1D2D46; font-size:1.125rem; font-weight:700; line-height:1.25; margin:12px 0 8px; transition:color .3s; } .ds-card:hover h3 { color:#02735B; } .ds-card-body p { color:#4B5563; font-size:0.875rem; line-height:1.6; margin:0 0 12px; } .ds-card-more { color:#02735B; font-size:0.875rem; font-weight:500; } .ds-card:hover .ds-card-more { color:#04866E; }"
+    },
+    {
+      "name": "Dark Form Field",
+      "kind": "input",
+      "refersTo": "input-dark",
+      "description": "Contact-form field on the blue field: translucent white fill, readable placeholder, teal focus border with white focus ring.",
+      "html": "<div class=\"ds-darkbg\"><label class=\"ds-field-label\" for=\"ds-in\">Your name</label><input id=\"ds-in\" class=\"ds-input-dark\" placeholder=\"Jane Smith\"></div>",
+      "css": ".ds-darkbg { background:#1D2D46; padding:24px; border-radius:12px; display:inline-block; } .ds-field-label { display:block; color:#F2F5F5; font-family: Montserrat, Arial, Helvetica, sans-serif; font-size:0.875rem; font-weight:500; margin-bottom:6px; } .ds-input-dark { background:rgba(255,255,255,.2); color:#fff; font-family: Montserrat, Arial, Helvetica, sans-serif; font-size:1rem; padding:12px 16px; border:1px solid rgba(255,255,255,.3); border-radius:8px; width:260px; transition:border-color .3s; } .ds-input-dark::placeholder { color:rgba(255,255,255,.75); } .ds-input-dark:focus { border-color:#029979; } .ds-input-dark:focus-visible { outline:2px solid #fff; outline-offset:2px; }"
+    },
+    {
+      "name": "Prose Link",
+      "kind": "custom",
+      "refersTo": "chip-teal",
+      "description": "Long-form link treatment: Action Text Teal with Deep Action Green hover \u2014 teal never appears as text on white in its raw form.",
+      "html": "<p class=\"ds-prose\">We map the process first, then <a href=\"#\" class=\"ds-link\">connect the tools you already use</a> so records move on their own.</p>",
+      "css": ".ds-prose { color:#374151; font-family: Montserrat, Arial, Helvetica, sans-serif; font-size:1rem; line-height:1.7; max-width:60ch; } .ds-link { color:#02735B; text-decoration:underline; text-underline-offset:2px; transition:color .2s; } .ds-link:hover { color:#016450; } .ds-link:focus-visible { outline:2px solid #029979; outline-offset:2px; }"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "button-compact",
+      "description": "Fixed blue-field navigation: white links, teal + semibold marks the active page.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" class=\"ds-nav-link\">Services</a><a href=\"#\" class=\"ds-nav-link ds-nav-active\">Blog</a><a href=\"#\" class=\"ds-nav-link\">Portfolio</a><button class=\"ds-btn-compact\">Contact Us</button></nav>",
+      "css": ".ds-nav { background:rgba(29,45,70,.92); padding:16px 24px; border-radius:8px; display:flex; gap:24px; align-items:center; } .ds-nav-link { color:#fff; font-family: Montserrat, Arial, Helvetica, sans-serif; font-size:1rem; text-decoration:none; transition:color .3s; } .ds-nav-link:hover { color:#029979; } .ds-nav-active { color:#029979; font-weight:600; } .ds-nav-link:focus-visible { outline:2px solid #029979; outline-offset:2px; } .ds-btn-compact { background:#04866E; color:#fff; font-family: Montserrat, Arial, Helvetica, sans-serif; font-size:0.875rem; font-weight:600; padding:8px 24px; border:none; border-radius:8px; cursor:pointer; transition:background-color .3s; } .ds-btn-compact:hover { background:#016450; }"
+    },
+    {
+      "name": "Process Sheet (Signature)",
+      "kind": "custom",
+      "refersTo": "process-sheet",
+      "description": "Compact rendition of the brand's proof object: a maintained process document on the blue field with the single teal timeline thread and owner chips.",
+      "html": "<div class=\"ds-sheetfield\"><div class=\"ds-sheet\"><div class=\"ds-sheet-meta\">Process sheet \u00b7 Maintained</div><div class=\"ds-sheet-title\">Enquiry to booked job</div><div class=\"ds-step\"><span class=\"ds-step-num\">1</span><div><div class=\"ds-step-text\">Enquiry lands in shared inbox and is logged automatically.</div><span class=\"ds-owner ds-owner-system\">System</span></div></div><div class=\"ds-step\"><span class=\"ds-step-num\">2</span><div><div class=\"ds-step-text\">Owner reviews and books the site visit.</div><span class=\"ds-owner ds-owner-team\">Team</span></div></div></div></div>",
+      "css": ".ds-sheetfield { background:#1D2D46; padding:28px; border-radius:12px; display:inline-block; } .ds-sheet { background:#fff; border-radius:4px; padding:24px 28px; width:300px; box-shadow:0 18px 44px -12px rgba(7,17,31,.55), 0 2px 6px rgba(7,17,31,.25); font-family: Montserrat, Arial, Helvetica, sans-serif; } .ds-sheet-meta { color:#5D6B80; font-size:0.6875rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; margin-bottom:8px; } .ds-sheet-title { color:#1D2D46; font-size:1.05rem; font-weight:700; margin-bottom:14px; } .ds-step { display:flex; gap:12px; position:relative; padding-bottom:16px; } .ds-step:not(:last-child)::before { content:\"\"; position:absolute; left:11px; top:24px; bottom:-2px; width:2px; background:rgba(2,153,121,.7); } .ds-step-num { flex:none; width:24px; height:24px; border-radius:9999px; border:2px solid #029979; background:#fff; color:#1D2D46; font-size:0.6875rem; font-weight:600; display:flex; align-items:center; justify-content:center; } .ds-step-text { color:#374151; font-size:0.8125rem; line-height:1.5; margin-bottom:4px; } .ds-owner { font-size:0.625rem; font-weight:600; padding:2px 6px; border-radius:3px; display:inline-block; } .ds-owner-system { background:#D8F5EF; color:#00564A; } .ds-owner-team { background:#EEF1F1; color:#42506B; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Owner's Control Room",
+    "overview": "The DataSolace system should feel like a calm control room run by people who know the equipment, the workflow, and the client by name. The current visual language is built from a saturated deep blue field, crisp white content panels, practical teal actions, large Montserrat headings, and real project imagery. It is direct and legible first, with polish coming from confident contrast, spacing, and useful hierarchy.\n\nThis is a brand marketing system, not an app shell. Visitors should feel that DataSolace is technically capable and personally reachable, with a small-team advantage that larger consultancies and tool-first automation agencies cannot easily copy. The interface should stay boutique in the sense of being specific and owner-led, not decorative or precious.\n\nThe homepage now leads with the brand's own proof: a maintained process sheet \u2014 a white paper artifact on the blue field, with scattered handwritten scraps behind it \u2014 showing the actual deliverable instead of an abstract workflow diagram. The document world it introduces (paper tones, handwritten annotations, owner chips, a single teal timeline rule) is a bounded extension of the control-room identity, not a second design system.",
+    "keyCharacteristics": [
+      "Deep blue brand field with white panels for explanation and conversion.",
+      "Teal actions used sparingly and consistently for the next useful step.",
+      "Montserrat typography with heavy, direct headings and readable body copy.",
+      "Rounded but restrained panels, cards, images, and inputs.",
+      "Real process, infrastructure, documentation, and small-business imagery over abstract decoration \u2014 with the process sheet itself as the signature artifact."
+    ],
+    "rules": [
+      {
+        "name": "The Blue Field Rule",
+        "body": "DataSolace Blue is the brand atmosphere. When a page needs immediate brand recognition, start from the blue field and place white or image-led content inside it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Teal Means Action Rule",
+        "body": "Signal Teal should usually mean \"this is clickable, active, focused, or important.\" Do not scatter it as decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Text-Safe Teal Rule",
+        "body": "Signal Teal (#029979) is a surface and fill color, never a text color on white or light surfaces. Teal-coloured text on light surfaces uses Action Text Teal (#02735B); prose links use Action Text Teal with Deep Action Green (#016450) on hover. On the blue field, plain teal text remains fine.",
+        "section": "colors"
+      },
+      {
+        "name": "The White Panel Rule",
+        "body": "Long explanations belong on Panel White. Large bodies of text should not sit directly on the blue field unless they are short, high-contrast, and part of a hero or CTA.",
+        "section": "colors"
+      },
+      {
+        "name": "The Paper Stays on the Sheet Rule",
+        "body": "The paper artifact palette belongs to the hero's document world. Do not promote scrap, sticky, or annotation colors into general UI chrome.",
+        "section": "colors"
+      },
+      {
+        "name": "The Plain Speech Rule",
+        "body": "Use type to clarify, not to perform. Avoid all-caps body text, over-tight tracking, and ornamental font swaps.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Family Rule",
+        "body": "Montserrat is the brand voice; Geist Mono is the code voice; Kalam exists solely as the handwritten annotation face inside the paper artifact. Do not introduce further faces, and do not let Kalam escape the document world.",
+        "section": "typography"
+      },
+      {
+        "name": "The Shadow Has a Job Rule",
+        "body": "Use shadow to separate content from the blue field or confirm interaction. Do not pair a decorative 1px border with a large soft shadow on the same card.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Glass Is Rare Rule",
+        "body": "Backdrop blur can support fixed navigation and dark-form readability. It should not become a general card style.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use DataSolace Blue (#1D2D46) as the main brand field for marketing pages.",
+      "Do reserve Signal Teal (#029979) for CTA fills, active states, focused controls, and structural accents like the timeline rule.",
+      "Do use Action Text Teal (#02735B) whenever teal appears as text on white or light surfaces, with Deep Action Green (#016450) on hover.",
+      "Do keep body copy on white panels when explanations are long.",
+      "Do use real imagery and real artifacts \u2014 the process sheet, documentation, projects, infrastructure \u2014 when a section needs visual weight.",
+      "Do write direct, owner-led copy that makes the personal service advantage visible.",
+      "Do keep focus states, form labels, and placeholder text readable for older users; every interactive element gets the 2px visible focus outline, adapted to its surface.",
+      "Do respect reduced-motion preferences for hover movement, card lifts, and menu transitions."
+    ],
+    "donts": [
+      "Don't set Signal Teal (#029979) as text on white or light surfaces \u2014 it fails 4.5:1; use Action Text Teal instead.",
+      "Don't make the site feel like generic SaaS marketing: no vague automation claims, abstract diagrams, template hero sections, or inflated productivity language.",
+      "Don't make it feel like an AI automation guru pitch: no magic-workflow claims, no hustle language, no replacing-staff spectacle.",
+      "Don't make it feel like a no-code agency template: no walls of app logos, generic connector diagrams, or one-size-fits-all tool-stack claims.",
+      "Don't make it feel like a corporate IT consultancy: no faceless enterprise language, stock business imagery, or claims that feel larger than the team.",
+      "Don't make it feel like bookkeeping software: no flat administrative visuals or copy that makes process improvement feel like paperwork.",
+      "Don't use emoji as the primary visual system for CTAs, headings, or service categories. (The last emoji CTAs were removed; keep it that way.)",
+      "Don't let Kalam or the paper artifact palette leak out of the hero's document world into general UI.",
+      "Don't use gradient text, colored side-stripe borders, decorative glass cards, or repeated tiny uppercase section labels \u2014 the sheet's own meta labels are document furniture, not a UI pattern.",
+      "Don't over-round cards or panels. Keep content panels at 16px, standard cards/inputs at 8px, and paper artifacts at 4px unless a specific component needs otherwise.",
+      "Don't rely on color alone for active, focus, error, or disabled states."
+    ]
+  }
+}
