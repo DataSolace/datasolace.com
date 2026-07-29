@@ -96,7 +96,7 @@ export default async function Blog() {
           {/* Call to Action */}
           <div className="text-center mt-16">
             <p className="text-white text-xl mb-8">
-              Ready to implement these solutions in your business or home?
+              Ready to implement these solutions in your business?
             </p>
             <Link
               href="/#contact"
