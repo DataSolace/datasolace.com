@@ -4,13 +4,82 @@ import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 
 // Portfolio case study data
+// Client website studies are published with each client's consent (July 2026).
 const portfolioItems = {
+  'barkbuddiez-dog-grooming': {
+    title: 'BarkBuddiez: Enquiries That Arrive With the Dog\'s Details',
+    heroImage: '/portfolio-barkbuddiez.jpeg',
+    excerpt: 'A calm, boutique website for a one-person grooming salon — built so new business arrives written down, not as a missed phone call.',
+    date: 'June 2026',
+    author: 'DataSolace Team',
+    context: 'Live client work — visit the site itself below. Featured with the client\'s permission.',
+    liveUrl: 'https://barkbuddiezgrooming.co.uk',
+    content: `
+BarkBuddiez is Cat's one-to-one dog grooming salon in Cranwell, Lincolnshire. One groomer, one dog at a time, welfare first — which means her hands are on a dog for most of the working day, and the phone is the worst possible place for new business to arrive.
+
+## The Process Problem
+
+For a solo groomer, every enquiry is an interruption or a missed call. And a grooming enquiry isn't simple: what breed, what size, what coat, is the dog nervous, elderly, a puppy? Gathering that over phone tag or social media messages takes days of back-and-forth before an appointment can even be offered.
+
+## What the Site Does
+
+Every path through the site converges on one action: send a message that starts with the dog. The enquiry form asks for the dog's name, age, breed and size, then prompts for the groom package, coat condition, and temperament — everything Cat needs to know before she can say yes. By the time she reads it, between grooms, the qualifying conversation has already happened.
+
+The content does triage before the form is ever reached. The five commitments on the front page — single-pet crate-free appointments, natural shampoos, welfare first, eco-friendly practice, full insurance — tell the right owners they're in the right place, and the "by appointment only" hours set expectations without a single phone call.
+
+## Design Decisions
+
+- A warm, boutique look built around real photographs of Cat and her clients' dogs — no stock imagery, because trust is the product
+- Testimonials attributed to named dogs, not initials — the audience reads them as owners
+- A script wordmark and calm palette that match a quiet, one-dog-at-a-time salon rather than a busy high-street franchise
+- One primary action everywhere, so the site never competes with itself
+
+## Built to Keep Running
+
+The site runs on the same self-hosted stack DataSolace uses for its own systems, hosted and maintained by us. When Cat needs something changed, she talks to the people who built it.
+    `
+  },
+  'caras-kitchen': {
+    title: 'Cara\'s Kitchen: A Market Stall With a Permanent Address',
+    heroImage: '/portfolio-caras-kitchen.jpeg',
+    excerpt: 'Handmade chutneys and jams from Lincolnshire — with a maintained market schedule, a real product catalogue, and orders that arrive structured.',
+    date: 'Spring 2026',
+    author: 'DataSolace Team',
+    context: 'Live client work — visit the site itself below. Featured with the client\'s permission.',
+    liveUrl: 'https://caras.kitchen',
+    content: `
+Cara makes small-batch chutneys, jams, and preserves in Lincolnshire, and sells them where market traders sell: at stalls, fairs, and local events that change every week.
+
+## The Process Problem
+
+A market trader's most-asked question is "where will you be this weekend?" — and the answer usually lives in a scatter of weekly social media posts that expire as soon as they're published. The product range has the same problem: batches come and go with the seasons, and a static brochure site would be wrong within a month.
+
+## What the Site Does
+
+The market schedule is the heart of the site. Upcoming markets appear as dated cards with venues and directions — one permanent address that always holds the current answer, instead of a feed that has to be re-posted every week.
+
+The product catalogue works the same way: real products with prices and categories that Cara maintains as batches change. The bag doesn't pretend to be a supermarket checkout — it composes a structured order, every line item listed, with the customer's collection preference attached, so what lands in Cara's inbox is an order she can fulfil rather than a message she has to decode. A recipe notebook gives the site a reason to be revisited between markets.
+
+## Design Decisions
+
+- A warm, produce-led palette and hand-made feel that matches what's in the jar — the site looks like the stall
+- Photography from the actual garden and market stalls, not stock food imagery
+- The schedule designed as the primary destination, because it answers the question customers actually ask
+- An order flow sized to the business — structured email orders with a collection preference, not a payment gateway the operation doesn't need yet
+
+## Built to Keep Running
+
+The schedule, catalogue, and notebook all live in a content management system Cara updates herself — the site stays current because keeping it current is easy. The whole stack is self-hosted and maintained by DataSolace on the same infrastructure we run our own systems on.
+    `
+  },
   'safeguarding-tenants-damp-protection': {
     title: "Safeguarding Tenants And Protecting Rental Properties From Damp",
     heroImage: "/hands_on_a_window.webp",
     excerpt: "Taking a proactive approach to environmental health and the conditions that lead to damp.",
     date: "December 2024",
     author: "DataSolace Team",
+    context: 'From our residential systems practice — earlier DataSolace work that shaped how we approach business automation today.',
+    liveUrl: null,
     content: `
 This valued client approached us looking for a monitoring solution for 2 rental properties in Stockport. The properties were showing signs of damp and condensation and the landlord needed to understand if tenants were taking enough action before proceeding with costly construction remediations.
 
@@ -54,6 +123,8 @@ As a property owner, you have the power to make a positive impact on the lives o
     excerpt: "Smart home technology at its best: solving real problems, enhancing safety, and improving quality of life with thoughtful automation.",
     date: "December 2024",
     author: "DataSolace Team",
+    context: 'From our residential systems practice — earlier DataSolace work that shaped how we approach business automation today.',
+    liveUrl: null,
     content: `
 Smart home technology at its best: solving real problems, enhancing safety, and improving quality of life with thoughtful automation.
 
@@ -132,27 +203,29 @@ export default async function PortfolioItem({ params }: { params: Promise<{ slug
     );
   }
 
-  const isFirstItem = slug === 'safeguarding-tenants-damp-protection';
-  const nextItem = isFirstItem ? 'illuminating-independence-smart-home' : 'safeguarding-tenants-damp-protection';
+  const slugs = Object.keys(portfolioItems);
+  const nextItem = slugs[(slugs.indexOf(slug) + 1) % slugs.length];
   const nextItemData = portfolioItems[nextItem as keyof typeof portfolioItems];
 
   return (
     <div className="min-h-screen bg-[var(--brand-blue)]">
       <Header currentPage="portfolio" />
 
-            {/* Hero Section */}
+      {/* Hero Section */}
       <section className="relative pt-32 pb-20">
-        <div className="absolute inset-0">
-          <Image
-            src={item.heroImage}
-            alt={item.title}
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/50"></div>
-        </div>
-        
+        {!item.liveUrl && (
+          <div className="absolute inset-0">
+            <Image
+              src={item.heroImage}
+              alt={item.title}
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-black/50"></div>
+          </div>
+        )}
+
         <div className="relative max-w-6xl mx-auto px-6 pt-20">
           <div className="mb-6">
             <span className="text-white/80 text-lg">{item.date}</span>
@@ -171,13 +244,41 @@ export default async function PortfolioItem({ params }: { params: Promise<{ slug
       {/* Main Content */}
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
-          
+          {/* Live-site screenshot as framed artifact */}
+          {item.liveUrl && (
+            <a
+              href={item.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block mb-16 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              aria-label={`Screenshot of the live site — opens ${item.liveUrl} in a new tab`}
+            >
+              <Image
+                src={item.heroImage}
+                alt=""
+                width={1440}
+                height={900}
+                priority
+                className="w-full h-auto rounded-lg shadow-[0_20px_25px_-5px_rgb(0_0_0/0.3),0_8px_10px_-6px_rgb(0_0_0/0.3)]"
+              />
+            </a>
+          )}
+
           {/* Portfolio Content */}
           <div className="bg-white rounded-2xl p-8 sm:p-12 mb-16">
-            <p className="text-sm text-[#4B5563] border-b border-[#E5E7EB] pb-4 mb-8">
-              From our residential systems practice — earlier DataSolace work
-              that shaped how we approach business automation today.
-            </p>
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#E5E7EB] pb-4 mb-8">
+              <p className="text-sm text-[#4B5563] max-w-[52ch]">{item.context}</p>
+              {item.liveUrl && (
+                <a
+                  href={item.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-semibold text-[var(--brand-teal-text)] hover:text-[var(--brand-green-dark)] transition-colors whitespace-nowrap"
+                >
+                  Visit the live site →
+                </a>
+              )}
+            </div>
             <div className="prose prose-lg max-w-none">
               {item.content.split('\n\n').map((paragraph: string, index: number) => {
                 const trimmed = paragraph.trim();

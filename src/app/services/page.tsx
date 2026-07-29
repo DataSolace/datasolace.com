@@ -163,10 +163,17 @@ export default function Services() {
                   modelled consistently so they can actually be compared —
                   running in production, maintained by us.
                 </p>
-                <p className="text-lg leading-relaxed text-[#374151] mb-8 max-w-[58ch]">
+                <p className="text-lg leading-relaxed text-[#374151] mb-4 max-w-[58ch]">
                   It&apos;s the same discipline we bring to client systems: careful
                   data modelling, honest search and comparison, and
                   infrastructure that stays up.
+                </p>
+                <p className="text-lg leading-relaxed text-[#374151] mb-8 max-w-[58ch]">
+                  You can also visit the{' '}
+                  <Link href="/portfolio" className="text-[var(--brand-teal-text)] underline underline-offset-2 hover:text-[var(--brand-green-dark)] transition-colors">
+                    live client websites we build and run
+                  </Link>
+                  .
                 </p>
                 <a
                   href="https://smarthomeindex.com"
