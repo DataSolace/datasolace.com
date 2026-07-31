@@ -2,8 +2,8 @@
 title: "Finish Kit Newsletter Signup Migration"
 slug: kit-newsletter-signup-migration
 created_at: 2026-05-25T20:09:40.643Z
-status: active
-updated_at: 2026-07-29
+status: complete
+updated_at: 2026-07-31
 ---
 
 ## Goal
@@ -40,7 +40,7 @@ The original frontend (Smart Home Index form on `src/app/services/page.tsx`) was
 - .pi/plans/2026-05-25_payload-cms-migration-implementation.md - completed migration plan that intentionally deferred real Kit provider validation.
 
 ## Plan
-- [ ] Confirm the exact Kit target configuration out-of-band: API key and the tag IDs for the `datasolace` and `smart-home-index` tags (staging and production values); document the selected env variable names without committing secret values.
+- [x] Confirm the exact Kit target configuration out-of-band: single Kit account (DataSolace) shared by staging and production; created tag `List: DataSolace Newsletter` (21718003) for `datasolace`, reusing `List: Smart Home Index - Changelog Newsletter` (5594413) for `smart-home-index`; values set in local `.env` only.
 - [x] Update `.env.example`, `compose.yml`, and deployment docs to replace the placeholder webhook-only model with explicit Kit API v4 configuration: `KIT_API_KEY`, `KIT_TAG_ID_DATASOLACE`, `KIT_TAG_ID_SMART_HOME_INDEX`, plus `STAGING_` equivalents.
 - [x] Refactor `src/app/api/newsletter/route.ts` into small helpers for config validation, Kit API requests, response parsing, and Payload event logging while preserving existing request/response semantics for invalid input, honeypot, provider failure, and success.
 - [x] Implement the Kit API v4 subscription flow: create or update a subscriber by email, then attach the subscriber to the tag resolved from the allowlisted `newsletterId` (`datasolace` default, `smart-home-index` retained); reject unknown `newsletterId` values as invalid input; record provider IDs, HTTP statuses, and safe response/error snippets in Payload.
@@ -48,22 +48,22 @@ The original frontend (Smart Home Index form on `src/app/services/page.tsx`) was
 - [x] Review and extend `cms/src/collections/NewsletterEvents.ts`: added `already_subscribed` status option; `newsletterId` default changed to `datasolace` (applies via `PAYLOAD_DB_PUSH` on restart).
 - [x] Build the `NewsletterSignup` client component (email input, invisible honeypot, success clears field, retryable error) and place it on the blog index and blog post pages posting `newsletterId: "datasolace"`.
 - [x] Validate the blog signup frontend against the updated endpoint: local smoke test (mock Payload) confirmed invalid email 400/`invalid`, honeypot fake-success/`blocked_honeypot`, unknown newsletterId 400/`invalid_newsletter_id`, missing config 500/`kit_not_configured`, malformed body 400 — all with matching Payload events. Success path and 429 remain for staging with real Kit values.
-- [ ] Run Docker-based builds/restarts for staging and production public app services, then smoke-test staging through `staging.datasolace.com` before updating production Kit env values and restarting production public app.
-- [ ] Update deployment docs with exact operational steps for rotating Kit keys/form IDs, testing with a safe address, interpreting Payload newsletter events, and rolling back by clearing Kit env values or reverting to provider-disabled behavior.
-- [ ] After staging and production validation, update the plan status/checklist, inspect diffs, stage only relevant files and this plan, run pre-commit checks, and commit with a conventional commit message.
+- [x] Run Docker-based builds/restarts for staging and production public app services, then smoke-test staging through `staging.datasolace.com` before updating production Kit env values and restarting production public app. (2026-07-31; also rebuilt payload containers and applied `ALTER TYPE ... ADD VALUE 'already_subscribed'` manually on both DBs — `PAYLOAD_DB_PUSH` does not apply in production containers.)
+- [x] Update deployment docs with exact operational steps for rotating Kit keys/tag IDs, testing with a safe address, interpreting Payload newsletter events, rolling back by clearing Kit env values, and the manual enum/schema gotcha.
+- [x] After staging and production validation, update the plan status/checklist, inspect diffs, stage only relevant files and this plan, run pre-commit checks, and commit with a conventional commit message. (Shipped via PR #11 + follow-up docs PR.)
 
-## Validation
-- [ ] Staging `/api/newsletter` returns 400 and logs `invalid` for malformed email without calling Kit.
-- [ ] Staging honeypot newsletter POST returns fake success and logs `blocked_honeypot` without calling Kit.
-- [ ] Staging missing/placeholder Kit config returns safe JSON error and logs `provider_failed` with `kit_not_configured`.
-- [ ] Staging valid newsletter POST with real Kit test configuration returns success, creates or idempotently reuses the Kit subscriber, attaches it to the configured form/tag/sequence, and logs a Payload event with provider ID/status.
-- [ ] Staging repeated signup for the same email is idempotent and user-successful, with Payload preserving enough detail to audit the duplicate/already-subscribed condition.
-- [ ] Staging `/api/newsletter` rate limiting still returns parseable JSON 429 through nginx.
-- [ ] Payload admin shows newsletter events safely without exposing API keys or executing user-controlled content.
-- [ ] Docker build/restart validation passes for the public app with npm@latest and the 14-day package-age cutoff.
-- [ ] Production newsletter signup succeeds through `https://datasolace.com/api/newsletter` after production Kit env values are set and the public app is restarted.
-- [ ] Production Kit account/list/form/tag contains the expected test subscriber, and the matching Payload `newsletter-events` record is present.
-- [ ] Rollback is verified by clearing or invalidating Kit env configuration and confirming the endpoint fails safely while continuing to log locally.
+## Validation (all executed 2026-07-31)
+- [x] Staging `/api/newsletter` returns 400 and logs `invalid` for malformed email without calling Kit.
+- [x] Staging honeypot newsletter POST returns fake success and logs `blocked_honeypot` without calling Kit.
+- [x] Missing Kit config returns safe JSON error and logs `provider_failed` with `kit_not_configured` (validated in local smoke test pre-deploy; staging/production deployed configured).
+- [x] Staging valid newsletter POST with real Kit configuration returns success, creates the Kit subscriber (4231977835), attaches tag 21718003, and logs a Payload `subscribed` event with provider ID.
+- [x] Staging repeated signup is idempotent and user-successful, logged as `already_subscribed` (after manual enum ALTER; see schema gotcha in deployment docs).
+- [x] Staging `/api/newsletter` rate limiting returns parseable JSON 429 through nginx.
+- [x] Payload events store only truncated safe details; no API keys present in events.
+- [x] Docker build/restart validation passed for public app and payload with npm@latest and the 14-day package-age cutoff.
+- [x] Production signup succeeds through `https://datasolace.com/api/newsletter` (subscriber 4231984194 tagged 21718003, `subscribed` then `already_subscribed` events logged).
+- [x] Production blog pages render the signup form.
+- [x] Rollback path exercised pre-config: unconfigured env fails safely as `kit_not_configured` while still logging locally; clearing Kit env values restores that behavior.
 
 ## Risks
 - Kit API v4 may require a specific resource model: creating a subscriber may not automatically add them to a form, tag, or sequence, so the selected target ID must be correct.
