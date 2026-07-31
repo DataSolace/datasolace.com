@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 import { notFound } from 'next/navigation';
+import NewsletterSignup from '../../../components/NewsletterSignup';
 import { getBlogPostBySlug, getRelatedBlogPosts } from '../../../lib/blog';
 import { marked } from 'marked';
 
@@ -160,6 +161,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </div>
             </div>
           </article>
+
+          {/* Newsletter Signup */}
+          <div className="mt-8">
+            <NewsletterSignup />
+          </div>
 
           {/* Related Posts */}
           {relatedPosts.length > 0 && (

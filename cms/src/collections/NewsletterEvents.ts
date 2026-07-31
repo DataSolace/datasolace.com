@@ -21,7 +21,7 @@ export const NewsletterEvents: CollectionConfig = {
     {
       name: 'newsletterId',
       type: 'text',
-      defaultValue: 'smart-home-index',
+      defaultValue: 'datasolace',
       admin: {
         position: 'sidebar',
       },
@@ -32,6 +32,7 @@ export const NewsletterEvents: CollectionConfig = {
       required: true,
       options: [
         { label: 'Subscribed', value: 'subscribed' },
+        { label: 'Already Subscribed', value: 'already_subscribed' },
         { label: 'Provider Accepted', value: 'provider_accepted' },
         { label: 'Provider Failed', value: 'provider_failed' },
         { label: 'Invalid', value: 'invalid' },
