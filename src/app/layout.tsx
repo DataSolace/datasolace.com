@@ -128,6 +128,13 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
 
+        {/* Umami analytics (self-hosted, cookieless) — no SRI by design, see platform repo products/analytics/umami/README.md */}
+        <script
+          defer
+          src="https://insights.datasolace.com/script.js"
+          data-website-id="23e799f5-18de-433d-a379-0ac9edf6750e"
+        />
+
         {/* Structured Data for Business */}
         <script
           type="application/ld+json"
