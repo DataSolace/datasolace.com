@@ -10,15 +10,15 @@
  * STORY: An owner recognises their own note-covered wall, then watches it become
  * a calm system that runs itself — and understands what "we build and keep it
  * running" means without reading a word.
- * MECHANIC: The video never autoplays; the visitor's scroll drives it.
- *  - Landscape desktop (lg+, aspect >= 7/5): CSS-pinned stage, scroll scrubs
- *    the playhead across 260vh of travel. Copy overlays the dark left zone.
+ * MECHANIC:
+ *  - Landscape desktop (lg+, aspect >= 7/5): the video never autoplays; the
+ *    visitor's scroll drives it. CSS-pinned stage, scroll scrubs the playhead
+ *    across 260vh of travel. Copy overlays the dark left zone.
  *  - Phones and tall/narrow windows: a normal unpinned page (real next section
- *    visible below the hero) with a wheel/touch scroll-lock — input at the top
- *    of the page drives the playhead; when the video completes, input releases
- *    and the page scrolls normally; scrolling up at the top rewinds. Scrollbar
- *    and keyboard bypass the lock (browsers don't allow intercepting them);
- *    those visitors simply skip the animation.
+ *    visible below the hero, native scrolling and momentum untouched). The
+ *    video plays once by itself as soon as it can play through, then rests on
+ *    its final frame. Arriving mid-page (reload, anchor link) skips playback
+ *    and lands on the finished system.
  * Reduced motion: no scrub, no lock — the video rests on its final frame.
  * ASSETS: /hero/hero-desktop.mp4 (1080p) and /hero/hero-mobile.mp4 (720p),
  * all-but-keyframe encoded (g=2) for frame-accurate scrubbing; poster jpg for
@@ -124,66 +124,28 @@ export default function ScrubHero() {
       return;
     }
 
-    /* Stacked modes: normal page + scroll lock (see contract above). */
+    /* Stacked modes: plain page, video plays itself once (see contract above). */
     if (layout === 'stacked') {
-      const RANGE = 1100; // px of wheel travel for the full transformation
-      const TOUCH_FACTOR = 2.2; // finger travel is scarcer than wheel travel
-      let acc = 0;
-      const apply = () => {
-        if (video.duration) video.currentTime = (acc / RANGE) * (video.duration - 0.05);
-      };
-      const init = () => {
-        /* Arriving mid-page (reload, anchor link): land on the finished system. */
-        if (window.scrollY > 4) {
-          acc = RANGE;
-          apply();
-        }
-      };
-      if (video.readyState >= 1) init();
-      else video.addEventListener('loadedmetadata', init, { once: true });
+      /* Arriving mid-page (reload, anchor link): land on the finished system. */
+      if (window.scrollY > 4) {
+        const toEnd = () => {
+          if (video.duration) video.currentTime = video.duration - 0.05;
+        };
+        if (video.readyState >= 1) toEnd();
+        else video.addEventListener('loadedmetadata', toEnd, { once: true });
+        return () => video.removeEventListener('loadedmetadata', toEnd);
+      }
 
-      /* Shared lock step: returns true when the input was consumed. */
-      const step = (delta: number) => {
-        if (window.scrollY > 4) {
-          acc = RANGE; // page has been scrolled: keep the video complete
-          return false;
-        }
-        const down = delta > 0;
-        if (down && acc >= RANGE) return false; // video done — release the page
-        if (!down && acc <= 0) return false; // at the very start — nothing to rewind
-        acc = Math.min(RANGE, Math.max(0, acc + delta));
-        apply();
-        return true;
+      /* Wait until a full uninterrupted play is likely, so slow connections see
+         the poster and then one clean run rather than a stuttering start. */
+      const play = () => {
+        video.play().catch(() => {
+          /* Autoplay refused (unusual with muted+playsInline): stay on poster. */
+        });
       };
-
-      const onWheel = (e: WheelEvent) => {
-        if (step(e.deltaY)) e.preventDefault();
-      };
-      let lastTouchY: number | null = null;
-      const onTouchStart = (e: TouchEvent) => {
-        lastTouchY = e.touches[0]?.clientY ?? null;
-      };
-      const onTouchMove = (e: TouchEvent) => {
-        const y = e.touches[0]?.clientY;
-        if (lastTouchY === null || y === undefined) return;
-        const delta = (lastTouchY - y) * TOUCH_FACTOR; // finger up = scroll down
-        lastTouchY = y;
-        if (step(delta)) e.preventDefault();
-      };
-      const onTouchEnd = () => {
-        lastTouchY = null;
-      };
-
-      window.addEventListener('wheel', onWheel, { passive: false });
-      window.addEventListener('touchstart', onTouchStart, { passive: true });
-      window.addEventListener('touchmove', onTouchMove, { passive: false });
-      window.addEventListener('touchend', onTouchEnd, { passive: true });
-      return () => {
-        window.removeEventListener('wheel', onWheel);
-        window.removeEventListener('touchstart', onTouchStart);
-        window.removeEventListener('touchmove', onTouchMove);
-        window.removeEventListener('touchend', onTouchEnd);
-      };
+      if (video.readyState >= HTMLMediaElement.HAVE_ENOUGH_DATA) play();
+      else video.addEventListener('canplaythrough', play, { once: true });
+      return () => video.removeEventListener('canplaythrough', play);
     }
 
     /* Overlay mode: classic pinned scrub across the wrapper's extra height. */
