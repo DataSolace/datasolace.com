@@ -88,6 +88,13 @@ Configuration (per environment, staging uses the `STAGING_` prefix):
 
 Operational notes:
 
+- Schema gotcha: `PAYLOAD_DB_PUSH` only applies under the Payload dev server,
+  not the production container builds, so collection schema changes (e.g. new
+  `newsletter-events` status enum values) must be applied to Postgres manually:
+  `docker compose exec -T <postgres|staging-postgres> psql -U payload -d payload
+  -c "ALTER TYPE enum_newsletter_events_status ADD VALUE IF NOT EXISTS '<value>';"`
+  (applied for `already_subscribed` on staging and production, 2026-07-31).
+
 - Leave all Kit variables empty until real values are available. Missing or
   non-numeric configuration is logged in Payload as `provider_failed` /
   `kit_not_configured` and returns a safe 500 JSON response; the site otherwise
