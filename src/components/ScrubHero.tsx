@@ -17,12 +17,18 @@
  *  - Phones and tall/narrow windows: a normal unpinned page (real next section
  *    visible below the hero, native scrolling and momentum untouched). The
  *    video plays once by itself as soon as it can play through, then rests on
- *    its final frame. Arriving mid-page (reload, anchor link) skips playback
- *    and lands on the finished system.
+ *    its final frame. The poster here is the FINAL frame, not the first: if
+ *    autoplay is blocked (Brave Shields etc., detected via play() rejection)
+ *    the visitor must see the finished system, never the messy wall. When
+ *    playback is allowed it simply starts from the top and replaces the
+ *    poster. Arriving mid-page (reload, anchor link) skips playback and lands
+ *    on the finished system.
  * Reduced motion: no scrub, no lock — the video rests on its final frame.
  * ASSETS: /hero/hero-desktop.mp4 (1080p) and /hero/hero-mobile.mp4 (720p),
- * all-but-keyframe encoded (g=2) for frame-accurate scrubbing; poster jpg for
- * instant first paint. Masters live in assets-src/hero/.
+ * all-but-keyframe encoded (g=2) for frame-accurate scrubbing; poster jpgs for
+ * instant first paint — hero-poster.jpg (first frame, desktop scrub) and
+ * hero-poster-end.jpg (final frame, stacked autoplay/blocked-autoplay).
+ * Masters live in assets-src/hero/.
  */
 
 import { useEffect, useRef, useState, type ReactNode } from 'react';
@@ -31,6 +37,7 @@ import Link from 'next/link';
 const VIDEO_DESKTOP = '/hero/hero-desktop.mp4';
 const VIDEO_MOBILE = '/hero/hero-mobile.mp4';
 const POSTER = '/hero/hero-poster.jpg';
+const POSTER_END = '/hero/hero-poster-end.jpg';
 const VIDEO_ALT =
   'A wall of sticky notes is drawn into a monitor and becomes a running automation workflow as you scroll';
 
@@ -126,11 +133,12 @@ export default function ScrubHero() {
 
     /* Stacked modes: plain page, video plays itself once (see contract above). */
     if (layout === 'stacked') {
+      const toEnd = () => {
+        if (video.duration) video.currentTime = video.duration - 0.05;
+      };
+
       /* Arriving mid-page (reload, anchor link): land on the finished system. */
       if (window.scrollY > 4) {
-        const toEnd = () => {
-          if (video.duration) video.currentTime = video.duration - 0.05;
-        };
         if (video.readyState >= 1) toEnd();
         else video.addEventListener('loadedmetadata', toEnd, { once: true });
         return () => video.removeEventListener('loadedmetadata', toEnd);
@@ -140,7 +148,9 @@ export default function ScrubHero() {
          the poster and then one clean run rather than a stuttering start. */
       const play = () => {
         video.play().catch(() => {
-          /* Autoplay refused (unusual with muted+playsInline): stay on poster. */
+          /* Autoplay blocked (Brave Shields etc.): rest on the final frame,
+             matching the end-state poster already on screen. */
+          toEnd();
         });
       };
       if (video.readyState >= HTMLMediaElement.HAVE_ENOUGH_DATA) play();
@@ -219,7 +229,7 @@ export default function ScrubHero() {
                 <video
                   ref={videoRef}
                   src={videoSrc}
-                  poster={POSTER}
+                  poster={POSTER_END}
                   muted
                   playsInline
                   preload="auto"

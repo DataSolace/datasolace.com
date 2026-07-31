@@ -41,6 +41,22 @@ Options considered:
 - **Reduced motion**: unchanged — no playback, rest on final frame.
 - Update the hero direction contract comment in `ScrubHero.tsx` to match.
 
+## Amendment (same day): blocked autoplay must show the end state
+
+Brave Shields (and similar) block even muted autoplay, which left the hero
+frozen on the first frame — the messy wall — instead of the fixed state.
+
+- The stacked video's `poster` is now `hero-poster-end.jpg`, the **final**
+  frame (extracted from `hero-desktop.mp4` via ffmpeg), so the preloaded image
+  is the finished system.
+- Autoplay blocking is detected via the `video.play()` promise rejection; on
+  rejection the video seeks to its final frame, matching the poster already on
+  screen.
+- When autoplay is allowed, playback starts from the top and replaces the
+  poster — a brief end-state-then-play flicker is accepted.
+- The overlay (desktop scrub) poster stays on the first frame, since its scrub
+  genuinely begins at the messy wall.
+
 ## Verification
 
 - `npm run check` (build + tsc) passes.
